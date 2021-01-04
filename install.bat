@@ -1,3 +1,6 @@
-python-3.8.5.exe
-
-pip install bs4 lxml time requests art selenium
+pip install --upgrade pip
+pip install bs4
+pip install lxml
+pip install requests
+pip install art
+pip install selenium
