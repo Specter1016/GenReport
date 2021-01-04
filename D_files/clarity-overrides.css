@@ -1,0 +1,311 @@
+/* Clarity Overrides */
+body {
+    line-height: normal;
+}
+input[type=text], input[type=password], input[type=number], input[type=email], .select select {
+    min-width: 0px !important;
+}
+::-ms-clear {
+    display:none;
+}
+.tooltip.tooltip-validation>input {
+    padding-right: 0px;
+}
+.dropdown .dropdown-menu {
+    visibility: inherit !important;
+}
+
+.sidenav {
+    border-width: 0;
+    max-width: inherit;
+}
+.sidenav .nav-group .nav-list {
+    padding: 0 0 0 22px;
+}
+.sidenav .nav-group.collapsible .nav-list {
+    padding: 0 0 0 32px;
+}
+.sidenav .nav-group label {
+    padding: 0 0 0 32px;
+}
+.sidenav .nav-group {
+    margin-top: 14px;
+}
+.sidenav .collapsible label:after {
+    margin-left: -10px;
+}
+
+.checkbox-inline {
+    padding-left: 2px;
+}
+.radio-inline {
+    padding-left: 2px;
+}
+.day-picker .tooltip.tooltip-validation.invalid::before {
+    right: 20px !important;
+}
+pre {
+    max-height: inherit;
+}
+.dropdown .dropdown-menu {
+    margin-top: 0px;
+    max-width: 770px;
+}
+
+/* Wizard overrides */
+.clr-wizard .text-light {
+    font-size: 18px;
+}
+.clr-wizard .spinner {
+    left: 0;
+    position: inherit;
+}
+.clr-wizard .clr-wizard-stepnav-wrapper .clr-nav-link {
+    cursor: default;
+}
+.clr-wizard .clr-wizard-stepnav-wrapper .x-panel-body-default {
+    background: inherit;
+    border: 0;
+}
+.clr-wizard .clr-wizard-stepnav-wrapper .navigatable .clr-nav-link {
+    cursor: pointer;
+}
+.clr-wizard .clr-wizard-stepnav-wrapper .clr-nav-link .nav-link {
+    cursor: default;
+}
+.clr-wizard .clr-wizard-stepnav-wrapper .clr-nav-link .nav-link:focus {
+    color: #565656;
+}
+.clr-wizard .clr-nav-link.active .nav-link, .clr-wizard .clr-nav-link.active a {
+    font-weight: 500;
+    box-shadow: none;
+    color: #000;
+}
+.clr-wizard .clr-nav-link .btn {
+    white-space: normal;
+    height: inherit;
+}
+.clr-wizard .clr-nav-link.active:before {
+    height: calc(100% - 11px);
+}
+
+.clr-wizard .clr-wizard-stepnav-link.non-numbered::before {
+    content: '';
+}
+.clr-wizard .clr-wizard-stepnav-link.non-numbered{
+    padding-left: 15px;
+}
+
+.clr-wizard .clr-wizard-stepnav-link::before {
+    content: counter(a);
+    counter-increment: a;
+    padding-right: 7px;
+    min-width: 15px;
+    position: absolute;
+    left: 18px;
+}
+.clr-wizard .clr-wizard-stepnav-link {
+    padding-left:30px;
+}
+
+.tooltip.tooltip-validation.invalid>input {
+    background: none;
+}
+.tooltip.tooltip-validation.invalid>input:not([readonly]) {
+    background: none;
+}
+
+input[type=text]:not([readonly]), input[type=password]:not([readonly]),
+    /* Make window's internal font size to be 13px instead of 14px */
+.x-window-body .x-form-item,
+.x-window-body .x-form-text-default,
+.x-window-body .x-panel-body-default,
+.x-window-body .x-form-cb-label-default,
+.x-window-body .x-form-item-label-default,
+.x-window-body .x-form-display-field-default {
+    font-size: 13px;
+}
+.nav .nav-link:hover, .nav .nav-link:focus, .nav .nav-link:active {
+    color: #565656;
+}
+
+/* Adding blue border stroke for inputs selection */
+input[type=text][readonly], input[type=password][readonly],
+input[type=number][readonly], input[type=email][readonly],
+input[type=url][readonly], input[type=tel][readonly], input[type=date][readonly],
+input[type=time][readonly], input[type=datetime-local][readonly] {
+    border-bottom: 1px solid #9a9a9a;
+}
+
+input[type="text"]:not([readonly]), input[type="password"]:not([readonly]),
+input[type="number"]:not([readonly]), input[type="email"]:not([readonly]),
+input[type="url"]:not([readonly]), input[type="tel"]:not([readonly]), input[type="date"]:not([readonly]),
+input[type="time"]:not([readonly]), input[type="datetime-local"]:not([readonly]) {
+    background: transparent;
+}
+/* Decreasing menu items height that appeared from clarity upgrade */
+.dropdown-menu .btn, .dropdown-menu .dropdown-item {
+    height: 25px;
+    line-height: inherit;
+}
+
+/* Resetting dropdown btn styles
+https://github.com/vmware/clarity/issues/1070*/
+
+.dropdown-menu .btn {
+    display: inline-block;
+    border-radius: 3px;
+    border: 1px solid;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 0 12px;
+    border-color: #007cbb;
+}
+
+.dropdown-menu .btn.btn-primary, .dropdown-menu .btn-primary .btn {
+    border-color: #007cbb;
+    background-color: #007cbb;
+    color: #fff;
+}
+
+.dropdown-menu .btn.btn-primary:hover, .dropdown-menu .btn-primary .btn:hover {
+    background-color: #004a70;
+    color: #fff;
+}
+
+.dropdown-menu .btn.btn-primary.disabled, .dropdown-menu .btn.btn-primary:disabled,
+.dropdown-menu .btn-primary .btn.disabled, .dropdown-menu .btn-primary .btn:disabled {
+    color: #565656;
+    cursor: not-allowed;
+    background-color: #ccc;
+    border-color: #ccc;
+    opacity: 0.4;
+}
+
+
+/* Badged icons */
+.has-badge--immediate .clr-i-badge {
+    fill: #FF9F00;
+}
+
+.has-badge--warning .clr-i-badge {
+    fill: #FFD966;
+}
+
+.has-badge--unknown .clr-i-badge {
+    fill: #9A9A9A;
+}
+
+clr-icon>* {
+    pointer-events: none;
+}
+
+/* Toggle switch overrides */
+.toggle-switch.toggle-switch-neutral input[type="checkbox"]:checked+label::before {
+    border-color: #747474 !important;
+    background-color: #747474 !important;
+}
+.toggle-switch.toggle-switch-neutral-blue input[type="checkbox"] + label::before {
+    border-color: #027bbb;
+    background-color: #027bbb;
+}
+
+/* ExtJS 6.6 related clarity fixes, for radio and checkbox */
+
+.x-form-checkbox-default, .x-form-radio-default {
+  margin-left: 2px;
+}
+
+.x-form-checkbox-default {
+  background: none !important;
+}
+
+.x-form-radio-default {
+  background: none !important;
+}
+
+.checkbox-inline span.x-form-checkbox+label::before {
+  position: absolute;
+  top: 4px;
+  left: 0;
+  content: '';
+  display: inline-block;
+  height: 16px;
+  width: 16px;
+  border: 1px solid #9a9a9a;
+  border-radius: 3px;
+}
+
+.x-form-type-checkbox.x-form-cb-checked .checkbox-inline span.x-form-checkbox+label::before {
+  background: #0094d2;
+  border: none;
+}
+
+.checkbox-inline span.x-form-checkbox-focus+label::before {
+  outline: 0;
+  box-shadow: 0 0 2px 2px #6bc1e3;
+}
+
+.checkbox-inline span.x-form-checkbox+label::after {
+  position: absolute;
+  content: '';
+  display: none;
+  height: 5px;
+  width: 8px;
+  border-left: 2px solid white;
+  border-bottom: 2px solid white;
+  top: 4px;
+  left: 4px;
+  -webkit-transform: translate(0, 4px) rotate(-45deg);
+  -ms-transform: translate(0, 4px) rotate(-45deg);
+  transform: translate(0, 4px) rotate(-45deg);
+}
+
+.x-form-type-checkbox.x-form-cb-checked .checkbox-inline span.x-form-checkbox+label::after {
+  display: inline-block;
+}
+
+.radio-inline span.x-form-radio+label::before {
+  position: absolute;
+  top: 4px;
+  left: 0;
+  content: '';
+  display: inline-block;
+  height: 16px;
+  width: 16px;
+  border: 1px solid #9a9a9a;
+  border-radius: 50%;
+}
+
+.x-form-type-radio.x-form-cb-checked .radio-inline span.x-form-radio+label::before {
+  box-shadow: inset 0 0 0 6px #0094d2;
+  border: none;
+}
+
+.x-form-type-radio.x-form-cb-checked .radio-inline span.x-form-checkbox-focus+label::before {
+  outline: 0;
+  box-shadow: inset 0 0 0 6px #0094d2, 0 0 2px 2px #6bc1e3;
+}
+
+.radio-inline span.x-form-checkbox-focus+label::before {
+  outline: 0;
+  box-shadow: 0 0 2px 2px #6bc1e3;
+}
+
+/* Button badge style mostly to denote selection number */
+.btn .badge {
+    position: relative;
+    left: 6px;
+    top: -1px;
+}
+
+.clarity-toolbar .btn {
+  height: 18px;
+}
+
+.clarity-toolbar .btn clr-icon{
+  webkit-transform: translate3d(0px, 0px, 0px);
+  transform: translate3d(0px, 0px, 0px);
+}

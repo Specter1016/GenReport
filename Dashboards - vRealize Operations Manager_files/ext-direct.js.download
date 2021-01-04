@@ -1,0 +1,17 @@
+Ext.require('Ext.direct.*', function() {
+    Ext.app.REMOTING_API.timeout = 1800000;
+    Ext.direct.Manager.addProvider(Ext.app.REMOTING_API);
+
+    // Generic exception handler for Ext Direct calls.
+    Ext.direct.Manager.on('exception', function(event) {
+        if (Ext.isEmpty(event.data)) {
+            return;
+        }
+        if (Ext.isEmpty(event.data.exception)) {
+            return;
+        }
+        if (event.data.exception == "MaxUploadSizeExceededException") {
+            showErrorMsg(bundle['upload.content.error.maxSize']);
+        }
+    });
+});

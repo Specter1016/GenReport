@@ -1,0 +1,2110 @@
+
+/**
+ * Global message bus.
+ *
+ * An instance of {Ext.util.Observable} is used to provide messaging functionality.
+ * Currently the Ext.app.Application is used as message bus. Therefore this variable
+ * will be undefined until the application instance is created.
+ */
+var messageBus;
+
+Ext.Ajax.request({
+    url: 'commonJS.action',
+    params: {
+        mainAction: 'getApplicationGlobalData'
+    },
+    disableCaching: true,
+    async: false,
+    method: 'GET',
+    success: function (response) {
+        var result = JSON.parse(response.responseText);
+        Ext.apply(window, result);
+    }
+});
+
+var isBrowser = true;
+var applicationState;
+
+var currencySelected = !Ext.Object.isEmpty(currencyConfig) && !Ext.isEmpty(currencyConfig.code);
+var userPrivilegesLastUpdateTime = new Date().getTime();
+var transferingPrivileges = false;
+var defaultRound = 2;
+var mousewheel = Ext.isFirefox ? "wheel" : "mousewheel";
+var resourceFilterCriteria;
+
+// adding IE support for string startWith and endWidth methods
+if (!String.prototype.startsWith) {
+    String.prototype.startsWith = function (searchString, position) {
+        position = position || 0;
+        return this.substr(position, searchString.length) === searchString;
+    };
+}
+if (!String.prototype.endsWith) {
+    String.prototype.endsWith = function (searchString, position) {
+        var subjectString = this.toString();
+        if (typeof position !== 'number' || !isFinite(position) || Math.floor(position) !== position || position > subjectString.length) {
+            position = subjectString.length;
+        }
+        position -= searchString.length;
+        var lastIndex = subjectString.lastIndexOf(searchString, position);
+        return lastIndex !== -1 && lastIndex === position;
+    };
+}
+// workaround for IE customElements exception
+if (!window.customElements) {
+    customElements = {};
+    customElements.define = Ext.emptyFn;
+}
+
+var resultInfoTpl = new Ext.XTemplate(
+    '<table border="0">',
+        '<tpl for=".">',
+            '<tr>',
+                '<td style="font-weight:bold;" valign="top"><tpl if="xcount &gt; 1">{#}.&nbsp;&nbsp;</tpl></td>',
+                //'<td nowrap class="auxLabel">{functionName}&nbsp;&nbsp;</td>',
+                '<tpl if="succeededPartially == true">',
+                    '<td nowrap>{[this.getLabel("main.partialResultReturned")]}&nbsp;&nbsp;</td>',
+                '</tpl>',
+                '<tpl if="errorMessage != null">',
+                    '<td style="font-weight:bold;word-wrap: break-word;">{errorMessage}</td>',
+                '</tpl>',
+            '</tr>',
+        '</tpl>',
+    '</table>', {
+        getLabel : function(key) {
+            return bundle[key];
+        }
+    }
+);
+resultInfoTpl.compile();
+
+var jsErrorTpl = new Ext.XTemplate(
+    '<table border="0">',
+        '<tpl for=".">',
+            '<tr>',
+                '<td style="font-weight:bold;">{#}.&nbsp;&nbsp;</td>',
+                '<td class="auxLabel"><span style="color:#e89c38;">Msg:</span>&nbsp;</td>',
+                '<td class="auxLabel">{msg}&nbsp;&nbsp;</td>',
+             '</tr>',
+             '<tr>',
+                '<td>&nbsp;</td>',
+                '<td class="auxLabel"><span style="color:#e89c38;">Url:</span>&nbsp;</td>',
+                '<td class="auxLabel">{url}&nbsp;&nbsp;</td>',
+             '</tr>',
+             '<tr>',
+                '<td>&nbsp;</td>',
+                '<td class="auxLabel"><span style="color:#e89c38;">Line:</span>&nbsp;</td>',
+                '<td class="auxLabel">{line}&nbsp;&nbsp;</td>',
+            '</tr>',
+        '</tpl>',
+    '</table>'
+);
+jsErrorTpl.compile();
+
+function getEmptyTagFilter() {
+    return {
+        exclaim: false,
+        collector:[],
+        kind:[],
+        maintenanceSchedule:[],
+        day:[],
+        status:[],
+        state:[],
+        healthRange:[],
+        bus:[],
+        tier:[],
+        tag:[],
+        adapterKind:[],
+        adapterInstance:[]
+    };
+}
+
+var ghostMsgCt;
+var shownMessageCount = 0;
+var lastShownMessageTime = 0;
+var ghostMessages = [];
+function ghostMsg(message) {
+    if (lastShownMessageTime < new Date().getTime() - 2500) {
+        shownMessageCount = 0;
+        lastShownMessageTime = 0;
+    }
+    ghostMessages.push(message);
+    if (ghostMessages.length > 20) {
+        ghostMessages.shift();
+    }
+    if (shownMessageCount >= 5) {
+        return;
+    }
+    if (!ghostMsgCt) {
+        ghostMsgCt = Ext.dom.Helper.insertFirst(document.body, {id: 'ghostMsg-div'}, true);
+    }
+    var s = Ext.String.format.apply(String, Array.prototype.slice.call(arguments, 0));
+    var m = Ext.dom.Helper.append(ghostMsgCt, ('<div class="msg"><p>' + s + '</p></div>'), true);
+    m.hide();
+    m.slideIn('t').ghost("t", {delay: 2500, remove: true});
+    shownMessageCount++;
+    lastShownMessageTime = new Date().getTime();
+    Ext.defer(function() {
+        Ext.getCmp('top_level_error_icon').show();
+    }, 500);
+}
+
+function showGhostMessages() {
+    var msg = '';
+    for (var i = 0; i < ghostMessages.length; i++) {
+        if (i > 0) {
+            msg += '<br>';
+        }
+        msg += ghostMessages[i];
+    }
+    showInfoMsg(msg, null, null, null, null, true);
+    ghostMessages = [];
+    Ext.getCmp('top_level_error_icon').hide();
+}
+
+function updateTelemetryAccess(id, type, name, priority) {
+    Ext.Ajax.request({
+          url: 'utility.action',
+          params: {mainAction: 'updateTelemetryAccess', type: type, id: id, name: name, priority:priority},
+          disableCaching: true,
+          scope: this,
+          method: 'POST',
+          success: function(response, options) {
+          },
+          failure: function(response, options) {
+          }
+    });
+}
+
+function updateIntegratedProductURLs() {
+    Ext.Ajax.request({
+        url: 'utility.action',
+        params: {mainAction: 'getIntegratedProductURLs'},
+        disableCaching: true,
+        scope: this,
+        method: 'POST',
+        success: function(response, options) {
+            var data = eval('(' + response.responseText + ')');
+            logInsightGeneralURL = data.logInsightGeneralURL;
+            logInsightDashbURL = data.logInsightDashbURL;
+            vRBCGeneralURL = data.vRBCGeneralURL;
+            vRBCDashbURL = data.vRBCDashbURL;
+        }
+    });
+}
+
+function getUserPrivileges(forceFetch) {
+    if (!transferingPrivileges) {
+        var now = new Date().getTime();
+        if (forceFetch || (userPrivilegesLastUpdateTime + privilegesUpdateInterval < now)) {
+            transferingPrivileges = true;
+            Ext.Ajax.request({
+                url: 'utility.action',
+                params: {mainAction: 'getUserPrivileges'},
+                disableCaching: true,
+                scope: this,
+                method: 'POST',
+                success: function(response, options) {
+                    userPrivilegesLastUpdateTime = now;
+                    userPrivileges = eval('(' + response.responseText + ')');
+                    transferingPrivileges = false;
+                },
+                failure: function(response, options) {
+                    transferingPrivileges = false;
+                }
+            });
+        }
+    }
+    return userPrivileges;
+}
+
+function getResourcePrivileges (resourceId, callback) {
+    Ext.Ajax.request({
+        url: 'utility.action',
+        params: {mainAction: 'getUserPrivilegesPerResource', resourceId: resourceId},
+        disableCaching: true,
+        scope: this,
+        method: 'POST',
+        async: true,
+        success: function(response, options) {
+            var privileges = [];
+            if (!Ext.isEmpty(response.responseText)) {
+                var response = eval('(' + response.responseText + ')');
+                if (response.privileges && response.privileges.length > 0) {
+                    privileges = response.privileges;
+                }
+            }
+            callback.call(this, privileges);
+        },
+        failure: function(response, options) {
+            callback.call(this, null);
+        }
+    });
+}
+
+function hasPrivilege(privilegeKey) {
+    return (privilegeKey == null || privilegeKey.length == 0 || getUserPrivileges()[privilegeKey] != null || (superAdmin && privilegeKey === 'superAdminOnly'));
+}
+
+function hasPrivileges(privileges) {
+    if (Ext.isArray(privileges)) {
+        // Check each
+        var valid = true;
+        Ext.Array.each(privileges, function(priv) {
+            if (!hasPrivilege(priv)) {
+                valid = false;
+                return false;
+            }
+        });
+        return valid;
+    } else {
+        return hasPrivilege(privileges);
+    }
+}
+
+
+function getPrivilegePath(privilegeKey) {
+    return privilegePaths[privilegeKey];
+}
+
+function getPrivilegeMessage(privilegeKey) {
+    var privilegePath = getPrivilegePath(privilegeKey);
+    return Ext.String.format('<div style="font-weight:bold;">{0}</div>{1}', bundle['main.missingPrivileges:'], "<div>"+(privilegePath != null ? privilegePath : privilegeKey)+"</div>");
+}
+
+var runningAjaxCount = 0;
+function browaserIsFree() {
+    return (document.readyState == 'complete' && runningAjaxCount == 0);
+}
+
+var ajaxRequestHandler = function(conn, response, options) {
+    runningAjaxCount--;
+    // update the last refresh time
+    var lastRefresh = Ext.getCmp('top_level_last_refresh_date');
+    if (lastRefresh && lastRefresh.setText) {
+        if (showUpdateTime) {
+            var millis = getLocalizedMillisServerToClient(new Date().getTime())
+            var dateString = Ext.Date.format(new Date(millis), bundle['dateTimeFormatStrings.shortTimeFormat']);
+            var message = substitute(bundle['chrome.updated'], [dateString]);
+            lastRefresh.setText(message);
+        } else {
+            lastRefresh.hide();
+        }
+    }
+
+    if (options && options.scope && options.scope.isDestroyed) {
+        delete options.success;
+        delete options.failure;
+        delete options.callback;
+        return;
+    }
+
+    var responseText = response.responseText;
+    if (response.getResponseHeader) {
+        var resultInfos = response.getResponseHeader('ResultInfos');
+        if (resultInfos !== undefined && resultInfos !== null) {
+            resultInfos = decodeURIComponent(resultInfos.replace(/\+/g, " "));
+        };
+        var resultInfosPrivileges = response.getResponseHeader('ResultInfosPrivileges');
+        if (resultInfos != null) {
+            var resultMessage = resultInfos.replace(/\\n/g,"<br>");
+            if (window.isRootPage) {
+                var decodedResultMessage = Ext.decode(resultMessage);
+                if (decodedResultMessage[0]) {
+                    decodedResultMessage[0].errorMessage = DOMPurify.sanitize(decodedResultMessage[0].errorMessage, { ALLOWED_TAGS: ['br']});
+                }
+                ghostMsg(resultInfoTpl.apply(decodedResultMessage));
+            } else {
+                showInfoMsg(resultInfoTpl.apply(Ext.decode(resultMessage)), null, null, null, null, true);
+            }
+        }
+        if (resultInfosPrivileges != null) {
+            resultInfosPrivileges = decodeURIComponent(resultInfosPrivileges.replace(/\+/g, " "));
+            showInfoMsg(Ext.String.format('<div style="font-weight:bold;">{0}</div>{1}', bundle['main.missingPrivileges:'], resultInfosPrivileges), null, null, null, null, true);
+        }
+
+    } else if (responseText == null && !response.aborted) {
+        // in case of timeout check if there is a special timeout handler
+        // if now show the default message
+        if (response.timedout && (options.transaction != null && options.transaction.callbackOptions && options.transaction.callbackOptions.timeoutHandler)) {
+            options.transaction.callbackOptions.timeoutHandler(response, options);
+        } else {
+            // Usually this happens when the request timeouts.
+            showErrorMsg(bundle['common.ajax.error']);
+        }
+        response.errorHandled = true;
+    }
+
+    if (Ext.isEmpty(responseText)) {
+        // Undefined value on request timeout.
+        return;
+
+    } else if (responseText.indexOf('<!-- Login_Page -->') > 0) {
+        if (anonymousUser) {
+            Ext.GlobalEvents.fireEvent('sessionExpire');
+            return;
+        }
+        window.location.replace('login.action' + window.location.hash);
+
+    } else if (responseText.indexOf('<!-- Error_Page -->') > 0) {
+        var k = responseText.indexOf('<!-- Error_Page -->');
+        var p = responseText.indexOf('<msgBegin>', k);
+        var l = responseText.indexOf('</msgBegin>', p);
+        var errorMsg = responseText.substring(p+10, l);
+        // In case we are sending SC_BAD_REQUEST the failure will be called automatically
+        if (response.status != 400) {
+            if (options.success) {
+                delete options.success;
+            }
+            if (options.failure) {
+                options.failure.call((options.scope ? options.scope : this), response, options);
+            }
+        }
+        if (errorMsg == 'Unable to connect to platform services.') {
+            errorMsg = bundle['login.unableToConnectPlatform'];
+        } else if (errorMsg == 'User session expired.') {
+            if (anonymousUser) {
+                Ext.GlobalEvents.fireEvent('sessionExpire');
+                return;
+            }
+            errorMsg = bundle['login.userSessionExpired'];
+            showErrorMsg(errorMsg, function() {
+                //As the user session is already expired, there is no need to logout again. Just redirect to login page
+                window.location.assign('login.action');
+            });
+            return;
+        } else if (errorMsg == 'Controller down.') {
+            if (anonymousUser) {
+                Ext.GlobalEvents.fireEvent('controllerDown');
+                return;
+            }
+            errorMsg = bundle['login.controllerDown'];
+            showExtMsg(errorMsg, function() {
+                window.location.assign('login.action?mainAction=logout');
+            });
+            return;
+        }
+        showErrorMsg('<pre>'+errorMsg+'</pre>');
+    }
+};
+
+var ajaxBeforeRequestHandler = function(conn, options, eOpts) {
+    runningAjaxCount++;
+
+    var paramsExist = false;
+    if (!options.params) {
+        options.params = {};
+    } else {
+        paramsExist = true;
+    }
+
+    var currentComponentInfo = null;
+    if (currentComponentInfo == null) {
+        currentComponentInfo = window.location.pathname;
+    }
+    var dashboardTime;
+    var dashboard = Ext.getCmp("MainDashboard");
+    if (!dashboard) {
+        dashboard = Ext.ComponentQuery.query("[id^=MainDashboard_]");
+        dashboard = dashboard.length ? Ext.getCmp(dashboard[0].id) : null;
+    }
+    if (dashboard) {
+        dashboardTime = Ext.encode(dashboard.getDashboardTime());
+    }
+
+    // for request that include json data that will be passed in the body
+    // pass the token in the header
+    if (!Ext.isEmpty(options.jsonData)) {
+        if (Ext.isEmpty(options.headers)) {
+            options.headers = {};
+        }
+
+        options.headers.currentComponentInfo = 'TODO';
+        options.headers.secureToken = secureToken;
+    } else {
+        var paramsType = Ext.typeOf(options.params);
+        var applySecureToken = ((!options.method && paramsExist) || options.method == "POST");
+        if (paramsType == 'string') {
+            options.params += ((options.params.length > 0 ? '&' : '') + 'currentComponentInfo=TODO');
+            if (applySecureToken) {
+                options.params += '&secureToken=' + encodeURIComponent(secureToken);
+            }
+            if (dashboardTime) {
+                options.params += '&globalDate=' + encodeURIComponent(dashboardTime);
+            }
+        } else {
+            options.params.currentComponentInfo = 'TODO';
+            if (applySecureToken) {
+                options.params.secureToken = secureToken;
+            }
+            if (dashboardTime) {
+                options.params.globalDate = dashboardTime;
+            }
+        }
+    }
+}
+
+Ext.Ajax.on('requestcomplete', ajaxRequestHandler);
+Ext.Ajax.on('requestexception', ajaxRequestHandler);
+Ext.Ajax.on('beforerequest', ajaxBeforeRequestHandler);
+window.addEventListener('storage', function(event) {
+    if (event.key === 'sto' && event.oldValue === '1') {
+        currentWindow.location.replace('login.action?mainAction=logout' + currentWindow.location.hash);
+    } else if (event.key === 'session' && event.newValue === 'logout') {
+        window.localStorage.removeItem('session');
+        if (anonymousUser) {
+            Ext.GlobalEvents.fireEvent('sessionExpire');
+        } else {
+            currentWindow.location.reload(true);
+        }
+    }
+}, true);
+var jsErrorsHandlerTask = new Ext.util.DelayedTask(handleJSErrors);
+var jsErrorMessages = [];
+var transferringJSErrorMessages = false;
+window.onerror = function(msg, url, line) {
+    jsErrorMessages.push({msg: msg, url: url, line: line});
+    jsErrorsHandlerTask.delay(1000);
+    return (anonymousUser ? true : false);
+}
+function handleJSErrors(msg, url, line) {
+    var jsErrorMessages_ = jsErrorMessages.slice(0);
+    if (!transferringJSErrorMessages) {
+        if (jsErrorMessages_.length > 0) {
+            transferringJSErrorMessages = true;
+            jsErrorMessages = [];
+            Ext.Ajax.request({
+                url: 'utility.action',
+                params: {mainAction: 'logJSErrors', errorMessages: Ext.encode(jsErrorMessages_)},
+                disableCaching: true,
+                scope: this,
+                method: 'POST',
+                success: function(response, options) {
+                    transferringJSErrorMessages = false;
+                },
+                failure: function(response, options) {
+                    transferringJSErrorMessages = false;
+                }
+            });
+        }
+    } else {
+        jsErrorsHandlerTask.delay(2000);
+    }
+
+    //showErrorMsg(jsErrorTpl.apply(jsErrorMessages_), null, null, 800, 164, true);
+}
+
+function syncAjaxRequest(urlStr, sendContent, callbackFunction, scope) {
+    var ajaxRequest;
+    var context = scope || this;
+    if (typeof XMLHttpRequest != "undefined") {
+        ajaxRequest = new XMLHttpRequest();
+    } else if (window.ActiveXObject) {
+        ajaxRequest = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    if (urlStr.indexOf("?") < 0) {
+        urlStr = urlStr + "?";
+    } else {
+        urlStr = urlStr + "&";
+    }
+    urlStr = urlStr + "ms=" + new Date().getTime();
+
+    ajaxRequest.onreadystatechange = function() {
+    }
+
+    if (sendContent == null) {
+        sendContent = "";
+    }
+
+    ajaxRequest.open("POST", urlStr, false);
+    ajaxRequest.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    ajaxRequest.setRequestHeader("secureToken", secureToken);
+    ajaxRequest.send(sendContent);
+    if (callbackFunction != null) {
+        callbackFunction.call(context, ajaxRequest.responseText);
+    }
+}
+
+function htmlEncode(val) {
+    if (val != null) {
+        return Ext.util.Format.htmlEncode(val);
+    }
+    return null;
+}
+
+function htmlDecode(val) {
+    if (val != null) {
+        return Ext.util.Format.htmlDecode(val);
+    }
+    return null;
+}
+
+// used for encoding tooltip data
+function doubleHtmlEncode(tip) {
+    return htmlEncode(htmlEncode(tip));
+}
+
+function insertSubStrings (str, substr, step) {
+    for (var i = step; i < str.length; i = i + step + substr.length) {
+        str = [str.slice(0, i), substr, str.slice(i)].join('');
+    }
+    return str;
+}
+
+/**
+ * @param value actual value to format
+ * @param asString specifies return type true or null to return string false for number
+ * @param decimals
+ * @param fromZero if true or null (when value is < 1) passed decimals will be added to first non zero index
+ *        otherwise formatNumber with specifies decimals
+ */
+function formatNumber(value, asString, decimals, fromZero) {
+    var isExponential = Ext.isNumber(value) && value.toString().indexOf("e") > 0;
+
+    var _value = value;
+    var decimalPoint = ".";
+    var decimalComma = ",";
+    var incrementValue = (_value >= 0 ? 10 : -10);
+    var index = 0;
+    if (decimals != 0) {
+        while (_value != 0) {
+            if (_value * incrementValue < 1) {
+                _value *= incrementValue;
+                index ++;
+                continue;
+            }
+            break;
+        }
+    }
+    if (decimals == null || fromZero || fromZero == null ) {
+        index += (decimals != null ? decimals : defaultRound);
+    } else {
+        index = decimals;
+    }
+    index = Math.min(index, 20);
+
+    var format = "0" + decimalPoint + (asString ? decimalComma : "");
+    for (var i = 0; i < index; i++) {
+        format += asString ? "#" : "0";
+    }
+
+    value = Ext.util.Format.number(value, format);
+
+    if (asString == null || asString) {
+        if (isExponential) {
+            return parseFloat(value).toExponential();
+        }
+        return value;
+    } else {
+        return parseFloat(value);
+    }
+}
+
+/**
+ * converts numbers to International system of units
+ */
+function numberToSI(number) {
+    var units = [{
+        key: "K",
+        value: 3
+    }, {
+        key: "M",
+        value: 6
+    }, {
+        key: "G",
+        value: 9
+    }, {
+        key: "T",
+        value: 12
+    }]
+    var minDecimals = units[0].value;
+    var decimals = parseInt(number.toExponential().split("e")[1]);
+    if (Math.abs(decimals) < minDecimals) {
+        return formatNumber(number, true);
+    }
+    var unit;
+    for (var i = 0; i < units.length;i++) {
+        var start = units[i];
+        var end = units[i+1];
+        var startDecimals = null;
+        var endDecimals = null;
+        if (start) {
+            startDecimals = start.value;
+        }
+        if (end) {
+            endDecimals = end.value;
+        }
+        if (startDecimals && endDecimals) {
+            if (decimals >= startDecimals && decimals < endDecimals) {
+                unit = start;
+                break;
+            }
+        } else {
+            return number.toExponential(2);
+        }
+    }
+    return formatNumber(number/Math.pow(10, unit.value), true) + unit.key;
+}
+
+function formatDate(timestamp, pattern) {
+    var localOffset = new Date().getTimezoneOffset() * 60 * 1000;
+    var offset = timestamp + timeZoneOffset + localOffset;
+    return Ext.Date.format(new Date(offset), pattern || bundle['dateTimeFormatStrings.shortDateTimeFormat']);
+}
+
+function formatDateOnly(timestamp, pattern) {
+    return formatDate(timestamp, bundle['dateTimeFormatStrings.shortDateFormat']);
+}
+
+function formatTimeOnly(timestamp, pattern) {
+    return formatDate(timestamp, bundle['dateTimeFormatStrings.shortTimeFormat']);
+}
+
+/*
+function insertInvisibleSpaces (str, step) {
+    if (str.length <= step) {
+        return str;
+    }
+    var ndiv = document.createElement('div');
+    ndiv.innerHTML = str;
+    for (var i = 0; i < ndiv.childNodes.length; i++) {
+        var inode = ndiv.childNodes[i];
+        if (inode.nodeName == '#text') {
+            inode.nodeValue = insertSubStrings(inode.nodeValue ? inode.nodeValue : '', 'INVISIBLE_SPACE_SIGNATURE', step);
+        } else {
+            inode.innerText = insertSubStrings(inode.innerText ? inode.innerText : '', 'INVISIBLE_SPACE_SIGNATURE', step);
+        }
+    }
+    return ndiv.innerHTML.replace(/INVISIBLE_SPACE_SIGNATURE/g , '&#8203;');
+}
+*/
+
+function getTextWidth(str, el) {
+    var strWidth;
+    if (window.tm == null) {
+        window.tm = new Ext.util.TextMetrics();
+    }
+
+    if (el) {
+        strWidth = Ext.util.TextMetrics.measure(el, str).width;
+    } else {
+        strWidth = tm.getWidth(str);
+    }
+    return strWidth;
+}
+
+function getTextHeight(str, el) {
+    var strHeight;
+    if (window.tm == null) {
+        window.tm = new Ext.util.TextMetrics();
+    }
+
+    if (el) {
+        strHeight = Ext.util.TextMetrics.measure(el, str).height;
+    } else {
+        strHeight = tm.getHeight(str);
+    }
+    return strHeight;
+}
+
+function shiftColor(color, c) {
+    var usePound = false;
+     if ( color[0] == '#' ) {
+         color = color.slice(1);
+         usePound = true;
+     }
+     var num = parseInt(color,16),
+     R = (num >> 16),
+     G = (num >> 8 & 0x00FF),
+     B = (num & 0x0000FF);
+     if (c > 0) {
+         R = Math.round(R + (255 - R) * c);
+         G = Math.round(G + (255 - G) * c);
+         B = Math.round(B + (255 - B) * c);
+     } else {
+         R = Math.round(R + R * c);
+         G = Math.round(G + G * c);
+         B = Math.round(B + B * c);
+     }
+     return (usePound ? '#' : '') + (0x1000000 + (R<255?R<1?0:R:255)*0x10000 + (G<255?G<1?0:G:255)*0x100 + (B<255?B<1?0:B:255)).toString(16).slice(1);
+}
+
+function rgbToHex(r, g, b) {
+    return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+}
+
+function getDurationSeconds(val, unit) {
+    if (val == null || !Ext.isString(unit) || isNaN(val)) {
+        return -1;
+    }
+    val = parseFloat(val);
+    switch (unit.substring(0, 3).toUpperCase()) {
+        case 'SEC' : return val;
+        case 'MIN' : return 60 * val;
+        case 'HOU' : return 3600 * val;
+        case 'DAY' : return 86400 * val;
+        case 'WEE' : return 604800 * val;
+        case 'MON' : return 2592000 * val;
+        case 'YEA' : return 31104000 * val;
+    }
+    return -1;
+}
+
+function getRangeDurationSeconds(unit) {
+    switch (unit.replace(' ', '').replace('_', '').toUpperCase()) {
+        case 'LASTHOUR': return 3600;
+        case 'LAST6HOUR': return 6 * 3600;
+        case 'LAST12HOUR': return 12 * 3600;
+        case 'LAST24HOUR': return 24 * 3600;
+        case 'LAST7DAYS':  return 7 * 24 * 3600;
+        case 'LAST30DAYS': return 30 * 24 * 3600;
+        case 'LAST60DAYS': return 60 * 24 * 3600;
+        case 'LAST90DAYS': return 90 * 24 * 3600;
+        case 'LAST6WEEKS': return 6 * 7 * 24 * 3600;
+        case 'CURRENTMONTH': return 30 * 24 * 3600;
+        case 'TODAY': return 24 * 3600;
+        case 'LASTDAY': return 24 * 3600;
+        case 'LASTWEEK': return 7 * 24 * 3600;
+        case 'LASTMONTH': return 30 * 24 * 3600;
+        case 'LAST6MONTHS': return 6 * 30 * 24 * 3600;
+        case 'LASTYEAR': return 365 * 24 * 3600;
+    }
+}
+
+/**
+ * getClarityAlertHtml
+ * @param text
+ * @param style
+ * @param type - alert-info, alert-warning, alert-danger, alert-success
+ * @param shape - exclamation-triangle, info-circle, check-circle..
+
+ * @returns {string}
+ */
+function getClarityAlertHtml(ns, text, style, type, shape) {
+    type = type || 'alert-warning';
+    style = style || '';
+    shape = shape || 'exclamation-triangle';
+    return '<div class="alert ' + type + ' alert-sm" role="alert" style="' + style + '">' +
+        '    <div class="alert-items">' +
+        '        <div class="alert-item static">' +
+        '            <div class="alert-icon-wrapper">' +
+        '<clr-icon class="alert-icon" shape="' + shape + '"></clr-icon>' +
+        '            </div>' +
+        '            <div id="errorMsg_' + ns + '" class="alert-text">' + Ext.String.htmlEncode(text) +
+        '            </div>' +
+        '        </div>' +
+        '    </div>' +
+        '</div>';
+}
+
+function showExtMsg(msg, fn, scope, w, h, icon, createNewInstance, titleText) {
+    Ext.MessageBox.SUCCESS = 'x-message-box-success';
+    if (!titleText) {
+        switch (icon) {
+            case Ext.MessageBox.INFO : titleText = bundle['main.msg.info']; break;
+            case Ext.MessageBox.SUCCESS : titleText = bundle['main.msg.success']; break;
+            case Ext.MessageBox.WARNING : titleText = bundle['main.msg.warning']; break;
+            case Ext.MessageBox.ERROR : titleText = bundle['main.msg.error']; break;
+            case Ext.MessageBox.QUESTION : titleText = bundle['main.msg.confirmation']; break;
+            default : titleText = bundle['main.msg.info']; break;
+        }
+    }
+    var msgConfig = {
+        title: titleText,
+        msg: '<div style="word-wrap: break-word;">' + msg + '</div>',
+        icon: icon,
+        buttons: icon == Ext.MessageBox.QUESTION ? Ext.Msg.YESNO : Ext.Msg.OK,
+        modal: true,
+        closable: false,
+
+        // There is a bug in ExtJS so that those parameters are being ignored at MessageBox creation time.
+        resizable: true,
+        autoScroll: true,
+        maxWidth: 600,
+        maxHeight: 600
+    };
+    if (fn != null) {
+        msgConfig.fn = fn;
+        msgConfig.scope = scope;
+    }
+    if (w != null) {
+        msgConfig.width = w;
+    }
+    if (h != null) {
+        msgConfig.height = h;
+    }
+    var msgBox;
+    if (createNewInstance) {
+        msgBox = new Ext.window.MessageBox({
+            resizable: true,
+            buttonText: Ext.MessageBox.buttonText,
+            autoScroll: true,
+            maxWidth: 600,
+            maxHeight: 600
+        });
+        msgBox.show(msgConfig);
+    } else {
+        msgBox = Ext.MessageBox.show(msgConfig);
+    }
+    if (w != null) {
+        msgBox.setWidth(w);
+    } else {
+        var boxW = msgBox.width;
+        if(boxW && boxW > 0) {
+            msgBox.setWidth(boxW);
+        }
+    }
+    if (h != null) {
+        msgBox.setHeight(h);
+    }
+}
+
+function cleanupCaches() {
+    Ext.Ajax.request({
+        url: 'utility.action',
+        params: {mainAction: 'cleanupCaches'},
+        disableCaching: true,
+        scope: this,
+        method: 'POST',
+        success: function(response, options) {
+        },
+        failure: function(response, options) {
+        }
+    });
+}
+
+function showInfoMsg(msg, fn, scope, w, h, createNewInstance) {
+    showExtMsg(msg, fn, scope, w, h, Ext.MessageBox.INFO, createNewInstance);
+}
+
+function showErrorMsg(msg, fn, scope, w, h, createNewInstance) {
+    showExtMsg(msg, fn, scope, w, h, Ext.MessageBox.ERROR, createNewInstance);
+}
+
+function showPrivilegeInfoMsg(privilege) {
+    showInfoMsg(getPrivilegeMessage(privilege), null, null, null, null, true);
+}
+
+function showNeedRefreshDialog(msg) {
+    Ext.MessageBox.show({
+        icon: Ext.MessageBox.QUESTION,
+        width: 200,
+        buttons: Ext.Msg.YESNO,
+        title: bundle['main.msg.info'],
+        msg: msg ? msg : bundle['common.pageNeedsToBeRefreshed'],
+        scope: this,
+        fn: function(buttonId, text, opt) {
+            if (buttonId == 'yes') {
+                window.location.reload(true);
+            }
+        }
+    });
+}
+
+function createLinkLabel(config) {
+    var scope = this;
+    var cfg = Ext.apply({
+        xtype: "label",
+        cls: 'view-creation-link-label'
+    }, config);
+
+    var linkLabel = Ext.widget(cfg);
+    linkLabel.on("boxready", function(component) {
+        component.getEl().on({
+            click: function() {
+                if (!component.disabled && config.handler) {
+                    config.handler.call(config.scope || scope);
+                }
+            }
+        });
+    });
+
+    return linkLabel;
+}
+
+function getNS() {
+    return new Date().getTime() + getRandomNumber(1000000);
+}
+
+function getRandomNumber(limit) {
+    return Math.floor(Math.random()*(limit != undefined ? (limit+1) : 101));
+}
+
+function doWait(millis) {
+    var now = new Date();
+    var curDate = null;
+    do {
+        curDate = new Date();
+    } while ((curDate-now) < millis);
+}
+
+function openWindowExist() {
+    var findOpenWindow = false;
+    Ext.WindowManager.each(function(win) {
+        if (win.isVisible() && win.confirmOnClose) {
+            findOpenWindow = true;
+            return false;
+        }
+    });
+    return findOpenWindow;
+}
+
+window.onbeforeunload = function(e) {
+    // If the browser is Internet Explorer 10.x or lower, "onbeforeunload" event fires every time when a link is clicked. Even when nothing is unloading.
+    if (Ext.isIE && Ext.isIE10m) {
+        return;
+    }
+    if (openWindowExist()) {
+        return bundle['main.leavePageMessage'];
+    }
+}
+
+function goToPage(value) {
+    return "applicationState.load(\'" + value.link + "\')";
+}
+
+function goToResourceDetail(resourceId, contentState, isLicensing) {
+    if (isLicensing) {
+        Vmware.Vcops.setNavigationResourceId(resourceId);
+        applicationState.load('administration/licensing/groups');
+    } else {
+        applicationState.loadResource(resourceId, contentState);
+    }
+}
+
+function goToAlertDetail(alertId, resourceId, param) {
+    applicationState.loadAlert(alertId, resourceId, param);
+}
+
+function goToAlertDefinition(alertDefId, param) {
+    applicationState.loadAlertDef(alertDefId, param);
+}
+
+function goToDashboard(id) {
+    applicationState.load('dashboards/dashboard/' + id);
+}
+
+function goToBadgeDetails(resourceId, metricType) {
+    var path = {};
+    path[metricTypes.health] = 'alerts/?impacted=Health';
+    path[metricTypes.workload] = 'alerts/?impacted=Health';
+    path[metricTypes.anomalies] = 'alerts/?impacted=Health';
+    path[metricTypes.faults] = 'alerts/?impacted=Health';
+    path[metricTypes.risk] = 'alerts/?impacted=Risk';
+    path[metricTypes.timeRemaining] = 'alerts/?impacted=Risk';
+    path[metricTypes.capacity] = 'alerts/?impacted=Risk';
+    path[metricTypes.stress] = 'alerts/?impacted=Risk';
+    path[metricTypes.compliance] = 'alerts/?impacted=Risk';
+    path[metricTypes.efficiency] = 'alerts/?impacted=Efficiency';
+    path[metricTypes.waste] = 'alerts/?impacted=Efficiency';
+    path[metricTypes.density] = 'alerts/?impacted=Efficiency';
+
+    applicationState.loadResource(resourceId, path[metricType]);
+}
+
+function goToWorkloadBalance(resourceId) {
+    State.set('CapacitySelectedDataCenterId', resourceId);
+    applicationState.load('home/capacity-wlp/workload-optimization');
+}
+
+function goToActionSchedulePage(scheduleId) {
+    Vmware.Vcops.setNavigationResourceId(scheduleId);
+    applicationState.load('administration/rebalance-schedules');
+}
+
+var stateProvider;
+var State = Ext.state.Manager;
+function initStates(async) {
+    if (!isInIframe) {
+        var pageKey = window.location.pathname;
+        if (pageKey == '/ui/dashboardViewer.action') {
+            pageKey = '/ui/index.action';
+        }
+        var k = pageKey.lastIndexOf('/');
+        if (k > 0) {
+            pageKey = pageKey.substring(k+1);
+        }
+        Ext.Ajax.request({
+            url: 'stateManager.action',
+            params: {mainAction: 'getState', pageKey: pageKey},
+            disableCaching: true,
+            scope: this,
+            method: 'POST',
+            async: (async != null ? async : false),
+            success: function(response) {
+                stateProvider = new Ext.state.SessionProvider({state: Ext.decode(response.responseText), pageKey: pageKey});
+                Ext.state.Manager.setProvider(stateProvider);
+            }
+        });
+    }
+}
+
+function updateStates(states, force) {
+    if (stateProvider != null && states != null) {
+        var stateValue = null;
+        for (var stateKey in states) {
+            var existingState = stateProvider.get(stateKey, null);
+            if (existingState == null || force) {
+                stateValue = states[stateKey];
+                if (stateValue != null) {
+                    try {
+                        stateProvider.superclass.set.apply(stateProvider, [stateKey, stateProvider.decodeValue(stateValue)]);
+                    } catch (e) {}
+                }
+            }
+        }
+    }
+}
+
+function getStateId(key, cmp) {
+    // Usually stateId is the same component id, if not specified, so if we want to have state restore
+    // to work properly we should either have a component with fixed id, or fixed stateId (preferrably to specify stateId properly).
+    return (key + '_' + cmp.getStateId());
+}
+
+var widowAdjustTask = new Ext.util.DelayedTask(adjustExtWindow);
+Ext.on('resize', function(w, h) {
+    widowAdjustTask.delay(1000);
+});
+function adjustExtWindow() {
+    var viewSize = Ext.getBody().getViewSize();
+    var availableWidthToUse = viewSize.width;
+    var availableHeightToUse = viewSize.height;
+    Ext.WindowManager.each(function(window_) {
+        if (window_.isVisible()) {
+            Ext.window.Window.applyBodyScroll_(window_);
+            if (window_.getHeight() > availableHeightToUse || window_.getWidth() > availableWidthToUse) {
+                window_.setPosition(0, 0);
+            } else {
+                window_.center();
+            }
+        }
+    }, window);
+}
+
+function getHighlightedValue(value, searchRegex) {
+    var replacements = {};
+    var k = 0;
+    value = htmlEncode(value.replace(searchRegex, function(a) {
+        var key = ('_::_'+k);
+        replacements[key] = Ext.util.Format.format("<span class='searchMatch'>{0}</span>", htmlEncode(a));
+        k++;
+        return key;
+    }));
+    for (var key in replacements) {
+        value = value.replace(key, replacements[key]);
+    }
+    return value;
+}
+
+function loseFocus(cmp) {
+    if (cmp.ownerCt) {
+        loseFocus(cmp.ownerCt);
+    } else if (cmp.focus) {
+        cmp.focus();
+    }
+}
+
+/************* Custom tip **************/
+var customTipShowTask = new Ext.util.DelayedTask({});
+var currentWindow = window;
+var customTip = new Ext.tip.Tip({
+    minWidth: 120,
+    maxWidth: 1000,
+    bodyCls: 'customTooltipBody',
+    cls: 'customTooltip',
+    listeners: {
+        beforehide : function(tip) {
+          if (tip.body != null) {
+             tip.body.un('mousemove', tipMouseEnter, currentWindow);
+             tip.body.un('mouseleave', tipMouseLeave, currentWindow);
+          }
+        }
+    }
+});
+function showCustomTip(event, html, closable, delayed) {
+    if (!(event instanceof Ext.event.Event)) {
+        event = new Ext.event.Event(event);
+    }
+    if (delayed == null || delayed) {
+        var event_ = {xy: event.getXY()};
+        customTipShowTask.delay(500, proceedToShowCustomTip, window, [event_, html, closable, delayed]);
+        //currentWindow.customTip.update(html);
+    } else {
+        proceedToShowCustomTip(event, html, closable, delayed);
+    }
+}
+
+function proceedToShowCustomTip(event, html, closable, delayed) {
+    customTipShowTask.cancel();
+    currentWindow.customTip.hide();
+    currentWindow.customTip.update('');
+    var xy = getTipXY(event, html);
+    if (currentWindow.customTip.closable != closable) {
+        currentWindow.customTip.destroy();
+         currentWindow.customTip = new currentWindow.Ext.tip.Tip({
+             minWidth: 120,
+             maxWidth: 1000,
+             bodyCls: 'customTooltipBody',
+             cls: 'customTooltip',
+             closable: (closable != null ? closable : false),
+             listeners: {
+                beforehide : function(tip) {
+                   if (tip.body != null) {
+                        tip.body.un('mousemove', tipMouseEnter, currentWindow);
+                        tip.body.un('mouseleave', tipMouseLeave, currentWindow);
+                   }
+                }
+             }
+        });
+    }
+    currentWindow.customTip.update(html);
+    currentWindow.customTip.showAt(xy);
+
+    if (delayed != null && delayed) {
+        currentWindow.customTip.el.dom.onmousemove = tipMouseEnter;
+        currentWindow.customTip.el.dom.onmouseleave = tipMouseLeave;
+    }
+}
+
+function tipMouseEnter() {
+    customTipShowTask.cancel();
+}
+
+function tipMouseLeave() {
+    hideCustomTip();
+}
+
+function moveCustomTip(event) {
+    if (!(event instanceof Ext.event.Event)) {
+        event = new Ext.event.Event(event);
+    }
+    currentWindow.customTip.showAt(getTipXY(event));
+}
+
+function proceedToHideCustomTip() {
+    if (currentWindow.customTip) {
+        currentWindow.customTip.hide();
+    }
+}
+
+function hideCustomTip() {
+    customTipShowTask.delay(500, proceedToHideCustomTip, window);
+}
+
+function getTipXY(event, html) {
+    currentWindow = window;
+    var stop = (currentWindow.isRootPage);
+    var x = 0;
+    var y = 0;
+    while (currentWindow.frameElement && !stop) {
+        var iframe = currentWindow.frameElement;
+        var parentWindow = currentWindow.parent;
+        var el = parentWindow.Ext.get(iframe);
+        x += el.getX();
+        y += el.getY();
+        if (parentWindow.isRootPage) {
+            stop = true;
+        }
+        currentWindow = parentWindow;
+    }
+
+    var xy;
+    if (event.getXY) {
+        xy = event.getXY();
+    } else {
+        xy = event.xy;
+    }
+    xy[0] += x;
+    xy[1] += y;
+
+    // readjust coordinates
+    var offset = 15;
+    var adjustedX = xy[0] + offset;
+    var adjustedY = xy[1] + offset;
+
+    currentWindow.customTip.showAt([-10000, -10000]);
+    if (html != null) {
+        currentWindow.customTip.update(html);
+    }
+    var tooltipWidth = currentWindow.customTip.getWidth();
+    var tooltipHeight = currentWindow.customTip.getHeight();
+    currentWindow.customTip.hide();
+
+    var bodyWidth = currentWindow.document.body.clientWidth;
+    var bodyHeight = currentWindow.document.body.clientHeight;
+
+    var scrLeft = 0;
+    var scrTop = 0;
+    if (Ext.isIE) {
+        scrLeft = currentWindow.document.documentElement.scrollLeft;
+        scrTop = currentWindow.document.documentElement.scrollTop;
+    } else {
+        scrLeft = currentWindow.pageXOffset;
+        scrTop = currentWindow.pageYOffset;
+    }
+    var wOffset = (adjustedX + tooltipWidth - (scrLeft + bodyWidth));
+    var hOffset = (adjustedY + tooltipHeight - (scrTop + bodyHeight));
+
+    if (wOffset > 0) {
+        adjustedX -= wOffset;
+    }
+    if (hOffset > 0) {
+        adjustedY -= hOffset;
+    }
+
+    return [adjustedX, adjustedY];
+}
+/***************************************/
+
+var objRegExp_int  = /^\d+$/;
+var int_MAXVALUE = 2147483647;
+Ext.apply(Ext.form.field.VTypes, {
+    // vtype validation function
+    integer : function(val, field) {
+        return (val <= int_MAXVALUE && objRegExp_int.test(val));
+    },
+
+    //vtype Text property: The error text to display when the validation function returns false
+    integerText : bundle['validation.integer'],
+
+    emailRegex: '^(")?(?:[^\\."])(?:(?:[\\.])?(?:[\\w\\-!#$%&\'*+/=?^_`{|}~]))*\\1@(\\w[\\-\\w]*\\.){1,5}([A-Za-z]){2,8}$',
+
+    emailMultiple: function(v) {
+        var emailArray = v.split(',');
+        var isValid = true;
+        emailArray.forEach(function(el) {
+            if (!new RegExp(this.emailRegex).test(el)) {
+                isValid = false;
+            }
+        }.bind(this));
+        return isValid;
+    },
+
+    emailMultipleText: bundle['extjs.data.validator.Email'],
+
+    IPAddress :  function(v) {
+        return /^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/.test(v);
+    },
+    IPAddressText : bundle['validation.ipAddress'],
+
+    //Validate IPv4, IPv6 and hostname
+    IPAddressOrHostname : function (str) {
+        return /((^\s*((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))\s*$)|(^\s*((([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:)))(%.+)?\s*$))|(^\s*((?=.{1,255}$)(?=.*[A-Za-z].*)[0-9A-Za-z](?:(?:[0-9A-Za-z]|\b-){0,61}[0-9A-Za-z])?(?:\.[0-9A-Za-z](?:(?:[0-9A-Za-z]|\b-){0,61}[0-9A-Za-z])?)*)\s*$)/.test(str);
+    },
+    IPAddressOrHostnameText : bundle['validation.IPAddressOrHostname'],
+
+    dashboardTab : function(v) {
+        return (v.indexOf('"') < 0 && v.indexOf('\'') < 0);
+    },
+    dashboardTabText : bundle['validation.dashboardName'],
+
+    // vtype validation function for 'host'
+    host: function(v) {
+        //hostPattern is copied from ExtJS's native `url` pattern, and removed the `http`... protocol part
+        var hostPattern = /^(((([\-\w]+\.)+\w{2,3}(\/[%\-\w]+(\.\w{2,})?)*(([\w\-\.\?\\\/+@&#;`~=%!]*)(\.\w{2,})?)*)|(localhost|LOCALHOST))\/?)/i;
+        return this.IPAddress(v) || hostPattern.test(v);
+    },
+
+    // error message for 'host' type validation
+    hostText: bundle['validation.host']
+});
+
+//utility methods for cursor position manipulation, and input fields text selection
+function setSelectionRange(input, selectionStart, selectionEnd) {
+    if (input.setSelectionRange) {
+        input.focus();
+        input.setSelectionRange(selectionStart, selectionEnd);
+    }
+    else if (input.createTextRange) {
+        var range = input.createTextRange();
+        range.collapse(true);
+        range.moveEnd('character', selectionEnd);
+        range.moveStart('character', selectionStart);
+        range.select();
+    }
+}
+
+function setCaretToEnd(input) {
+    setSelectionRange(input, input.value.length, input.value.length);
+}
+
+function setCaretToBegin(input) {
+    setSelectionRange(input, 0, 0);
+}
+
+function setCaretToPos(input, pos) {
+    setSelectionRange(input, pos, pos);
+}
+
+function selectString(input, string) {
+    var match = new RegExp(string, "i").exec(input.value);
+    if (match) {
+        setSelectionRange (input, match.index, match.index + match[0].length);
+    }
+}
+
+function regexString(string, exactMatch) {
+    if (exactMatch) {
+        return new RegExp("^" + Ext.String.escapeRegex(string) + "$");
+    } else {
+        return new RegExp(Ext.String.escapeRegex(string));
+    }
+}
+
+function getTextThatWillFit(text, tpl, widthToFit, dots) {
+    var fitStart = 0,
+        fitEnd = text.length,
+        textWidth = getTextWidth(Ext.String.format(tpl, htmlEncode(text)));
+
+    if (textWidth < widthToFit) {
+        return text;
+    }
+    var shortenText = text;
+    while (fitEnd - fitStart > 1) {
+        var newEnd = Math.round((fitStart + fitEnd) / 2);
+        shortenText = text.substring(0, newEnd);
+        textWidth = getTextWidth(Ext.String.format(tpl, htmlEncode(shortenText)));
+        if (Math.round(textWidth - widthToFit) === 0) {
+            break;
+        } else if (textWidth < widthToFit) {
+            fitStart = newEnd;
+        } else {
+            fitEnd = newEnd;
+        }
+    }
+    if (dots) {
+        shortenText = shortenText.substr(0, shortenText.length - 2) + "...";
+    }
+    return shortenText;
+}
+
+function replaceSelection(input, replaceString) {
+    if (input.setSelectionRange) {
+        var selectionStart = input.selectionStart;
+        var selectionEnd = input.selectionEnd;
+        input.value = input.value.substring(0, selectionStart) + replaceString + input.value.substring(selectionEnd);
+        // has there been a selection
+        if (selectionStart != selectionEnd)
+            setSelectionRange(input, selectionStart, selectionStart + replaceString.length);
+        // set caret
+        else
+            setCaretToPos(input, selectionStart + replaceString.length);
+    }
+    else if (document.selection) {
+        var range = document.selection.createRange();
+        if (range.parentElement() == input) {
+            var isCollapsed = range.text == '';
+            range.text = replaceString;
+            // there has been a selection
+            if (!isCollapsed)  {
+                //it appears range.select() should select the newly
+                //inserted text but that fails with IE
+                range.moveStart('character', -replaceString.length);
+                range.select();
+            }
+        }
+    }
+}
+
+/** A helper function to help with localization substitutions, both with components and simple strings. In case components are passed,
+    a Container is created constituting the components passed in and the original strings contained in a Ext.Component.
+
+    Example:
+        string = "{1} bla {0}" and values = ["Extjs", "jQuery"] then return = "Extjs bla jQuery"
+        string = "{1} bla {0}" and values = [<Combo>, <Drop-down>] then return =
+            Container with items = [<Combo>, <Component with html=" bla ">, <Drop-down>]
+
+    Parameters:
+    @bundleString: The localization string that needs to be substituted with values
+    @values: An array that contains all the values that need to be substituted.
+        values can contain a string or an Ext.Component (itself or a subtype like Container, Panel, Combo, TextField, etc)
+    Return:
+    If any of the "values" passed in the array is a Component, a container type will be returned, otherwise a string.
+ */
+function substitute(bundleString, values, containerConfig) {
+    var hasComponent = false;
+    // Perform all simple string substitutions and see if there is any component that needs replacement
+    for(val in values) {
+        if(typeof values[val] === "string") {
+            bundleString = bundleString.replace("{" + val + "}", values[val]);
+        } else {
+            hasComponent = true;
+        }
+    }
+
+    if(!hasComponent) {
+        return bundleString;
+    }
+    // If hasComponent set to true above, perform all component substitutions
+    else {
+        var container = Ext.create("Ext.container.Container", {
+            cls: "substitution-container"
+        });
+
+        var matches = bundleString.match(/\{\d\}/gm);
+        var start=0, end;
+
+        for(var it=0; it<=matches.length; it++) {
+            end = (it == matches.length) ? bundleString.length : bundleString.indexOf(matches[it]);
+            var substring = bundleString.substring(start, end);
+
+            if (!(substring === "")) {
+                // create component with substring and add to container
+                container.add(Ext.create("Ext.Component", {
+                    html: substring,
+                    cls: "internationalized-string"
+                }));
+            }
+
+            if(it != matches.length) {
+              // Get integer from {x}, get the component from values and add to container
+              var component = values[matches[it].match(/\d+/g, '')[0]];
+              component.addCls("internationalized-component");
+              container.add(component);
+              start = end+3;
+          }
+        }
+        return container;
+    }
+}
+
+/** A helper function to help with localization substitutions, both with components and simple strings. In case components are passed,
+    a horizontal Container is created constituting the components passed in and the original strings contained in a Ext.form.Label.
+
+    Example:
+        string = "{1} bla {0}" and values = ["Extjs", "jQuery"] then return = "Extjs bla jQuery"
+        string = "{1} bla {0}" and values = [<Combo>, <Drop-down>] then return =
+            Container with items = [<Combo>, <Component with html=" bla ">, <Drop-down>]
+
+    Parameters:
+    @bundleString: The localization string that needs to be substituted with values
+    @values: An array that contains all the values that need to be substituted.
+        values can contain a string or an Ext.Component (itself or a subtype like Container, Panel, Combo, TextField, etc)
+    @containerConfig: Optional parameter containing config properties that will be applied to the wrapper container.
+    Return:
+    If any of the "values" passed in the array is a Component, a container type will be returned, otherwise a string.
+ */
+function substituteWithComponents(bundleString, values, containerConfig) {
+    var hasComponent = false;
+    // Perform all simple string substitutions and see if there is any component that needs replacement
+    for(val in values) {
+        if(typeof values[val] === "string") {
+            bundleString = bundleString.replace("{" + val + "}", values[val]);
+        } else {
+            hasComponent = true;
+        }
+    }
+
+    if(!hasComponent) {
+        return bundleString;
+    }
+    // If hasComponent set to true above, perform all component substitutions
+    else {
+        var defaultContainerConfig = {
+            layout: {
+                type: 'hbox',
+                align: 'middle'
+            }
+        };
+        var containerCfg = Ext.Object.merge(defaultContainerConfig, containerConfig);
+
+        var container = Ext.create("Ext.container.Container", containerCfg);
+        var matches = bundleString.match(/\{\d\}/gm);
+        var start=0, end;
+
+        for(var it=0; it<=matches.length; it++) {
+            end = (it == matches.length) ? bundleString.length : bundleString.indexOf(matches[it]);
+            var substring = bundleString.substring(start, end);
+
+            if (!(substring === "")) {
+                // create component with substring and add to container
+                container.add(Ext.create("Ext.form.Label", {
+                    html: substring
+                }));
+            }
+
+            if(it != matches.length) {
+              // Get integer from {x}, get the component from values and add to container
+              var component = values[matches[it].match(/\d+/g, '')[0]];
+              container.add(component);
+              start = end+3;
+          }
+        }
+        return container;
+    }
+}
+
+function processTagFilterResourceIds(scope, callBackFn, tagFilter) {
+    if (tagFilter == null) {
+        callBackFn.call(scope, []);
+        return;
+    }
+
+    var param = {
+        mainAction: 'getContainerResourceIds',
+        tagFilter: Ext.encode(tagFilter)
+    };
+    Ext.Ajax.request({
+        url: 'tagPicker.action',
+        params: param,
+        disableCaching: true,
+        scope: scope,
+        method: 'POST',
+        success: function(response, options) {
+            var responseText = response.responseText;
+            var data = eval('(' + responseText + ')');
+            if (data != null && data.resourceIds.length > 0) {
+                callBackFn.call(scope, data.resourceIds);
+            } else {
+                callBackFn.call(scope, []);
+            }
+        },
+        failure: function(response, options) {
+            callBackFn.call(scope, []);
+        }
+    });
+}
+
+// for old browsers
+// preventing page redirect with backspace key
+function handleWindowBacksapceClose(e) {
+    var readOnly = e.target['readOnly'];
+    var contentEditable  = e.target['contentEditable'] == 'true'; // additional fileds for some editors
+    var backspacePressed = Ext.event.Event.BACKSPACE == e.keyCode;
+    var pressedFromButton = e.target.type == 'button';
+    var preventDefault = backspacePressed && openWindowExist() && (!contentEditable && (readOnly || readOnly == null) || pressedFromButton);
+
+    if (preventDefault) {
+        if (e.preventDefault) {
+            e.preventDefault();
+        }
+        return false;
+    }
+}
+
+var qtipSparklineMap = [];
+function cleanQtipSparklineMap() {
+    for (var key in qtipSparklineMap) {
+        delete qtipSparklineMap[key];
+    }
+}
+
+var qtipSparkline = null;
+function createQtipSparkline(divId) {
+    var qtipDiv = document.getElementById(divId);
+    if (!qtipDiv || qtipDiv.innerHTML) {
+        return;
+    }
+    var resourceId = qtipDiv.getAttribute("resourceId");
+    var metricKey = qtipDiv.getAttribute("metricKey");
+    var metricName = qtipDiv.getAttribute("metricName") || '';
+    var dateRange = qtipDiv.getAttribute("dateRange") || dateRanges.last30Days;
+    var width = qtipDiv.getAttribute("lineWidth") || 180;
+    var height = qtipDiv.getAttribute("lineHeight") || 20;
+    var key = resourceId + metricKey + dateRange;
+    if (qtipSparklineMap[key] && qtipSparkline) {
+        qtipDiv.appendChild(qtipSparklineMap[key].cloneNode(true));
+        qtipSparkline.freezed = true;
+        return;
+    }
+    qtipDiv.innerHTML = '  ...';
+    var valueWidth = 76;
+    var valueSpace = 10;
+    var config = {
+        width: width - valueWidth - valueSpace,
+        height: height,
+        dateRange: dateRange,
+        showDT: true
+    }
+    var data = {configs: config, resourceId: resourceId, metrics: [{
+        metricKey: metricKey,
+        dateRange: dateRange,
+        metricType: null
+    }]};
+    var params = {
+        resourceId: data.resourceId,
+        mainAction : 'sparklineAdvanced',
+        text: metricName,
+        data : Ext.encode(data),
+        width : width - valueWidth - valueSpace,
+        height : height,
+        divId: divId
+    };
+    if (qtipSparkline) {
+        qtipSparkline.setDCWidth(params.width);
+        qtipSparkline.loadData(params);
+    } else {
+        qtipSparkline = Ext.create('Ext.vcops.sparkline.SparklineComponent', {
+            showProgress: false,
+            showText: true,
+            showDT: true,
+            showCursor: false,
+            valueWidth: valueWidth,
+            strokeColor: '#404040',
+            dtFillColor: '#DADADA',
+            dtStrokeColor: '#D0D0D0',
+            params : params,
+            renderTo: 'qtipSparklineHeaderDiv'
+        });
+        qtipSparkline.on('drawCompleated', function(arg) {
+            var data = arg[0];
+            var parentDiv = document.getElementById(data.divId);
+            if (parentDiv != null) {
+                this.copyTo(parentDiv);
+                if (!qtipSparklineMap[data.sparklineMapKey] && Object.keys(qtipSparklineMap).length < 1000) {
+                    qtipSparklineMap[data.sparklineMapKey] = parentDiv.cloneNode(true);
+                }
+            }
+        });
+    }
+}
+
+function getLocalizedMillisServerToClient(millis) {
+    return millis + dateTimePreferenceOffset;
+}
+
+String.prototype.trunc = function(n, useWordBoundary, ending) {
+    var tooLong = this.length > n,
+        s_ = tooLong ? this.substr(0, n-1) : this;
+        s_ = useWordBoundary && tooLong ? s_.substr(0, s_.lastIndexOf(' ')) : s_;
+
+    return tooLong ? s_ + (ending || '&hellip;') : s_;
+};
+
+/**
+ * Vmware.Vcops namespace
+ * Use this namespace for all global variable, functions and objects
+ *
+ * @class Vmware.Vcops
+ */
+Ext.ns('Vmware.Vcops');
+(function() {
+
+    /**
+     * resourceId set during navigation as an alternative to passing parameter via url
+     * Currently used for licensing groups to preselect correct group in the grid
+     * when navigating from Global Search or Environment Overview
+     */
+    var navigationResourceId = null;
+
+    /**
+     * getNavigationResourceId
+     * Getter for navigationResourceId
+     */
+    Vmware.Vcops.getNavigationResourceId = function() {
+        return navigationResourceId;
+    };
+
+    /**
+     * setNavigationResourceId
+     * Setter for navigationResourceId
+     */
+    Vmware.Vcops.setNavigationResourceId = function(resourceId) {
+        navigationResourceId = resourceId;
+    };
+
+    /**
+     * This method receives srting href, appends mainAction parameter if passed,
+     * append any additional params if passed as an object liek { paramName: paramValue }.
+     * Returns false if passed href is falsy
+     *
+     * @param {String} href The URL to which will be appended parameters
+     * @param {String} mainAction The mainAction string to append to URL with key `mainAction`
+     * @param {Object} params Kay-value pairs of additional parameters to be appended to URL
+     *
+     * @return {String}
+     * @return {Boolean}
+     */
+    Vmware.Vcops.prepareHref = function(href, mainAction, params) {
+        if( ! href) {
+            return false;
+        }
+        var me = this;
+        if(mainAction){
+            Ext.apply(params, {mainAction: mainAction});
+        }
+        return Ext.urlAppend(href, Ext.Object.toQueryString(params));
+    };
+
+    /**
+     * isGridsterLayout
+     * Getter for web property isGridsterLayout
+     */
+    Vmware.Vcops.isGridsterLayout = function() {
+        return isGridsterLayout;
+    };
+
+    /**
+     * isShowCostSavings
+     * Boolean for Capacity Show Cost User Setting
+     */
+    Vmware.Vcops.isShowCostSavings = isShowCostSavings;
+
+    /**
+     * isLicenseStandard
+     */
+    Vmware.Vcops.isLicenseStandard = isLicenseStandard;
+
+    /**
+     * Boolean for Capacity Show Cost by license allowance
+     * @return {boolean}
+     */
+    Vmware.Vcops.showCapacityCost = function() {
+        return Vmware.Vcops.isShowCostSavings && !Vmware.Vcops.isLicenseStandard;
+    };
+})();
+
+function canvasToHDPI(canvas, width, height) {
+    var scaledWidth = width;
+    var scaledHeight = height;
+    var ctx = canvas.getContext("2d");
+    var isRetina = window.retina || window.devicePixelRatio > 1;
+    var ratio = 1;
+    if (isRetina) {
+        var devicePixelRatio = window.devicePixelRatio || 1,
+                backingStoreRatio = ctx.webkitBackingStorePixelRatio ||
+                        ctx.mozBackingStorePixelRatio ||
+                        ctx.msBackingStorePixelRatio ||
+                        ctx.oBackingStorePixelRatio ||
+                        ctx.backingStorePixelRatio || 1;
+
+        ratio = devicePixelRatio / backingStoreRatio;
+
+        scaledWidth *= ratio;
+        scaledHeight *= ratio;
+    }
+    canvas.setAttribute('width', scaledWidth);
+    canvas.setAttribute('height', scaledHeight);
+    canvas.style.height = width + "px";
+    canvas.style.width = height + "px";
+
+    if (isRetina) {
+        ctx.scale(ratio, ratio);
+    }
+}
+function handleSessionTimeoutChange(newSessionTimeout) {
+    if (Ext.isNumber(newSessionTimeout)) {
+        sessionTimeoutMillis = newSessionTimeout * 60 * 1000;
+    }
+    resetClientSessionTimer();
+}
+
+/**
+ * Counts the number of Unicode code points in a JavaScript string
+ *
+ * While many Unicode characters are defined with a 16-bit code point, some characters have code points that require more than
+ * 16 bits. Characters that can be defined with 16-bits are said to exist in the Basic Multlingual Plane or BMP. Those
+ * requiring more than 16-bits are non-BMP characters.
+ *
+ * JavaScript stores non-BMP characters as a surrogate pair of two 16 bit characters. This means that the
+ * String.length function will return a count of 2, instead of a count of 1, for non-BMP characters.
+ *
+ * This method returns an accurate length or code point count for strings containing non-BMP characters.
+ */
+function getCodePointCount(string) {
+    // use a regular expression to replace surrogate pairs with a placeholder BMP character, then return the length.
+    return string.replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, '_').length;
+}
+
+function getDurationLocalized(durationInSeconds, isShortValue) {
+
+    if (!Ext.isNumber(durationInSeconds)) {
+        return "";
+    }
+    isShortValue = (isShortValue === true) ? true : false;
+    var secondsInMinute = 60;
+    var secondsInHour = 60 * secondsInMinute;
+    var secondsInDay = 24 * secondsInHour;
+    var durationDays = parseInt(durationInSeconds / secondsInDay);
+    var durationHours = parseInt((durationInSeconds - durationDays * secondsInDay) / secondsInHour);
+    var durationMinutes = parseInt((durationInSeconds - durationDays * secondsInDay - durationHours * secondsInHour) / secondsInMinute);
+    var durationSeconds = parseInt(durationInSeconds - durationDays * secondsInDay - durationHours * secondsInHour - durationMinutes * secondsInMinute);
+    var parsedDuration = "";
+    if (durationDays > 0) {
+        parsedDuration += durationDays + bundle["date.short.day"];
+    }
+    if (durationHours > 0) {
+        parsedDuration += (durationDays > 0 ? ":" : "") + (durationHours < 10 ? "0" : "") + durationHours + bundle["date.short.hour"];
+    }
+    if (durationMinutes > 0 && (!isShortValue || (isShortValue && durationDays == 0))) {
+        parsedDuration += (durationDays > 0 || durationHours > 0 ? ":" : "") + (durationMinutes < 10 ? "0" : "") + durationMinutes + bundle["date.short.minute"];
+    }
+    if (durationSeconds > 0 && !isShortValue) {
+        parsedDuration += (durationDays > 0 || durationHours > 0 || durationMinutes > 0 ? ":" : "") + (durationSeconds < 10 ? "0" : "") + durationSeconds + bundle["date.short.second"];
+    }
+    return parsedDuration;
+}
+
+function getClrIcon(icon) {
+    var div = document.createElement('div');
+    div.innerHTML = icon;
+    return div.innerHTML;
+}
+
+function jsonClone(obj) {
+    return JSON.parse(JSON.stringify(obj));
+}
+
+!function() {
+    'use strict';
+
+    var isObject = function(value) {
+        return value && typeof value === 'object';
+    };
+    var isExactNaN = function(value) {
+        return value !== value;
+    };
+
+    function isSubObject(obj1, obj2) {
+        return Object.keys(obj1).every(function(key) {
+            return obj2.hasOwnProperty(key) && deepEquals(obj1[key], obj2[key]);
+        });
+    }
+
+    function deepEquals(a, b) {
+        if(a === b || isExactNaN(a) && isExactNaN(b)) {
+            return true;
+        }
+
+        if(!isObject(a) || !isObject(b)) {
+            return false;
+        }
+
+        return isSubObject(a, b) && isSubObject(b, a);
+    }
+
+    window.deepEquals = deepEquals;
+}();
+
+function toDataURL(url, callback) {
+    var xhr = new XMLHttpRequest();
+    xhr.onload = function () {
+        var reader = new FileReader();
+        reader.onloadend = function () {
+            callback(reader.result);
+        }
+        reader.readAsDataURL(xhr.response);
+    };
+    xhr.open('GET', url);
+    xhr.responseType = 'blob';
+    xhr.send(null);
+}
+
+function getImagepathByCSS(iconCls) {
+    var icon = $("." + iconCls);
+    var imgPath = window.getComputedStyle(icon[0])["background-image"];
+    if (imgPath !== 'none') {
+        return imgPath.split('("')[1].split('")')[0];
+    }
+}
+
+function generateReport(reportDefId, callbackFn, scope, args) {
+    if (!reportDefId) {
+        showErrorMsg(bundle['report.definition.error.emptyId']);
+        return;
+    }
+    if (!hasPrivilege("content.report.execute")) {
+        if (callbackFn) {
+            callbackFn.apply(null, [{"reportInstanceId": null}]);
+        }
+        showErrorMsg(bundle['com.vmware.vcops.bridge.content.client.AuthorizationException']);
+        return;
+    }
+    Ext.vcops.reportServiceController.runReportForVsphereWorld({
+            reportDefId: reportDefId
+        },
+        function(result, event) {
+            if (event.status) {
+                var reportInstanceId = result;
+                var refreshTask = Ext.TaskManager.start({
+                    run: function() {
+                        Ext.Ajax.request({
+                            url : './vcops/services/report/getReportCompletionState',
+                            jsonData : {
+                                reportIds : [reportInstanceId]
+                            },
+                            method : "POST",
+                            headers : {
+                                'Accept' : 'application/json'
+                            },
+                            success : function(response) {
+                                var data = Ext.JSON.decode(response.responseText);
+                                if (data.hasOwnProperty(reportInstanceId)) {
+                                    var status = data[reportInstanceId];
+                                    if (status == 'QUEUED' || status == 'PROCESSING') {
+                                        return;
+                                    } else {
+                                        Ext.TaskManager.stop(refreshTask);
+                                        if (callbackFn) {
+                                            callbackFn.apply(null, [{"reportInstanceId": reportInstanceId}]);
+                                        } else {
+                                            downloadReport(reportInstanceId);
+                                        }
+                                    }
+                                }
+                            },
+                            failure: function (response, options) {
+                                showErrorMsg(bundle['ext.direct.default.exception.message']);
+                            }
+                        });
+                    },
+                    interval: 1000
+                });
+            }
+        }
+    );
+}
+
+function downloadReport(reportInstanceId) {
+    var dlink = document.createElement('a');
+    dlink.href = "./vcops/services/download/report/getPDF?reportId=" + reportInstanceId;
+    window.location.replace(dlink.href);
+    dlink.remove();
+}
+
+/**
+ * Render cost value using format specified by bundleKey
+ * @param {Number} cost - Cost value
+ * @param {String} bundleKey - Bundle string specifying the cost format
+ * @param {String} currencySmb - Currency symbol to use. If not specified, user selected currency configuration will be applied.
+ * @param {String} showEmpty - Defines if cost must be empty instead of '?' sign.
+ */
+function renderCost(cost, bundleKey, currencySmb, showEmpty) {
+    var costInfo = getCostInfo(cost, bundleKey, currencySmb, showEmpty),
+        tipMsg = (Ext.isEmpty(costInfo.msg) ? '' : costInfo.msg);
+
+    return '<span data-qtip="' + tipMsg + '">' + costInfo.format + '</span>';
+}
+
+function getCostInfo(cost, bundleKey, currencySmb, showEmpty) {
+    var currency = currencySmb || ((currencyConfig && currencyConfig.symbol) ? currencyConfig.symbol : ''),
+        currencyCode = currencySelected ? currencyConfig.code : '',
+        emptyCost = showEmpty ? '' : '?',
+        costValue = emptyCost,
+        costInfo = {format: emptyCost};
+
+    if (!currencySelected && !currencySmb) {
+        costInfo.msg = bundle['currency.currencyNotSet.infoMessage'];
+        return costInfo;
+    }
+    if (!costCalculationEnabled) {
+        costInfo.msg = bundle['currency.costCalculationEnabled.infoMessage'];
+        return costInfo;
+    }
+
+    if (cost != null) {
+        // TODO: Refactor after bridge changes costs to double
+        if (cost.metricValue != null) {
+            costValue = cost.metricValue;
+        } else if (Ext.isNumeric(cost)) {
+            costValue = cost;
+        } else {
+            costInfo.msg = bundle['currency.noData.infoMessage'];
+            return costInfo;
+        }
+        costValue = Ext.isNumeric(costValue) ? formatNumber(costValue, true, 0) : '?';
+    } else {
+        costInfo.msg = bundle['currency.noData.infoMessage'];
+        return costInfo;
+    }
+
+    if (Ext.isEmpty(currency)) {
+        bundleKey = bundleKey + '.code';
+        currency = currencyCode;
+    }
+
+    costInfo.format = Ext.String.format(bundle[bundleKey], currency, costValue) || emptyCost;
+
+    return costInfo;
+}
+
+function getResponsiveFontSize(text, minSize, maxSize, symbolsCount) {
+    var fontSize = maxSize;
+    if (text.length > symbolsCount) {
+        fontSize =  Math.round(maxSize - (text.length - symbolsCount) * 1.6);
+        fontSize = Math.max(fontSize, minSize);
+    }
+    return fontSize;
+}
+
+var hideableItems = [];
+
+function addHideableItem(cmp) {
+    hideableItems.push(cmp);
+    if (hideableItems.length == 1) {
+        document.addEventListener('scroll', checkHideableItem, true);
+        window.addEventListener('resize', checkHideableItem, true);
+    }
+}
+
+function removeHideableItem(cmp) {
+    var ind = hideableItems.indexOf(cmp);
+    if (ind > -1) {
+        hideableItems.splice(ind, 1);
+    }
+    if (hideableItems.length == 0) {
+        document.removeEventListener('scroll', checkHideableItem, true);
+        window.removeEventListener('resize', checkHideableItem, true);
+    }
+}
+
+function checkHideableItem(e) {
+    e = e || window.event;
+    for (var i = hideableItems.length - 1; i >= 0 ; i--) {
+        var hideableItem = hideableItems[i];
+        if (!(hideableItem.el && hideableItem.el.dom)) {
+            hideableItems = [];
+            document.removeEventListener('scroll', checkHideableItem, true);
+            window.removeEventListener('resize', checkHideableItem, true);
+            return;
+        }
+        var target = e.target;
+        while (target) {
+            if (target === hideableItem.el.dom) {
+                return;
+            }
+            target = target.parentNode;
+        }
+        if (hideableItem.pickerField) {
+            hideableItem.pickerField.collapse();
+        } else {
+            hideableItem.hide();
+        }
+    }
+}
+
+// returns true if given dom element has scrollbar
+function hasScrollbar(element) {
+    var scrollTop = element.scrollTop;
+    var scrollLeft = element.scrollLeft;
+
+    if(scrollTop > 0 || scrollLeft > 0) {
+        return true;
+    }
+
+    element.scrollTop += 10;
+    element.scrollLeft += 10;
+
+    if(scrollTop === element.scrollTop && scrollLeft === element.scrollLeft) {
+        return false;
+    }
+
+    // undoing the change
+    // this wouldn't jump because rendering happens after
+    // the current execution ends
+    element.scrollTop = scrollTop;
+    element.scrollLeft = scrollLeft;
+    return true;
+}
+
+
+/**
+ * Polyfills
+ */
+
+if(!NodeList.prototype.forEach) {
+    NodeList.prototype.forEach = function (callback, thisArg) {
+        Array.prototype.forEach.call(this, callback, thisArg);
+    }
+}
