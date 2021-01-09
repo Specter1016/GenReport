@@ -336,7 +336,7 @@ def setSendReport():
                 
                 pass
 
-            os.system('Royal.text');
+            os.system('notepad Royal.text');
             notifyLine();
 
             
