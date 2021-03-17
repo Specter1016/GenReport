@@ -301,10 +301,11 @@ def setSendReport():
             n=24;
             pass
 
+
         print(f'\n\nH : {n-1}\n\n');
-        setdate = driver.find_element_by_xpath('//*[@id="Select_0_placeholder"]');
+        setdate = driver.find_element_by_xpath('//*[@id="SelectId_0_placeholder"]');
         setdate.click();
-        setdate = driver.find_element_by_xpath('//*[@id="Select_0"]/ul/li[{}]'.format(n).strip());
+        setdate = driver.find_element_by_xpath('//*[@id="SelectId_0"]/ul/li[{}]'.format(n).strip());
         setdate.click();
         setdate = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[3]/div[1]/button');
         setdate.click();
@@ -574,14 +575,14 @@ def newReadVersion():
                                                         break;
 
 
-#readHTML();
-#readset();
+readHTML();
+readset();
 
 #setCPUFuntion();
 #setRAMFuntion();
 #setNETFuntion();
 
-newReadVersion();
+#newReadVersion();
 setShowReport();
 setReportFile();
 setSendReport();

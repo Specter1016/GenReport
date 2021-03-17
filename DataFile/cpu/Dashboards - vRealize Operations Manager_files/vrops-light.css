@@ -1,0 +1,44 @@
+.main-div {
+	color: #565656;
+}
+.platform {
+	color: #242424;
+	border-bottom: 1px solid #70747A;
+}
+.grayScaled {
+	color: #a0a0a0;
+	background-position: 0px -75px !important;
+}
+.selected-item {
+	border-color: #007cbb !important;
+}
+.link {
+	border: 1px solid #007cbb;
+	color: #007cbb;
+}
+.externalLink {
+	color: #007cbb;
+}
+.link:hover {
+	color: #004a70;
+	background-color: #e1f1f6;
+}
+.externalLink:hover {
+	color: #004a70;
+}
+div .odd {
+	background-color: #ebf5f9;
+}
+
+.chevron-big-left {
+	background-image: url(../images/chevron-big-left.png);
+}
+.chevron-big-left:hover {
+	background-image: url(../images/chevron-big-left-dark.png);
+}
+.chevron-big-right {
+	background-image: url(../images/chevron-big-right.png);
+}
+.chevron-big-right:hover {
+	background-image: url(../images/chevron-big-right-dark.png);
+}

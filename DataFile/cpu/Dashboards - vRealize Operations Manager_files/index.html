@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<!-- saved from url=(0103)https://analytics.cloud.dga.or.th/ui/ContentPack/VMWARE/conf/pages/getting_started/index.html?locale=en -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge;chrome=1;">
+        <link rel="stylesheet" type="text/css" href="./metropolis.css">
+		<link rel="stylesheet" type="text/css" href="./main.css">
+		<script>
+			var cssId = 'themeCss';
+			if (!document.getElementById(cssId))
+			{
+				var head  = document.getElementsByTagName('head')[0];
+				var link  = document.createElement('link');
+				link.id   = cssId;
+				link.rel  = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/' + parent.colorScheme + '.css';
+				link.media = 'all';
+				head.appendChild(link);
+			}
+		</script><link id="themeCss" rel="stylesheet" type="text/css" href="./vrops-light.css" media="all">
+        <script type="text/javascript">
+            function getLocales() {
+               var xhr = new XMLHttpRequest();
+               var requestUrl = 'resources/resources.properties';
+               var localeStr = /locale=[^&=]*/g.exec(window.location.search);
+               if (localeStr) {
+                   var localeStrValue = localeStr[0].split('=')[1]; 
+                   requestUrl = localeStrValue == 'en' ? "resources/resources.properties" : 'resources/resources_' + localeStrValue + '.properties';   
+               }
+               xhr.open('GET', requestUrl , false);
+               xhr.send();
+               if (xhr.status === 200) {
+                   var properties = xhr.responseText;
+                   var splittedProperties = properties.split(/\r|\n/);
+                   for (var i = 0 ; i < splittedProperties.length ; i++) {
+                       var localizationValues = splittedProperties[i].split(/=/);
+                       if (localizationValues.length > 1) {
+                           setLocale(localizationValues[0].trim(), localizationValues[1].trim());
+                       }
+                   }
+               }
+            }
+
+            function setLocale(localizationKey, localizationValue) {
+                if (localizationKey === "description.helpsToAnswer") {
+                    var dashboardsCount = 5;
+                    // change this variable value in case of dashboards count change in html
+                    for (var i = 0 ; i < dashboardsCount; i++) {
+                        var elementToBind = document.getElementById(localizationKey + i);
+                        if (elementToBind) {
+                            elementToBind.innerHTML = localizationValue;
+                        }
+                   }
+                } else {
+                    if(document.querySelectorAll) {
+                        var elementsToBind = document.querySelectorAll('[l10nKey="' + localizationKey + '"]');
+                        for (var i = 0; i < elementsToBind.length; i++) {
+                            elementsToBind[i].innerHTML = localizationValue;
+                        }
+                    }
+                }
+            }
+            function goTo(tabId, name, isPage, isExternal) {
+                if (isExternal) {
+                    window.open(tabId);
+                } else if (isPage) {
+                    parent.applicationState.load(tabId);
+                } else {
+                    parent.Ext.getCmp("MainDashboard").customMenuTabClicked({tabId: tabId, text: name});
+                }
+            }
+        </script>
+        </head>
+        <body onload="getLocales()">
+            <div class="main-div">
+                <div class="headerTxt">
+                    <p style="display:inline" l10nkey="header.vrops">Welcome to Dashboards!</p>
+                    <p style="display:inline" l10nkey="header.vrops2" id="header.vrops2">This getting started page steps you through some useful categories of dashboards and pages to help you start off.</p>
+                    <div l10nkey="header.moreDashboardSamplesLink" class="externalLink" onclick="goTo(&#39;https://vrealize.vmware.com/sample-exchange/?utm_source=in_product&amp;utm_campaign=7_0&#39;, null, null, true);">More Dashboard Samples</div>
+                </div>
+                <div class="platform" style="width:100%;">
+                  <div id="plat" style="width: 612px;"><table width="100%" height="60px" cellspacing="0" cellpadding="0" style="table-layout: fixed;"><tbody><tr valign="bottom"><td width="1px"></td><td><div style="width: 100%; overflow: hidden;"><div style="position: relative; left: 0px; top: 0px; transition: left 0.0875s linear 0s;"><div style="display: table-cell; padding: 0px 35px 0px 0px;"><div style="padding: 2px 6px 16px; font-size: 15px; cursor: pointer; border-bottom: 3px solid rgb(0, 124, 187);" class="selected-item"><a href="https://analytics.cloud.dga.or.th/ui/ContentPack/VMWARE/conf/pages/getting_started/index.html?locale=en#section0" class=""><p class="imgTitle" l10nkey="title.inventory">Inventory</p><div class="categoryImg" id="categImg0" style="background-image:url(images/2.png);"></div></a></div></div><div style="display: table-cell; padding: 0px 35px;"><div style="padding:2px 6px 16px 6px; font-size:15px; cursor: pointer; border-bottom:3px solid transparent"><a href="https://analytics.cloud.dga.or.th/ui/ContentPack/VMWARE/conf/pages/getting_started/index.html?locale=en#section1" class="grayScaled"><p class="imgTitle" l10nkey="title.needOperationsOverview">Operations</p><div class="categoryImg grayScaled" id="categImg1" style="background-image:url(images/1.png);"></div></a></div></div><div style="display: table-cell; padding: 0px 35px;"><div style="padding:2px 6px 16px 6px; font-size:15px; cursor: pointer; border-bottom:3px solid transparent"><a href="https://analytics.cloud.dga.or.th/ui/ContentPack/VMWARE/conf/pages/getting_started/index.html?locale=en#section2" class="grayScaled"><p class="imgTitle" l10nkey="title.needCapacityOverview">Capacity and Utilization</p><div class="categoryImg grayScaled" id="categImg2" style="background-image:url(images/5.png);"></div></a></div></div><div style="display: table-cell; padding: 0px 35px;"><div style="padding:2px 6px 16px 6px; font-size:15px; cursor: pointer; border-bottom:3px solid transparent"><a href="https://analytics.cloud.dga.or.th/ui/ContentPack/VMWARE/conf/pages/getting_started/index.html?locale=en#section3" class="grayScaled"><p class="imgTitle" l10nkey="title.NeedTroubleshootPerformanceIssues">Performance Troubleshooting</p><div class="categoryImg grayScaled" id="categImg3" style="background-image:url(images/8.png);"></div></a></div></div><div style="display: table-cell; padding: 0px 0px 0px 35px;"><div style="padding:2px 6px 16px 6px; font-size:15px; cursor: pointer; border-bottom:3px solid transparent"><a href="https://analytics.cloud.dga.or.th/ui/ContentPack/VMWARE/conf/pages/getting_started/index.html?locale=en#section4" class="grayScaled"><p class="imgTitle" l10nkey="title.configurationAndCompliance">Configuration and Compliance</p><div class="categoryImg grayScaled" id="categImg4" style="background-image:url(images/9.png);"></div></a></div></div></div></div></td><td width="16px"><div class="chevron-big-right" style="margin-bottom: 50px; margin-left: 4px; cursor: pointer;"></div></td></tr></tbody></table></div>
+                </div>
+                <script type="text/javascript">
+                    function Tab(container, data) {
+                        this.leftItemIndex = 0;
+                        this.height = 60;
+                        this.containerPadding = 35;
+                        this.containerDiv = container;
+                        this.viewData = data;
+                        this.eventFlag = false;
+
+                        this.onMousewheel = function (event) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                            var delta = event.deltaY || event.wheelDelta;
+                            this.arrowClick(delta > 0 ? -1 : 1);
+                            return false;
+                        };
+
+                        this.arrowClick = function(dir, size) {
+                            if (dir < 0) {
+                                var step = this.floatDiv.children[this.leftItemIndex].offsetWidth;
+                                this.leftItemIndex ++;
+                                this.leftItemIndex = this.leftItemIndex >= this.floatDiv.children.length ? this.floatDiv.children.length - 1 :this.leftItemIndex;
+                            } else {
+                                this.leftItemIndex --;
+                                this.leftItemIndex = this.leftItemIndex < 0 ? 0 : this.leftItemIndex;
+                                step = this.floatDiv.children[this.leftItemIndex]? this.floatDiv.children[this.leftItemIndex].offsetWidth : 0;
+                            }
+                            step = size ? size : step
+                            this.floatDiv.style.transition = 'left linear ' + step / 400 + 's';
+                            var left = parseInt(this.floatDiv.style.left);
+                            var shift = left + step * dir;
+                            shift = shift > 0 ? 0 : shift;
+                            shift = this.bodyDiv.offsetWidth - this.floatDiv.scrollWidth < shift ? shift : this.bodyDiv.offsetWidth - this.floatDiv.scrollWidth;
+                            var bodyDivWidth = this.bodyDiv.offsetWidth;
+                            var floatDivWidth = this.floatDiv.scrollWidth;
+                            this.floatDiv.style.left = shift + 'px';
+                            this.drawArrows();
+                        };
+
+                        this.onResize = function() {
+                            this.containerDiv.style.width = (document.body.offsetWidth - 5) + 'px';
+                            this.drawArrows();
+                            var left = parseInt(this.floatDiv.style.left);
+                            if(this.bodyDiv.offsetWidth > this.floatDiv.scrollWidth + left) {
+                                this.arrowClick(-1);
+                            }
+                        };
+
+                        this.drawArrows = function() {
+                            var bodyDivWidth = this.bodyDiv.offsetWidth;
+                            var floatDivWidth = this.floatDiv.scrollWidth;
+                            var floatDivLeft = parseInt(this.floatDiv.style.left);
+                            this.cmpEls[0].width = floatDivLeft < 0 ? '16px' : '1px';
+                            this.cmpEls[0].style.padding = '2px 5px 0px 0px;';
+                            this.cmpEls[2].width = floatDivWidth + floatDivLeft > bodyDivWidth ? '16px' : '1px';
+                            this.cmpEls[2].style.padding = '2px 0px 0px 5px;';
+                            this.cmpEls[0].innerHTML = floatDivLeft < 0 ? '<div class="chevron-big-left" style="margin-bottom: 50px; cursor: pointer;"></div>' : '';
+                            this.cmpEls[2].innerHTML = floatDivWidth + floatDivLeft > bodyDivWidth ? '<div class="chevron-big-right"  style="margin-bottom: 50px; margin-left: 4px; cursor: pointer;"></div>' : '';
+                        };
+
+                         this.setSelect = function(index) {
+                            if(this.viewData && index < this.viewData.items.length){
+                                this.select(this.floatDiv.childNodes[index].firstChild, false);
+                            }
+                        };
+
+                        this.select = function(item, clicked) {
+                            var dataItem = this.viewData.items[item.uIndex];
+                            if (this.selectedDiv) {
+                                this.selectedDiv.firstChild.classList.add("grayScaled");
+                                this.selectedDiv.firstChild.lastChild.classList.add("grayScaled");
+                                this.selectedDiv.style.borderBottomColor = 'transparent';
+                                this.selectedDiv.classList.remove('selected-item');
+                                this.selectedDiv.style.color = this.labelColor;
+                            }
+                            item.classList.add('selected-item');
+                            item.style.borderBottomColor = '#007CBB';
+                            item.style.color = this.valueColor;
+                            this.selectedDiv = item;
+                            this.selectedDiv.firstChild.classList.remove("grayScaled");
+                            this.selectedDiv.firstChild.lastChild.classList.remove("grayScaled");
+
+                            this.selectedItem = this.viewData.items[this.selectedDiv.uIndex];
+                            var left = parseInt(this.floatDiv.style.left);
+                            item = item.parentNode;
+                            var leftShift = item.offsetLeft + left;
+                            if (leftShift < this.containerPadding) {
+                                this.arrowClick(1, -(leftShift - this.containerPadding));
+                            } else if (leftShift + item.offsetWidth > this.bodyDiv.offsetWidth) {
+                                this.arrowClick(-1, leftShift + item.offsetWidth - this.bodyDiv.offsetWidth + this.containerPadding);
+                            }
+                            if(this.onChange) {
+                                this.onChange(dataItem, clicked)
+                            }
+                        };
+
+                        this.itemClick = function(e) {
+                            e.preventDefault();
+                            this.eventFlag = true;
+                            var elem = e.currentTarget;
+                            this.select(elem, true);
+                            var hrf = elem.firstChild.getAttribute('href');
+                            hrf  = hrf.substring(1);
+                            var target = document.getElementById(hrf);
+
+                            var contentDiv = document.getElementById("contentDiv");
+                            contentDiv.scrollTop = target.parentNode.parentNode.offsetTop;
+
+                        };
+                        this.itemMouseUp = function(e) {
+                            this.eventFlag = false;
+                        };
+
+                        this.loadData = function(data) {
+                            this.viewData = data || this.viewData;
+                            if (this.viewData) {
+                                this.selectedItem = null;
+                                this.floatDiv.innerHTML = "";
+                                var items = this.viewData.items;
+                                for (var i = 0; i < items.length; i++) {
+                                    items[i].index = i;
+                                    var parentDiv = document.createElement('div');
+                                    this.floatDiv.appendChild(parentDiv);
+                                    parentDiv.style.cssText = 'display:table-cell; padding:0px ' + (i < items.length - 1 ? this.containerPadding : 0) + 'px 0px ' + (i > 0 ? this.containerPadding : 0) + 'px;';
+                                    parentDiv.innerHTML = '<div style="padding:2px 6px 16px 6px; font-size:15px; cursor: pointer; border-bottom:3px solid transparent">' + items[i].content + '</div>';
+                                    var itemDiv = parentDiv.firstChild;
+                                    itemDiv.uIndex = i;
+                                    itemDiv.addEventListener("click", function(ev){this.itemClick(ev)}.bind(this), false);
+                                    itemDiv.addEventListener("mouseup", function(ev){this.itemMouseUp(ev)}.bind(this), false);
+                                    if (items[i].selected) {
+                                        this.select(itemDiv);
+                                    }
+                                }
+                            }
+                            this.onResize();
+                            this.isLoaded = true;
+                        };
+
+                        this.containerDiv.innerHTML = '<table width="100%" height="' + this.height + 'px" cellspacing="0" cellpadding="0" style="table-layout: fixed;"><tr valign="bottom"><td width="1px"></td><td></td><td width="1px"></td></tr></table>';
+                        var table = this.containerDiv.firstChild;
+                        table.addEventListener("wheel", function(ev){this.onMousewheel(ev)}.bind(this), false);
+                        table.addEventListener("mousewheel", function(ev){this.onMousewheel(ev)}.bind(this), false);
+                        table.cellpadding = '0';
+                        this.cmpEls = table.rows[0].cells;
+                        this.bodyDiv = document.createElement('div');
+                        this.bodyDiv.style.cssText = 'width: 100%; overflow: hidden;';
+                        this.cmpEls[1].appendChild(this.bodyDiv);
+                        this.floatDiv = document.createElement('div');
+                        this.floatDiv.style.cssText = 'position:relative; left: 0px; top: 0px;';
+                        this.bodyDiv.appendChild(this.floatDiv);
+                        this.cmpEls[0].addEventListener("click", function(){this.arrowClick(1)}.bind(this), false);
+                        this.cmpEls[2].addEventListener("click", function(){this.arrowClick(-1)}.bind(this), false);
+                        if (this.viewData) {
+                            this.loadData();
+                        }
+                    }
+                    var plat = document.getElementById('plat');
+                    var items  = [];
+
+                    items.push({content:'<a href="#section0" class="grayScaled"><p class="imgTitle" l10nKey="title.inventory">Inventory</p><div class="categoryImg grayScaled" id="categImg0" style="background-image:url(images/2.png);"></div></a>', selected: true});
+                    items.push({content:'<a href="#section1" class="grayScaled"><p class="imgTitle" l10nKey="title.needOperationsOverview">I need an operations overview</p><div class="categoryImg grayScaled" id="categImg1" style="background-image:url(images/1.png);"></div></a>'});
+                    items.push({content:'<a href="#section2" class="grayScaled"><p class="imgTitle" l10nKey="title.needCapacityOverview">I need an overview of my infrastructure capacity and  the utilization of my infrastructure resources</p><div class="categoryImg grayScaled" id="categImg2" style="background-image:url(images/5.png);"></div></a>'});
+                    items.push({content:'<a href="#section3" class="grayScaled"><p class="imgTitle" l10nKey="title.NeedTroubleshootPerformanceIssues">I need to troubleshoot performance issues</p><div class="categoryImg grayScaled" id="categImg3"  style="background-image:url(images/8.png);"></div></a>'});
+                    items.push({content:'<a href="#section4" class="grayScaled"><p class="imgTitle" l10nKey="title.configurationAndCompliance">I need to understand configuration and compliance in my environment</p><div class="categoryImg grayScaled" id="categImg4" style="background-image:url(images/9.png);"></div></a>'});
+                    var tab = new Tab(plat, {items: items});
+                    tab.onChange = function(item, clicked) {
+                    }
+                    function contentScroll(event){
+                        if(!tab.eventFlag) {
+                            var endReached = document.getElementById("contentDiv").scrollTop + document.getElementById("contentDiv").offsetHeight >= document.getElementById("contentDiv").scrollHeight;
+                            if(event.target.scrollTop > 1490 || endReached) {
+                                tab.setSelect(4);
+                            } else if(event.target.scrollTop > 1440) {
+                                tab.setSelect(3);
+                            } else if(event.target.scrollTop > 990) {
+                                tab.setSelect(2);
+                            } else if(event.target.scrollTop > 390) {
+                                tab.setSelect(1);
+                            } else {
+                                tab.setSelect(0);
+                            }
+                        }
+                        tab.eventFlag = false;
+                    }
+                </script>
+                <div id="contentDiv" style="min-height: 150px; margin-top: 5px; margin-left: 17px; padding-right: 10px; overflow-y: scroll; height: 559px;" onscroll="contentScroll(event)">
+                    <table cellpadding="0" cellspacing="0" style="width: 100%">
+                        <tbody><tr class="separated table-tr">
+                            <td>
+                                <p id="section0" l10nkey="title.inventory" class="sectionTitle">Inventory</p>
+                                <div class="extRaw">
+                                    <div class="raw odd">
+                                        <p l10nkey="question.vsphereCompute" class="left-aligned-text">Browse through the topology of your vSphere Compute inventory including vCenters, Datacenters, Clusters, Hosts and so on.</p>
+                                        <div l10nkey="link.vsphereCompute" class="link" onclick="goTo(&#39;cc6454bb-4a01-40b5-b6fa-eaed60934e21&#39;, this.innerText);">vSphere Compute</div>
+                                    </div>
+                                </div>
+                                <div class="extRaw">
+                                    <div class="raw">
+                                        <p l10nkey="question.vsphereStorage" class="left-aligned-text">Browse through the topology of your vSphere Storage inventory including Datastore Clusters, Datastores and so on.</p>
+                                        <div l10nkey="link.vsphereStorage" class="link" onclick="goTo(&#39;c7d7fddc-f477-4548-aa61-8d5a2a31f717&#39;, this.innerText);">vSphere Storage</div>
+                                    </div>
+                                </div>
+                                <div class="extRaw">
+                                    <div class="raw odd">
+                                        <p l10nkey="question.vsphereNetwork" class="left-aligned-text">Browse through the topology of your vSphere Network inventory including Distributed Switches, Distributed Port Groups and so on.</p>
+                                        <div l10nkey="link.vsphereNetwork" class="link" onclick="goTo(&#39;50522b10-6dff-46a4-b1a5-c4c5d61cdf64&#39;, this.innerText);">vSphere Network</div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr class="separated table-tr">
+                            <td>
+                                <p id="section1" l10nkey="title.needOperationsOverview" class="sectionTitle">Operations</p>
+                                <div class="extRaw">
+                                    <div class="raw odd">
+                                        <p l10nkey="question.whatIssuesEnvironmentHave" class="left-aligned-text">Get an overview of my entire environment and understand which VMs in each datacenter may have performance issues.</p>
+                                        <div l10nkey="link.whatIssuesEnvironmentHave" class="link" onclick="goTo(&#39;9e738d8c-6483-4cb2-ad69-9bec94ebc9b0&#39;, this.innerText);">Operations Overview</div>
+                                    </div>
+                                </div>
+                                <div class="extRaw">
+                                    <div class="raw">
+                                        <p l10nkey="question.whichHostsHighestCPU" class="left-aligned-text">Identify which hosts have the highest CPU demand and active and consumed memory.</p>
+                                        <div l10nkey="link.whichHostsHighestCPU" class="link" onclick="goTo(&#39;f1df804b-aaca-4b83-ab4a-d5863a5d7ced&#39;, this.innerText);">Host Usage Overview</div>
+                                    </div>
+                                </div>
+                                <div class="extRaw">
+                                    <div class="raw odd">
+                                        <p l10nkey="question.whichVMsHighestIOPs" class="left-aligned-text">Identify which VMs have the highest storage IOPS and latency.</p>
+                                        <div l10nkey="link.whichVMsHighestIOPs" class="link" onclick="goTo(&#39;d56bea04-dab1-4ed8-90a8-d09518887d53&#39;, this.innerText);">Datastore Usage Overview</div>
+                                    </div>
+                                </div>
+                                <div class="extRaw">
+                                    <div class="raw">
+                                        <p l10nkey="question.whatvSANEnvironmentHave" class="left-aligned-text">Get an overview of my entire vSAN environment and understand which vSAN clusters may have performance issues.</p>
+                                        <div l10nkey="link.whatvSANEnvironmentHave" class="link" onclick="goTo(&#39;b14c401b-93a7-4fb9-8129-1ea1a60e4bba&#39;, this.innerText);">vSAN Operations Overview</div>
+                                    </div>
+                                </div>
+                                <div class="extRaw">
+                                    <div class="raw odd">
+                                        <p l10nkey="question.vSANandNonvSANcompare" class="left-aligned-text">Compare the peformance of my vSAN and non-vSAN environments and look for opportunities to migrate VMs over to the vSAN datastores.</p>
+                                        <div l10nkey="link.vSANandNonvSANcompare" class="link" onclick="goTo(&#39;86f00fd4-4621-4962-9b15-6f404cc97dbc&#39;, this.innerText);">Migrate to vSAN</div>
+                                    </div>
+                                </div>
+                                <div class="extRaw">
+                                    <div class="raw">
+                                        <p l10nkey="question.optimizationHistory" class="left-aligned-text">See completed optimization actions and their results.</p>
+                                        <div l10nkey="link.optimizationHistory" class="link" onclick="javascript:goTo(&#39;a7575481-1da1-4ade-b07e-f5d5b5b66e8c&#39;, this.innerText);">Optimization History</div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="separated table-tr">
+                            <td>
+                                <p id="section2" l10nkey="title.needCapacityOverview" class="sectionTitle">Capacity and Utilization</p>
+                                <div class="extRaw">
+                                    <div class="raw odd">
+                                        <p l10nkey="question.capacityAllocationOverview" class="left-aligned-text">Get an overview of allocation ratios for virtual machines, vCPUs and Memory for a specific datacenter or cluster.</p>
+                                        <div l10nkey="link.capacityAllocationOverview" class="link" onclick="goTo(&#39;9ddaaf3b-86d2-4120-983c-3a1342f5f30a&#39;, this.innerText);">Capacity Allocation Overview</div>
+                                    </div>
+                                </div>
+                                <div class="extRaw">
+                                    <div class="raw">
+                                        <p l10nkey="question.overallCapacityView" class="left-aligned-text">Get an overall view of how much capacity I have, how much is used and what the usage trends are for a specific vCenter, datacenter or cluster.</p>
+                                        <div l10nkey="link.overallCapacityView" class="link" onclick="goTo(&#39;aa7b4ca2-f56b-41e9-961b-a30c94afc84c&#39;, this.innerText);">Utilization Overview</div>
+                                    </div>
+                                </div>
+                                <div class="extRaw">
+                                    <div class="raw odd">
+                                        <p l10nkey="question.assessCost" class="left-aligned-text">Analyze the costs of running your environment.</p>
+                                        <div l10nkey="link.assessCost" class="link" onclick="javascript:goTo(&#39;48aef680-6269-473a-95ea-c46cdc14cdd9&#39;, this.innerText);">Assess Cost</div>
+                                    </div>
+                                </div>
+                                <div class="extRaw">
+                                    <div class="raw">
+                                        <p l10nkey="question.vSANStorageCapacity" class="left-aligned-text">Get an overview of vSAN storage capacity along with savings achieved by enabling deduplication and compression.</p>
+                                        <div l10nkey="link.vSANStorageCapacity" class="link" onclick="goTo(&#39;fa82bba1-e9f6-4a98-83e9-178207291a81&#39;, this.innerText);">vSAN Capacity Overview</div>
+                                    </div>
+                                </div>
+                                <div class="extRaw">
+                                    <div class="raw odd">
+                                        <p l10nkey="question.whichClustersHighDemand" class="left-aligned-text">Find out which clusters have the highest resource demands.</p>
+                                        <div l10nkey="link.whichClustersHighDemand" class="link" onclick="goTo(&#39;4b5c602a-6105-48d4-9318-d37c27ba1209&#39;, this.innerText);">Cluster Utilization</div>
+                                    </div>
+                                </div>
+                                <div class="extRaw">
+                                    <div class="raw">
+                                        <p l10nkey="question.howHostsAreUtilized" class="left-aligned-text">Understand how heavily my hosts are being utilized.</p>
+                                        <div l10nkey="link.howHostsAreUtilized" class="link" onclick="goTo(&#39;103d80ba-7588-46e3-83d9-2e02f65a9c85&#39;, this.innerText);">Host Utilization</div>
+                                    </div>
+                                </div>
+                                <div class="extRaw">
+                                    <div class="raw odd">
+                                        <p l10nkey="question.getTrendGraphs" class="left-aligned-text">Get trend graphs of key VM performance metrics for troubleshooting or to share with VM owners.</p>
+                                        <div l10nkey="link.getTrendGraphs" class="link" onclick="goTo(&#39;a165a8b4-8205-4fc2-84b1-7d34d431f6b8&#39;, this.innerText);">VM Utilization</div>
+                                    </div>
+                                </div>
+                                <div class="extRaw">
+                                    <div class="raw">
+                                        <p l10nkey="question.whichDatastoresRunningOutofSpace" class="left-aligned-text">Know if any of my datastores are running out of space and which VMs have disks on them.</p>
+                                        <div l10nkey="link.whichDatastoresRunningOutofSpace" class="link" onclick="goTo(&#39;eeab8718-6aca-4cb9-b7b9-c4a51419a1f9&#39;, this.innerText);">Datastore Utilization</div>
+                                    </div>
+                                </div>
+                                <div class="extRaw">
+                                    <div class="raw odd">
+                                        <p l10nkey="question.whichVMsHighestDiskIOPs" class="left-aligned-text">Find out which VMs contribute the highest disk IOPS and network usage in a cluster.</p>
+                                        <div l10nkey="link.whichVMsHighestDiskIOPs" class="link" onclick="goTo(&#39;d01d7ba0-d0ef-49c9-8ee7-b78b93cbf592&#39;, this.innerText);">Heavy Hitter VMs</div>
+                                    </div>
+                                </div>
+                                <div class="extRaw">
+                                    <div class="raw">
+                                        <p l10nkey="question.vSanStretchedClusters" class="left-aligned-text">Get an overview of vSAN stretched cluster capacity at the preferred and secondary site level.</p>
+                                        <div l10nkey="link.vSanStretchedClusters" class="link" onclick="goTo(&#39;62505a0e-c4d1-4863-8c64-c6755c2e95d2&#39;, this.innerText);">vSAN Stretched Clusters</div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="separated table-tr">
+                            <td>
+                                <p id="section3" l10nkey="title.NeedTroubleshootPerformanceIssues" class="sectionTitle">Performance Troubleshooting</p>
+                                <div class="extRaw">
+                                    <div class="raw odd">
+                                        <p l10nkey="question.optimizePerformance" class="left-aligned-text">List of virtual machines which are potentially struggling for resources and can be sized appropriately for better performance.</p>
+                                        <div l10nkey="link.optimizePerformance" class="link" onclick="javascript:goTo(&#39;b29ed707-3c2c-44e3-8ed6-57b74dd5aedb&#39;, this.innerText);">Optimize Performance</div>
+                                    </div>
+                                </div>
+                                <div class="extRaw">
+                                    <div class="raw">
+                                        <p l10nkey="question.troubleshootCluster" class="left-aligned-text">Have a guided workflow to troubleshoot a specific cluster.</p>
+                                        <div l10nkey="link.troubleshootCluster" class="link" onclick="goTo(&#39;30a2564a-9eaf-4833-9d41-4fd45c57aefb&#39;, this.innerText);">Troubleshoot a Cluster</div>
+                                    </div>
+                                </div>
+                                <div class="extRaw">
+                                    <div class="raw odd">
+                                        <p l10nkey="question.troubleshootHost" class="left-aligned-text">Have a guided workflow to troubleshoot a specific host.</p>
+                                        <div l10nkey="link.troubleshootHost" class="link" onclick="goTo(&#39;ad52daa1-6f4d-4f8a-8f36-e0fcdc1b3f27&#39;, this.innerText);">Troubleshoot a Host</div>
+                                    </div>
+                                </div>
+                                <div class="extRaw">
+                                    <div class="raw">
+                                        <p l10nkey="question.troubleshootVM" class="left-aligned-text">Have a guided workflow to troubleshoot a specific VM.</p>
+                                        <div l10nkey="link.troubleshootVM" class="link" onclick="goTo(&#39;a23edd61-4ba6-4bfa-8a4a-43f4726415e2&#39;, this.innerText);">Troubleshoot a VM</div>
+                                    </div>
+                                </div>
+                                <div class="extRaw">
+                                    <div class="raw odd">
+                                        <p l10nkey="question.troubleshootVSAN" class="left-aligned-text">Have a guided workflow to troubleshoot vSAN components such as cluster, hosts, disk groups and physical disks.</p>
+                                        <div l10nkey="link.troubleshootVSAN" class="link" onclick="goTo(&#39;2e996127-1179-4021-ac6c-e9f208c05d05&#39;, this.innerText);">Troubleshoot vSAN</div>
+                                    </div>
+                                </div>
+                                <div class="extRaw">
+                                    <div class="raw">
+                                        <p l10nkey="question.troubleshootDatastore" class="left-aligned-text">Have a guided workflow to troubleshoot a specific datastore.</p>
+                                        <div l10nkey="link.troubleshootDatastore" class="link" onclick="goTo(&#39;28df0923-dab2-4c44-87ef-57b7662dcf09&#39;, this.innerText);">Troubleshoot a Datastore</div>
+                                    </div>
+                                </div>
+                                <div class="extRaw">
+                                    <div class="raw odd">
+                                        <p l10nkey="question.troubleshootLogInsight" class="left-aligned-text">Review the Log insight dashboards to troubleshoot issues using logs.</p>
+                                        <div l10nkey="link.troubleshootLogInsight" class="link" onclick="goTo(&#39;bee80774-db96-41f3-8c77-cbf1771cabd3&#39;, this.innerText);">Troubleshoot with Logs</div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="separated table-tr last-tr">
+                            <td>
+                                <p id="section4" l10nkey="title.configurationAndCompliance" class="sectionTitle">Configuration and Compliance</p>
+                                <div class="extRaw">
+                                    <div class="raw odd">
+                                        <p l10nkey="question.keySettingsAcrossCluster" class="left-aligned-text">Get an overview of key settings across all of my clusters.</p>
+                                        <div l10nkey="link.keySettingsAcrossCluster" class="link" onclick="goTo(&#39;259e0301-836d-404b-8fdc-1cc52070b174&#39;, this.innerText);">Cluster Configuration</div>
+                                    </div>
+                                </div>
+                                <div class="extRaw">
+                                    <div class="raw">
+                                        <p l10nkey="question.keySettingsAcrossHost" class="left-aligned-text">Get an overview of key settings and versions across all of my hosts.</p>
+                                        <div l10nkey="link.keySettingsAcrossHost" class="link" onclick="goTo(&#39;e1ebd69e-f0bc-413f-98a5-7f5118537818&#39;, this.innerText);">Host Configuration</div>
+                                    </div>
+                                </div>
+                                <div class="extRaw">
+                                    <div class="raw odd">
+                                        <p l10nkey="question.keyVMSettings" class="left-aligned-text">Get an overview of key VM settings and idenitfy outlier VMs.</p>
+                                        <div l10nkey="link.keyVMSettings" class="link" onclick="goTo(&#39;67ae00e5-b400-40de-830c-15f0072470ce&#39;, this.innerText);">VM Configuration</div>
+                                    </div>
+                                </div>
+                                <div class="extRaw">
+                                    <div class="raw">
+                                        <p l10nkey="question.whichVMsAttachedToSwitch" class="left-aligned-text">Find out which hosts and VMs are attached to a distributed switch and which port groups are defined.</p>
+                                        <div l10nkey="link.whichVMsAttachedToSwitch" class="link" onclick="goTo(&#39;b4862971-0aed-456f-8c41-aa5c0ca11604&#39;, this.innerText);">Distributed Switch Configuration</div>
+                                    </div>
+                                </div>
+                                <div class="extRaw">
+                                    <div class="raw odd">
+                                        <p l10nkey="question.vSphereHardeningGuide" class="left-aligned-text">Understand whether my environment is configured in accordance with the vSphere Hardening Guide.</p>
+                                        <div l10nkey="link.vSphereHardeningGuide" class="link" onclick="goTo(&#39;103d30a3-2afa-4016-91d9-b77bb6d87d2a&#39;, this.innerText);">vSphere Security Compliance</div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    
+    <script>
+
+    function setComponentsSize() {
+        var contentDiv = document.getElementById("contentDiv");
+        var welcomeMsgDiv = document.getElementById("header.vrops2").parentNode;
+        var imagesDiv = document.getElementById("plat");
+        tab.onResize();
+        contentDiv.style.height = Math.max(window.innerHeight - welcomeMsgDiv.offsetHeight - imagesDiv.offsetHeight - 50, 150) + "px";
+    }
+    window.addEventListener("resize", function(){
+        setComponentsSize();
+    });
+    setComponentsSize();
+    </script>
+
+</body></html>

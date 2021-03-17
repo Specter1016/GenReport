@@ -13,20 +13,16 @@
    background-image:url("images/resknd/custom/16x16/VCACAdapter_VRA VM WORLD.png") !important;
 }
 
-.resknd_default_epopsadapter_aix {
-   background-image:url("images/resknd/default/16x16/EP Ops Adapter_AIX.png") !important;
+.resknd_custom_apposucp_nginx {
+   background-image:url("images/resknd/custom/16x16/APPOSUCP_Nginx.png") !important;
 }
 
-.resknd_custom_container_department {
-   background-image:url("images/resknd/custom/16x16/Container_Department.png") !important;
+.resknd_custom_container__________________ {
+   background-image:url("images/resknd/custom/16x16/Container__________________.png") !important;
 }
 
-.resknd_default_epopsadapter_windows_fileservermount {
-   background-image:url("images/resknd/default/16x16/EP Ops Adapter_Windows_FileServer Mount.png") !important;
-}
-
-.resknd_default_nsxtadapter_edgenode {
-   background-image:url("images/resknd/default/16x16/NSXTAdapter_EdgeNode.png") !important;
+.resknd_default_sddchealthadapter_vrealizeautomationiaaswebloadbalancerservice {
+   background-image:url("images/resknd/default/16x16/SDDCHealthAdapter_vRealize Automation IaaS Web Load Balancer Service.png") !important;
 }
 
 .resknd_default_vcenteroperationsadapter_vc-ops-controller {
@@ -37,104 +33,96 @@
    background-image:url("images/resknd/default/16x16/Container_vC-Ops-Self-Monitoring.png") !important;
 }
 
-.resknd_default_physicalsanadapter_nfsstorage {
-   background-image:url("images/resknd/default/16x16/PhysicalSANAdapter_NFSStorage.png") !important;
-}
-
 .resknd_default_epopsadapter_solaris_fileserverfile {
    background-image:url("images/resknd/default/16x16/EP Ops Adapter_Solaris_FileServer File.png") !important;
+}
+
+.resknd_default_sddchealthadapter_sddcvroworld {
+   background-image:url("images/resknd/default/16x16/SDDCHealthAdapter_SDDC VRO World.png") !important;
+}
+
+.resknd_default_sddchealthadapter_vcenter {
+   background-image:url("images/resknd/default/16x16/SDDCHealthAdapter_VCENTER.png") !important;
 }
 
 .resknd_custom_container_businessservice {
    background-image:url("images/resknd/custom/16x16/Container_BusinessService.png") !important;
 }
 
-.resknd_custom_container_tier {
-   background-image:url("images/resknd/custom/16x16/Container_Tier.png") !important;
+.resknd_default_epopsadapter_vspheressowebsso {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_vSphere SSO Web SSO.png") !important;
 }
 
-.resknd_default_apposucp_postgresql {
-   background-image:url("images/resknd/default/16x16/APPOSUCP_postgresql.png") !important;
+.trvspec_default_vrealizeautomationapplication {
+   background-image:url("images/traversalspec/16x16/vRealize Automation Application.png") !important;
+}
+
+.resknd_custom_virtualandphysicalsanadapter_virtualsandatastore {
+   background-image:url("images/resknd/custom/16x16/VirtualAndPhysicalSANAdapter_VirtualSANDatastore.png") !important;
+}
+
+.resknd_custom_apposucp_rabbitmq {
+   background-image:url("images/resknd/custom/16x16/APPOSUCP_RabbitMQ.png") !important;
+}
+
+.resknd_default_epopsadapter_vmwareidentitymanager {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_VMware Identity Manager.png") !important;
 }
 
 .resknd_default_epopsadapter_solaris_networkserverinterface {
    background-image:url("images/resknd/default/16x16/EP Ops Adapter_Solaris_NetworkServer Interface.png") !important;
 }
 
-.resknd_default_nsxtadapter_managementnode {
-   background-image:url("images/resknd/default/16x16/NSXTAdapter_ManagementNode.png") !important;
+.resknd_default_epopsadapter_vmware-ststcserver {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_VMware-sts TC Server.png") !important;
 }
 
-.resknd_default_physicalsanadapter_physicaldisk {
-   background-image:url("images/resknd/default/16x16/PhysicalSANAdapter_PhysicalDisk.png") !important;
+.resknd_default_epopsadapter_postgresqldatabase {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_PostgreSQL Database.png") !important;
+}
+
+.resknd_custom_container_ministries {
+   background-image:url("images/resknd/custom/16x16/Container_Ministries.png") !important;
 }
 
 .resknd_default_vmware_lic_openinvsphere {
    background-image:url("images/resknd/default/16x16/VMWARE_LIC_OpenInVSphere.png") !important;
 }
 
-.resknd_default_nsxtadapter_loadbalancervirtualserver {
-   background-image:url("images/resknd/default/16x16/NSXTAdapter_LoadBalancerVirtualServer.png") !important;
+.resknd_custom_apposucp_apachehttpd {
+   background-image:url("images/resknd/custom/16x16/APPOSUCP_Apache HTTPD.png") !important;
 }
 
-.resknd_default_vcacadapter_networkprofile {
-   background-image:url("images/resknd/default/16x16/VCACAdapter_NETWORKPROFILE.png") !important;
+.resknd_default_epopsadapter_aspnet {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_ASP.NET.png") !important;
 }
 
-.trvspec_default_remotechecks-epopsadapter-remotechecksworld {
-   background-image:url("images/traversalspec/16x16/Remote Checks-EP Ops Adapter-Remote Checks World.png") !important;
-}
-
-.resknd_custom_apposucp_kong {
-   background-image:url("images/resknd/custom/16x16/APPOSUCP_kong.png") !important;
-}
-
-.trvspec_default_nsx-ttransportzones-nsxtadapter-nsxtadapterinstance {
-   background-image:url("images/traversalspec/16x16/NSX-T Transport zones-NSXTAdapter-NSXTAdapterInstance.png") !important;
-}
-
-.resknd_default_nsxtadapter_edgeclustergroup {
-   background-image:url("images/resknd/default/16x16/NSXTAdapter_EdgeClusterGroup.png") !important;
+.resknd_default_sddchealthadapter_vrealizeautomationmanagerloadbalancer {
+   background-image:url("images/resknd/default/16x16/SDDCHealthAdapter_vRealize Automation Manager Load Balancer.png") !important;
 }
 
 .resknd_custom_apposucp_hadoop-hdfs {
    background-image:url("images/resknd/custom/16x16/APPOSUCP_hadoop-hdfs.png") !important;
 }
 
-.resknd_default_epopsadapter_solaris_fileserverphysicaldisk {
-   background-image:url("images/resknd/default/16x16/EP Ops Adapter_Solaris_FileServer Physical Disk.png") !important;
-}
-
-.resknd_default_vcenteroperationsadapter_vc-ops-suite-api {
-   background-image:url("images/resknd/default/16x16/vCenter Operations Adapter_vC-Ops-Suite-API.png") !important;
+.adpknd_default_sddchealthadapter {
+   background-image:url("images/adpknd/default/16x16/SDDCHealthAdapter.png") !important;
 }
 
 .resknd_custom_apposucp_activemq_broker {
    background-image:url("images/resknd/custom/16x16/APPOSUCP_activemq_broker.png") !important;
 }
 
-.trvspec_default_nsx-vspherelogicalswitches-nsxtadapter-nsxtadapterinstance {
-   background-image:url("images/traversalspec/16x16/NSX-vSphere Logical Switches-NSXTAdapter-NSXTAdapterInstance.png") !important;
-}
-
-.resknd_default_vmware_hostsystem_power_unknown {
-   background-image:url("images/resknd/default/16x16/VMWARE_HostSystem_power_unknown.png") !important;
-}
-
 .resknd_custom_epopsadapter_epopsadapterresourcesgroup {
    background-image:url("images/resknd/custom/16x16/EP Ops Adapter_EP Ops Adapter Resources Group.png") !important;
 }
 
-.resknd_default_fabricserver_zone {
-   background-image:url("images/resknd/default/16x16/FabricServer_Zone.png") !important;
+.resknd_custom_nsxtadapter_loadbalancervirtualservergroup {
+   background-image:url("images/resknd/custom/16x16/NSXTAdapter_LoadBalancerVirtualServerGroup.png") !important;
 }
 
-.resknd_default_apposucp_jboss {
-   background-image:url("images/resknd/default/16x16/APPOSUCP_jboss.png") !important;
-}
-
-.resknd_default_nsxtadapter_transportzonegroup {
-   background-image:url("images/resknd/default/16x16/NSXTAdapter_TransportZoneGroup.png") !important;
+.resknd_default_sddchealthadapter_vcentercluster {
+   background-image:url("images/resknd/default/16x16/SDDCHealthAdapter_vCenterCluster.png") !important;
 }
 
 .resknd_default_vmware_datastore {
@@ -145,44 +133,12 @@
    background-image:url("images/adpknd/custom/16x16/vRBCAdapter.png") !important;
 }
 
-.resknd_custom_loginsightadapter_loginsightadapterinstance {
-   background-image:url("images/resknd/custom/16x16/LogInsightAdapter_LoginSight Adapter Instance.png") !important;
-}
-
-.resknd_custom_container_geotag {
-   background-image:url("images/resknd/custom/16x16/Container_GeoTag.png") !important;
-}
-
 .resknd_default_apposucp_sharepoint {
    background-image:url("images/resknd/default/16x16/APPOSUCP_sharepoint.png") !important;
 }
 
-.resknd_default_epopsadapter_linux_fileserverdirectory {
-   background-image:url("images/resknd/default/16x16/EP Ops Adapter_Linux_FileServer Directory.png") !important;
-}
-
-.resknd_custom_apposucp_activemq_jvm_memory_usage {
-   background-image:url("images/resknd/custom/16x16/APPOSUCP_activemq_jvm_memory_usage.png") !important;
-}
-
-.resknd_default_vmware_virtualmachine_power_standby {
-   background-image:url("images/resknd/default/16x16/VMWARE_VirtualMachine_power_standby.png") !important;
-}
-
-.resknd_default_vcenteroperationsadapter_vc-ops-node {
-   background-image:url("images/resknd/default/16x16/vCenter Operations Adapter_vC-Ops-Node.png") !important;
-}
-
-.resknd_custom_apposucp_rabbitmq_queue {
-   background-image:url("images/resknd/custom/16x16/APPOSUCP_rabbitmq_queue.png") !important;
-}
-
 .resknd_custom_apposucp_pivotalserver_web_module {
    background-image:url("images/resknd/custom/16x16/APPOSUCP_pivotalserver_web_module.png") !important;
-}
-
-.resknd_default_vcacadapter_blueprint {
-   background-image:url("images/resknd/default/16x16/VCACAdapter_BLUEPRINT.png") !important;
 }
 
 .trvspec_default_vspherehostsandclusters-vmware-vsphereworld {
@@ -193,132 +149,104 @@
    background-image:url("images/adpknd/custom/16x16/LogInsight.png") !important;
 }
 
-.resknd_default_vcenteroperationsadapter_vc-ops-fsdb {
-   background-image:url("images/resknd/default/16x16/vCenter Operations Adapter_vC-Ops-Fsdb.png") !important;
-}
-
 .resknd_default_epopsadapter_linux_cpu {
    background-image:url("images/resknd/default/16x16/EP Ops Adapter_Linux_CPU.png") !important;
 }
 
-.resknd_default_epopsadapter_aix_fileserverphysicaldisk {
-   background-image:url("images/resknd/default/16x16/EP Ops Adapter_AIX_FileServer Physical Disk.png") !important;
+.resknd_default_epopsadapter_vrealizeautomationproxyagent {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_vRealize Automation Proxy Agent.png") !important;
 }
 
 .resknd_custom_httppost_httppostadapterinstance {
    background-image:url("images/resknd/custom/16x16/Http Post_Http Post Adapter Instance.png") !important;
 }
 
-.resknd_default_epopsadapter_icmpcheck {
-   background-image:url("images/resknd/default/16x16/EP Ops Adapter_ICMP Check.png") !important;
-}
-
 .resknd_default_apposucp_weblogic {
    background-image:url("images/resknd/default/16x16/APPOSUCP_weblogic.png") !important;
-}
-
-.resknd_default_epopsadapter_aix_fileservermount {
-   background-image:url("images/resknd/default/16x16/EP Ops Adapter_AIX_FileServer Mount.png") !important;
 }
 
 .resknd_custom_apposucp_kafka {
    background-image:url("images/resknd/custom/16x16/APPOSUCP_kafka.png") !important;
 }
 
-.resknd_default_epopsadapter_windowsservice {
-   background-image:url("images/resknd/default/16x16/EP Ops Adapter_Windows Service.png") !important;
+.resknd_default_epopsadapter_mssqlanalysisservices {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_MSSQL Analysis Services.png") !important;
 }
 
-.adpknd_default_pythonremediationvcenteradapter {
-   background-image:url("images/adpknd/default/16x16/PythonRemediationVcenterAdapter.png") !important;
+.resknd_default_sddchealthadapter_srmserver {
+   background-image:url("images/resknd/default/16x16/SDDCHealthAdapter_SRMSERVER.png") !important;
+}
+
+.resknd_default_apposucp_services {
+   background-image:url("images/resknd/default/16x16/APPOSUCP_Services.png") !important;
+}
+
+.resknd_default_srmadapter_recoveryplans {
+   background-image:url("images/resknd/default/16x16/SrmAdapter_Recovery Plans.png") !important;
 }
 
 .resknd_default_vmware_networkfolder {
    background-image:url("images/resknd/default/16x16/VMWARE_NetworkFolder.png") !important;
 }
 
-.resknd_default_vcenteroperationsadapter_vc-ops-persistence {
-   background-image:url("images/resknd/default/16x16/vCenter Operations Adapter_vC-Ops-Persistence.png") !important;
-}
-
 .resknd_custom_apposucp_couchbase {
    background-image:url("images/resknd/custom/16x16/APPOSUCP_couchbase.png") !important;
 }
 
-.resknd_default_physicalsanadapter_nfsvolume {
-   background-image:url("images/resknd/default/16x16/PhysicalSANAdapter_NFSVolume.png") !important;
+.resknd_default_epopsadapter_vspheressolikewisenetlogonservice {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_vSphere SSO Likewise NetLogon Service.png") !important;
 }
 
-.resknd_default_vcenteroperationsadapter_vc-ops-remote-collector {
-   background-image:url("images/resknd/default/16x16/vCenter Operations Adapter_vC-Ops-Remote-Collector.png") !important;
+.resknd_custom_srmadapter_recoveryplanfolders {
+   background-image:url("images/resknd/custom/16x16/SrmAdapter_Recovery Plan Folders.png") !important;
 }
 
-.resknd_default_nsxtadapter_logicalroutergroup {
-   background-image:url("images/resknd/default/16x16/NSXTAdapter_LogicalRouterGroup.png") !important;
+.resknd_default_virtualandphysicalsanadapter_virtualsandccluster {
+   background-image:url("images/resknd/default/16x16/VirtualAndPhysicalSANAdapter_VirtualSANDCCluster.png") !important;
 }
 
 .resknd_default_vmware_datastorefolder {
    background-image:url("images/resknd/default/16x16/VMWARE_DatastoreFolder.png") !important;
 }
 
-.resknd_default_nsxtadapter_nsxtadapterinstance {
-   background-image:url("images/resknd/default/16x16/NSXTAdapter_NSXTAdapterInstance.png") !important;
-}
-
-.resknd_custom_apposucp_ceph {
-   background-image:url("images/resknd/custom/16x16/APPOSUCP_ceph.png") !important;
-}
-
-.resknd_custom_apposucp_redis {
-   background-image:url("images/resknd/custom/16x16/APPOSUCP_redis.png") !important;
-}
-
-.resknd_custom_apposucp_twemproxy {
-   background-image:url("images/resknd/custom/16x16/APPOSUCP_twemproxy.png") !important;
+.resknd_default_epopsadapter_aspnetapplication {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_ASP.NET Application.png") !important;
 }
 
 .resknd_custom_container_function {
    background-image:url("images/resknd/custom/16x16/Container_Function.png") !important;
 }
 
-.resknd_default_nsxtadapter_logicalswitchgroup {
-   background-image:url("images/resknd/default/16x16/NSXTAdapter_LogicalSwitchGroup.png") !important;
-}
-
-.resknd_default_vcenteroperationsadapter_vc-ops-product-ui {
-   background-image:url("images/resknd/default/16x16/vCenter Operations Adapter_vC-Ops-Product-UI.png") !important;
-}
-
-.resknd_custom_apposucp_jenkins {
-   background-image:url("images/resknd/custom/16x16/APPOSUCP_jenkins.png") !important;
+.resknd_custom_apposucp_twemproxy {
+   background-image:url("images/resknd/custom/16x16/APPOSUCP_twemproxy.png") !important;
 }
 
 .resknd_custom_apposucp_sharepoint_web_server {
    background-image:url("images/resknd/custom/16x16/APPOSUCP_sharepoint_web_server.png") !important;
 }
 
-.resknd_default_nsxtadapter_loadbalancervirtualservergroup {
-   background-image:url("images/resknd/default/16x16/NSXTAdapter_LoadBalancerVirtualServerGroup.png") !important;
+.resknd_default_epopsadapter_vrealizeautomationloadbalancergroup {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_vRealize Automation Load Balancer (Group).png") !important;
 }
 
 .resknd_custom_apposucp_activedirectory_security {
    background-image:url("images/resknd/custom/16x16/APPOSUCP_activedirectory_security.png") !important;
 }
 
+.resknd_custom_nsxtadapter_logicalswitchgroup {
+   background-image:url("images/resknd/custom/16x16/NSXTAdapter_LogicalSwitchGroup.png") !important;
+}
+
 .resknd_custom_apposucp_consul {
    background-image:url("images/resknd/custom/16x16/APPOSUCP_consul.png") !important;
 }
 
-.resknd_custom_apposucp_netresponse_tcp {
-   background-image:url("images/resknd/custom/16x16/APPOSUCP_netresponse_tcp.png") !important;
-}
-
-.resknd_default_fabricserver_activezoneset {
-   background-image:url("images/resknd/default/16x16/FabricServer_ActiveZoneSet.png") !important;
-}
-
 .resknd_default_vmware_hostsystem {
    background-image:url("images/resknd/default/16x16/VMWARE_HostSystem.png") !important;
+}
+
+.resknd_default_epopsadapter_iiswasserviceapplicationpool {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_IIS WAS Service Application Pool.png") !important;
 }
 
 .resknd_default_vmware_virtualmachine_power_unknown {
@@ -329,80 +257,84 @@
    background-image:url("images/resknd/default/16x16/VMWARE_ClusterComputeResource.png") !important;
 }
 
-.trvspec_default_edgeservices {
-   background-image:url("images/traversalspec/16x16/EdgeServices.png") !important;
-}
-
-.resknd_default_fabricserver_physicalsanfabricinstance {
-   background-image:url("images/resknd/default/16x16/FabricServer_Physical SAN Fabric Instance.png") !important;
-}
-
-.trvspec_default_fabricview {
-   background-image:url("images/traversalspec/16x16/FabricView.png") !important;
+.resknd_custom_sddchealthadapter_vrbazuremodule {
+   background-image:url("images/resknd/custom/16x16/SDDCHealthAdapter_vRBAzureModule.png") !important;
 }
 
 .resknd_default_vmware_vsphereworld {
    background-image:url("images/resknd/default/16x16/VMWARE_vSphere World.png") !important;
 }
 
+.trvspec_default_fabricview {
+   background-image:url("images/traversalspec/16x16/FabricView.png") !important;
+}
+
 .trvspec_default_vcactenantview-vcacadapter-tenant {
    background-image:url("images/traversalspec/16x16/vCAC Tenant View-VCACAdapter-TENANT.png") !important;
-}
-
-.resknd_default_nsxtadapter_tier1logicalroutergroup {
-   background-image:url("images/resknd/default/16x16/NSXTAdapter_Tier1LogicalRouterGroup.png") !important;
-}
-
-.resknd_default_nsxtadapter_logicalrouter {
-   background-image:url("images/resknd/default/16x16/NSXTAdapter_LogicalRouter.png") !important;
 }
 
 .resknd_default_vmware_datastore_power_off {
    background-image:url("images/resknd/default/16x16/VMWARE_Datastore_power_off.png") !important;
 }
 
-.resknd_custom_apposucp_marathon {
-   background-image:url("images/resknd/custom/16x16/APPOSUCP_marathon.png") !important;
+.resknd_default_virtualandphysicalsanadapter_virtualsandiskgroup {
+   background-image:url("images/resknd/default/16x16/VirtualAndPhysicalSANAdapter_VirtualSANDiskGroup.png") !important;
 }
 
-.resknd_custom_apposucp_weblogic_jms_runtime {
-   background-image:url("images/resknd/custom/16x16/APPOSUCP_weblogic_jms_runtime.png") !important;
+.resknd_custom_sddchealthadapter_vrbdcmodule {
+   background-image:url("images/resknd/custom/16x16/SDDCHealthAdapter_vRBDcModule.png") !important;
 }
 
-.resknd_default_vcacadapter_reservation {
-   background-image:url("images/resknd/default/16x16/VCACAdapter_RESERVATION.png") !important;
+.resknd_custom_sddchealthadapter_vrbvcamodule {
+   background-image:url("images/resknd/custom/16x16/SDDCHealthAdapter_vRBVcaModule.png") !important;
+}
+
+.resknd_custom_sddchealthadapter_vrbccmodule {
+   background-image:url("images/resknd/custom/16x16/SDDCHealthAdapter_vRBCcModule.png") !important;
 }
 
 .adpknd_custom_voaadapter {
    background-image:url("images/adpknd/custom/16x16/VOAAdapter.png") !important;
 }
 
-.resknd_default_vcacadapter_storagereservationpolicy {
-   background-image:url("images/resknd/default/16x16/VCACAdapter_STORAGERESERVATIONPOLICY.png") !important;
-}
-
 .resknd_custom_apposucp_activedirectory_dns {
    background-image:url("images/resknd/custom/16x16/APPOSUCP_activedirectory_dns.png") !important;
-}
-
-.resknd_default_epopsadapter_linux_networkserverinterface {
-   background-image:url("images/resknd/default/16x16/EP Ops Adapter_Linux_NetworkServer Interface.png") !important;
 }
 
 .resknd_custom_apposucp_chef {
    background-image:url("images/resknd/custom/16x16/APPOSUCP_chef.png") !important;
 }
 
-.resknd_default_physicalsanadapter_hostadapter {
-   background-image:url("images/resknd/default/16x16/PhysicalSANAdapter_HostAdapter.png") !important;
-}
-
 .adpknd_custom_httppost {
    background-image:url("images/adpknd/custom/16x16/Http Post.png") !important;
 }
 
-.resknd_custom_apposucp_activemq_os {
-   background-image:url("images/resknd/custom/16x16/APPOSUCP_activemq_os.png") !important;
+.resknd_default_epopsadapter_vrealizeautomationdemgroup {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_vRealize Automation DEM (Group).png") !important;
+}
+
+.resknd_default_virtualandphysicalsanadapter_virtualsanfaultdomain {
+   background-image:url("images/resknd/default/16x16/VirtualAndPhysicalSANAdapter_VirtualSANFaultDomain.png") !important;
+}
+
+.resknd_custom_epopsadapter_vrealizeautomationiaaswebrelationshipdiscoveryservice {
+   background-image:url("images/resknd/custom/16x16/EP Ops Adapter_vRealize Automation IaaS Web Relationship discovery service.png") !important;
+}
+
+.resknd_default_epopsadapter_vrealizeautomationapplication {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_vRealize Automation Application.png") !important;
+}
+
+.resknd_default_epopsadapter_vrealizeautomationiaaswebgroup {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_vRealize Automation IaaS Web (Group).png") !important;
+}
+
+.resknd_default_epopsadapter_vrealizeautomationapplicationservicesgroup {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_vRealize Automation Application Services (Group).png") !important;
+}
+
+.resknd_custom_sddchealthadapter_vcenterappliancehealthservices {
+   background-image:url("images/resknd/custom/16x16/SDDCHealthAdapter_vCenterApplianceHealthServices.png") !important;
 }
 
 .resknd_default_apposucp_apache {
@@ -413,28 +345,28 @@
    background-image:url("images/resknd/default/16x16/EP Ops Adapter_Windows_FileServer Directory Tree.png") !important;
 }
 
+.resknd_custom_apposucp_apachezookeeper {
+   background-image:url("images/resknd/custom/16x16/APPOSUCP_Apache ZooKeeper.png") !important;
+}
+
 .resknd_custom_apposucp_hadoop-yarn {
    background-image:url("images/resknd/custom/16x16/APPOSUCP_hadoop-yarn.png") !important;
 }
 
-.resknd_custom_container_universe {
-   background-image:url("images/resknd/custom/16x16/Container_Universe.png") !important;
+.resknd_custom_sddchealthadapter_vrbvcacmodule {
+   background-image:url("images/resknd/custom/16x16/SDDCHealthAdapter_vRBVcacModule.png") !important;
 }
 
-.resknd_default_apposucp_nginx {
-   background-image:url("images/resknd/default/16x16/APPOSUCP_nginx.png") !important;
-}
-
-.resknd_default_physicalsanadapter_physicalsanadapterinstance {
-   background-image:url("images/resknd/default/16x16/PhysicalSANAdapter_PhysicalSANAdapter Instance.png") !important;
+.resknd_default_epopsadapter_vspheressolikewiseinput-outputservice {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_vSphere SSO Likewise Input-Output Service.png") !important;
 }
 
 .resknd_custom_apposucp_msexchange_domain_controller {
    background-image:url("images/resknd/custom/16x16/APPOSUCP_msexchange_domain_controller.png") !important;
 }
 
-.adpknd_custom_epopsadapter {
-   background-image:url("images/adpknd/custom/16x16/EP Ops Adapter.png") !important;
+.resknd_custom_virtualandphysicalsanadapter_virtualandphysicalsanadapterinstance {
+   background-image:url("images/resknd/custom/16x16/VirtualAndPhysicalSANAdapter_VirtualAndPhysicalSANAdapter Instance.png") !important;
 }
 
 .adpknd_custom_openapi {
@@ -445,112 +377,108 @@
    background-image:url("images/resknd/default/16x16/APPOSUCP_activedirectory.png") !important;
 }
 
-.resknd_default_vmware_virtualmachine {
-   background-image:url("images/resknd/default/16x16/VMWARE_VirtualMachine.png") !important;
+.resknd_default_sddchealthadapter_vsan_vcenter {
+   background-image:url("images/resknd/default/16x16/SDDCHealthAdapter_VSAN_VCENTER.png") !important;
 }
 
-.resknd_default_nsxtadapter_firewallsection {
-   background-image:url("images/resknd/default/16x16/NSXTAdapter_FirewallSection.png") !important;
+.resknd_custom_sddchealthadapter_vropslicensing {
+   background-image:url("images/resknd/custom/16x16/SDDCHealthAdapter_vRopsLicensing.png") !important;
+}
+
+.resknd_default_vmware_virtualmachine {
+   background-image:url("images/resknd/default/16x16/VMWARE_VirtualMachine.png") !important;
 }
 
 .resknd_custom_openapi_openapiadapterinstance {
    background-image:url("images/resknd/custom/16x16/OPENAPI_OPENAPI Adapter Instance.png") !important;
 }
 
-.resknd_default_epopsadapter_linux_fileserverlogicaldisk {
-   background-image:url("images/resknd/default/16x16/EP Ops Adapter_Linux_FileServer Logical Disk.png") !important;
+.resknd_default_epopsadapter_vspheressolikewiseservicemanager {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_vSphere SSO Likewise Service Manager.png") !important;
 }
 
-.resknd_custom_apposucp_elasticsearch {
-   background-image:url("images/resknd/custom/16x16/APPOSUCP_elasticsearch.png") !important;
-}
-
-.resknd_custom_apposucp_fluentd {
-   background-image:url("images/resknd/custom/16x16/APPOSUCP_fluentd.png") !important;
+.resknd_default_epopsadapter_mssqlworld {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_MSSQL World.png") !important;
 }
 
 .resknd_custom_container_containeradapterinstance {
    background-image:url("images/resknd/custom/16x16/Container_ContainerAdapterInstance.png") !important;
 }
 
-.resknd_default_epopsadapter_solaris_cpu {
-   background-image:url("images/resknd/default/16x16/EP Ops Adapter_Solaris_CPU.png") !important;
+.resknd_custom_sddchealthadapter_vropslicensegroup {
+   background-image:url("images/resknd/custom/16x16/SDDCHealthAdapter_vRopsLicenseGroup.png") !important;
 }
 
-.resknd_custom_apposucp_hadoop-mapreduce {
-   background-image:url("images/resknd/custom/16x16/APPOSUCP_hadoop-mapreduce.png") !important;
+.resknd_custom_sddchealthadapter_eventlog-service {
+   background-image:url("images/resknd/custom/16x16/SDDCHealthAdapter_eventlog-service.png") !important;
+}
+
+.resknd_default_epopsadapter_vrealizeautomationiaasrepository {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_vRealize Automation IaaS Repository.png") !important;
 }
 
 .resknd_custom_apposucp_ucpserver {
    background-image:url("images/resknd/custom/16x16/APPOSUCP_UCPSERVER.png") !important;
 }
 
+.resknd_custom_epopsadapter_vrealizebusinessstandarddatacollector {
+   background-image:url("images/resknd/custom/16x16/EP Ops Adapter_vRealize Business Standard Data Collector.png") !important;
+}
+
+.resknd_custom_sddchealthadapter_iaas-proxy-provider {
+   background-image:url("images/resknd/custom/16x16/SDDCHealthAdapter_iaas-proxy-provider.png") !important;
+}
+
 .resknd_custom_nsxtadapter_managementservicegroup {
    background-image:url("images/resknd/custom/16x16/NSXTAdapter_ManagementServiceGroup.png") !important;
+}
+
+.resknd_default_epopsadapter_vrealizeorchestratorappserver {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_vRealize Orchestrator App Server.png") !important;
 }
 
 .trvspec_default_vcactenant-deployment-vmview-vcacadapter-tenant {
    background-image:url("images/traversalspec/16x16/vCAC Tenant-Deployment-VM View-VCACAdapter-TENANT.png") !important;
 }
 
-.resknd_default_apposucp_msiis {
-   background-image:url("images/resknd/default/16x16/APPOSUCP_msiis.png") !important;
-}
-
-.resknd_custom_apposucp_rabbitmq_exchange {
-   background-image:url("images/resknd/custom/16x16/APPOSUCP_rabbitmq_exchange.png") !important;
+.resknd_custom_sddchealthadapter_workitem-service {
+   background-image:url("images/resknd/custom/16x16/SDDCHealthAdapter_workitem-service.png") !important;
 }
 
 .resknd_custom_apposucp_rabbitmq_virtual_host {
    background-image:url("images/resknd/custom/16x16/APPOSUCP_rabbitmq_virtual_host.png") !important;
 }
 
-.resknd_custom_apposucp_activedirectory_database {
-   background-image:url("images/resknd/custom/16x16/APPOSUCP_activedirectory_database.png") !important;
+.resknd_default_virtualandphysicalsanadapter_capacitydisk {
+   background-image:url("images/resknd/default/16x16/VirtualAndPhysicalSANAdapter_CapacityDisk.png") !important;
 }
 
-.resknd_default_epopsadapter_solaris_fileserverdirectorytree {
-   background-image:url("images/resknd/default/16x16/EP Ops Adapter_Solaris_FileServer Directory Tree.png") !important;
+.resknd_custom_apposucp_activedirectory_database {
+   background-image:url("images/resknd/custom/16x16/APPOSUCP_activedirectory_database.png") !important;
 }
 
 .resknd_default_epopsadapter_aix_fileserverlogicaldisk {
    background-image:url("images/resknd/default/16x16/EP Ops Adapter_AIX_FileServer Logical Disk.png") !important;
 }
 
-.resknd_default_nsxtadapter_logicalswitch {
-   background-image:url("images/resknd/default/16x16/NSXTAdapter_LogicalSwitch.png") !important;
-}
-
 .resknd_default_epopsadapter_solaris_fileserverblockdevice {
    background-image:url("images/resknd/default/16x16/EP Ops Adapter_Solaris_FileServer Block Device.png") !important;
 }
 
-.resknd_default_epopsadapter_operatingsystemsworld {
-   background-image:url("images/resknd/default/16x16/EP Ops Adapter_Operating Systems World.png") !important;
-}
-
-.adpknd_custom_container {
-   background-image:url("images/adpknd/custom/16x16/Container.png") !important;
-}
-
-.resknd_default_nsxtadapter_managementcluster {
-   background-image:url("images/resknd/default/16x16/NSXTAdapter_ManagementCluster.png") !important;
-}
-
-.resknd_custom_apposucp_ping {
-   background-image:url("images/resknd/custom/16x16/APPOSUCP_ping.png") !important;
+.resknd_default_nsxtadapter_logicalswitch {
+   background-image:url("images/resknd/default/16x16/NSXTAdapter_LogicalSwitch.png") !important;
 }
 
 .resknd_default_vmware_vmwareadapterinstance {
    background-image:url("images/resknd/default/16x16/VMWARE_VMwareAdapter Instance.png") !important;
 }
 
-.trvspec_default_nsx-tcontrolplane-nsxtadapter-nsxtadapterinstance {
-   background-image:url("images/traversalspec/16x16/NSX-T Control Plane-NSXTAdapter-NSXTAdapterInstance.png") !important;
+.resknd_default_sddchealthadapter_nsxmanager {
+   background-image:url("images/resknd/default/16x16/SDDCHealthAdapter_NSXManager.png") !important;
 }
 
-.resknd_custom_ucsmadapter_ucsmadapterinstance {
-   background-image:url("images/resknd/custom/16x16/UCSMAdapter_UCSMAdapter Instance.png") !important;
+.resknd_default_epopsadapter_vmwarereverseproxyserviceserver {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_VMware Reverse Proxy Service Server.png") !important;
 }
 
 .resknd_custom_loginsight_loginsightauth {
@@ -569,76 +497,60 @@
    background-image:url("images/resknd/default/16x16/VMWARE_Datastore_power_unknown.png") !important;
 }
 
-.resknd_custom_apposucp_msexchange_win_service {
-   background-image:url("images/resknd/custom/16x16/APPOSUCP_msexchange_win_service.png") !important;
+.resknd_default_epopsadapter_vspheressovmwareidentitymanagementservice {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_vSphere SSO VMware Identity Management Service.png") !important;
 }
 
 .trvspec_default_vspherenetworking-vmware-vsphereworld {
    background-image:url("images/traversalspec/16x16/vSphere Networking-VMWARE-vSphere World.png") !important;
 }
 
+.resknd_default_apposucp_servicetype {
+   background-image:url("images/resknd/default/16x16/APPOSUCP_ServiceType.png") !important;
+}
+
 .resknd_default_apposucp_tomcat {
    background-image:url("images/resknd/default/16x16/APPOSUCP_tomcat.png") !important;
 }
 
-.resknd_default_vmware_hostsystem_power_off {
-   background-image:url("images/resknd/default/16x16/VMWARE_HostSystem_power_off.png") !important;
-}
-
-.adpknd_custom_vrealizeopsmgrapi {
-   background-image:url("images/adpknd/custom/16x16/vRealizeOpsMgrAPI.png") !important;
+.resknd_default_sddchealthadapter_nsxrabbitmqservice {
+   background-image:url("images/resknd/default/16x16/SDDCHealthAdapter_NSXRabbitmqService.png") !important;
 }
 
 .trvspec_default_nsx-tlogicalrouters-nsxtadapter-nsxtadapterinstance {
    background-image:url("images/traversalspec/16x16/NSX-T Logical Routers-NSXTAdapter-NSXTAdapterInstance.png") !important;
 }
 
-.resknd_default_pythonremediationvcenteradapter_pythonremediationvcenteradapterinstance {
-   background-image:url("images/resknd/default/16x16/PythonRemediationVcenterAdapter_PythonRemediationVcenterAdapter Instance.png") !important;
-}
-
-.trvspec_default_vcactenant-blueprintview-vcacadapter-tenant {
-   background-image:url("images/traversalspec/16x16/vCAC Tenant-Blueprint View-VCACAdapter-TENANT.png") !important;
+.resknd_custom_sddchealthadapter_srmcluster {
+   background-image:url("images/resknd/custom/16x16/SDDCHealthAdapter_SRMCluster.png") !important;
 }
 
 .resknd_default_epopsadapter_epopsagent {
    background-image:url("images/resknd/default/16x16/EP Ops Adapter_EP Ops Agent.png") !important;
 }
 
+.trvspec_default_vcactenant-blueprintview-vcacadapter-tenant {
+   background-image:url("images/traversalspec/16x16/vCAC Tenant-Blueprint View-VCACAdapter-TENANT.png") !important;
+}
+
+.adpknd_default_applicationdiscovery {
+   background-image:url("images/adpknd/default/16x16/APPLICATIONDISCOVERY.png") !important;
+}
+
 .resknd_default_vmware_hostsystem_power_standby {
    background-image:url("images/resknd/default/16x16/VMWARE_HostSystem_power_standby.png") !important;
 }
 
-.resknd_custom_apposucp_etcd {
-   background-image:url("images/resknd/custom/16x16/APPOSUCP_etcd.png") !important;
-}
-
-.adpknd_default_vcacadapter {
-   background-image:url("images/adpknd/default/16x16/VCACAdapter.png") !important;
-}
-
-.resknd_default_apposucp_mongodb {
-   background-image:url("images/resknd/default/16x16/APPOSUCP_mongodb.png") !important;
-}
-
-.resknd_default_epopsadapter_windows {
-   background-image:url("images/resknd/default/16x16/EP Ops Adapter_Windows.png") !important;
-}
-
-.adpknd_default_vcenteroperationsadapter {
-   background-image:url("images/adpknd/default/16x16/vCenter Operations Adapter.png") !important;
-}
-
-.resknd_default_vmware_hostfolder {
-   background-image:url("images/resknd/default/16x16/VMWARE_HostFolder.png") !important;
-}
-
-.resknd_default_epopsadapter_aix_fileserverdirectorytree {
-   background-image:url("images/resknd/default/16x16/EP Ops Adapter_AIX_FileServer Directory Tree.png") !important;
+.resknd_custom_sddchealthadapter_nsxedges {
+   background-image:url("images/resknd/custom/16x16/SDDCHealthAdapter_NSXEdges.png") !important;
 }
 
 .resknd_default_vmware_storagepod {
    background-image:url("images/resknd/default/16x16/VMWARE_StoragePod.png") !important;
+}
+
+.resknd_default_sddchealthadapter_vrealizeautomationdemorchestrator {
+   background-image:url("images/resknd/default/16x16/SDDCHealthAdapter_vRealize Automation DEM Orchestrator.png") !important;
 }
 
 .resknd_custom_epopsadapter_hpux {
@@ -649,16 +561,12 @@
    background-image:url("images/resknd/default/16x16/EP Ops Adapter_Windows_FileServer Directory.png") !important;
 }
 
-.resknd_custom_apposucp_pivotalserver_threadpool {
-   background-image:url("images/resknd/custom/16x16/APPOSUCP_pivotalserver_threadpool.png") !important;
+.resknd_default_sddchealthadapter_vrealizeorchestratorconfigurator {
+   background-image:url("images/resknd/default/16x16/SDDCHealthAdapter_vRealize Orchestrator Configurator.png") !important;
 }
 
-.resknd_default_fabricserver_logicalswitch {
-   background-image:url("images/resknd/default/16x16/FabricServer_LogicalSwitch.png") !important;
-}
-
-.resknd_default_epopsadapter_windows_fileserverblockdevice {
-   background-image:url("images/resknd/default/16x16/EP Ops Adapter_Windows_FileServer Block Device.png") !important;
+.resknd_default_epopsadapter_mssqlagent {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_MSSQL Agent.png") !important;
 }
 
 .resknd_custom_apposucp_apachemesos {
@@ -669,16 +577,12 @@
    background-image:url("images/resknd/default/16x16/VMWARE_VirtualMachine_power_on.png") !important;
 }
 
-.resknd_default_epopsadapter_aix_cpu {
-   background-image:url("images/resknd/default/16x16/EP Ops Adapter_AIX_CPU.png") !important;
+.resknd_default_sddchealthadapter_vrbcluster {
+   background-image:url("images/resknd/default/16x16/SDDCHealthAdapter_VRBCluster.png") !important;
 }
 
-.adpknd_default_loginsightadapter {
-   background-image:url("images/adpknd/default/16x16/LogInsightAdapter.png") !important;
-}
-
-.resknd_default_vcenteroperationsadapter_vc-ops-watchdog {
-   background-image:url("images/resknd/default/16x16/vCenter Operations Adapter_vC-Ops-Watchdog.png") !important;
+.resknd_default_epopsadapter_vrealizeorchestratorgroup {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_vRealize Orchestrator (Group).png") !important;
 }
 
 .resknd_custom_apposucp_haproxy {
@@ -689,60 +593,56 @@
    background-image:url("images/resknd/custom/16x16/APPOSUCP_phpfpm.png") !important;
 }
 
-.resknd_custom_apposucp_weblogic_jta_runtime {
-   background-image:url("images/resknd/custom/16x16/APPOSUCP_weblogic_jta_runtime.png") !important;
+.resknd_default_epopsadapter_vrealizeautomationserverloadbalancer {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_vRealize Automation Server Load Balancer.png") !important;
 }
 
-.trvspec_default_vcopsclusters-vcenteroperationsadapter-vc-ops-cluster {
-   background-image:url("images/traversalspec/16x16/vC Ops Clusters-vCenter Operations Adapter-vC-Ops-Cluster.png") !important;
+.resknd_default_sddchealthadapter_sddcvcenterworld {
+   background-image:url("images/resknd/default/16x16/SDDCHealthAdapter_SDDC VCENTER World.png") !important;
 }
 
 .resknd_custom_container_environment {
    background-image:url("images/resknd/custom/16x16/Container_Environment.png") !important;
 }
 
-.resknd_custom_container_windows {
-   background-image:url("images/resknd/custom/16x16/Container_Windows.png") !important;
+.resknd_custom_sddchealthadapter_vcenterlicense {
+   background-image:url("images/resknd/custom/16x16/SDDCHealthAdapter_vCenterLicense.png") !important;
+}
+
+.resknd_default_virtualandphysicalsanadapter_virtualsanwitnesshost {
+   background-image:url("images/resknd/default/16x16/VirtualAndPhysicalSANAdapter_VirtualSANWitnessHost.png") !important;
+}
+
+.resknd_default_apposucp_applicationdiscoveryadapterinstance {
+   background-image:url("images/resknd/default/16x16/APPOSUCP_ApplicationDiscoveryAdapterInstance.png") !important;
 }
 
 .resknd_custom_apposucp_msexchange_web_server {
    background-image:url("images/resknd/custom/16x16/APPOSUCP_msexchange_web_server.png") !important;
 }
 
-.resknd_default_vcenteroperationsadapter_vc-ops-casa {
-   background-image:url("images/resknd/default/16x16/vCenter Operations Adapter_vC-Ops-CaSA.png") !important;
-}
-
-.resknd_default_epopsadapter_solaris_fileserverdirectory {
-   background-image:url("images/resknd/default/16x16/EP Ops Adapter_Solaris_FileServer Directory.png") !important;
-}
-
 .resknd_custom_container_aimplugin {
    background-image:url("images/resknd/custom/16x16/Container_AIM Plugin.png") !important;
 }
 
-.resknd_default_vmware_customdatacenter {
-   background-image:url("images/resknd/default/16x16/VMWARE_CustomDatacenter.png") !important;
+.resknd_default_srmadapter_srmsite {
+   background-image:url("images/resknd/default/16x16/SrmAdapter_SRM Site.png") !important;
 }
 
 .trvspec_default_customdatacenters-vmware-customdatacenter {
    background-image:url("images/traversalspec/16x16/Custom Datacenters-VMWARE-CustomDatacenter.png") !important;
 }
 
+.resknd_default_sddchealthadapter_nsxcontrollerservice {
+   background-image:url("images/resknd/default/16x16/SDDCHealthAdapter_NSXControllerService.png") !important;
+}
+
 .adpknd_default_vmware {
    background-image:url("images/adpknd/default/16x16/VMWARE.png") !important;
 }
 
-.resknd_default_epopsadapter_windows_cpu {
-   background-image:url("images/resknd/default/16x16/EP Ops Adapter_Windows_CPU.png") !important;
-}
-
 .resknd_default_epopsadapter_windows_fileserverfile {
    background-image:url("images/resknd/default/16x16/EP Ops Adapter_Windows_FileServer File.png") !important;
-}
-
-.resknd_custom_vcacadapter_user {
-   background-image:url("images/resknd/custom/16x16/VCACAdapter_USER.png") !important;
 }
 
 .resknd_custom_apposucp_ms_iis_http_queues {
@@ -757,56 +657,24 @@
    background-image:url("images/resknd/default/16x16/VMWARE_HostSystem_power_on.png") !important;
 }
 
-.resknd_custom_apposucp_activemq_topic {
-   background-image:url("images/resknd/custom/16x16/APPOSUCP_activemq_topic.png") !important;
-}
-
-.resknd_default_nsxtadapter_transportnode {
-   background-image:url("images/resknd/default/16x16/NSXTAdapter_TransportNode.png") !important;
-}
-
-.resknd_custom_apposucp_ms_iis_win_proc {
-   background-image:url("images/resknd/custom/16x16/APPOSUCP_ms_iis_win_proc.png") !important;
-}
-
 .resknd_custom_apposucp_activedirectory_services {
    background-image:url("images/resknd/custom/16x16/APPOSUCP_activedirectory_services.png") !important;
-}
-
-.resknd_custom_apposucp_msexchange_database {
-   background-image:url("images/resknd/custom/16x16/APPOSUCP_msexchange_database.png") !important;
 }
 
 .resknd_default_vcenteroperationsadapter_vc-ops-admin-ui {
    background-image:url("images/resknd/default/16x16/vCenter Operations Adapter_vC-Ops-Admin-UI.png") !important;
 }
 
-.resknd_default_vcacadapter_tenant {
-   background-image:url("images/resknd/default/16x16/VCACAdapter_TENANT.png") !important;
-}
-
 .resknd_custom_apposucp_bitbucket {
    background-image:url("images/resknd/custom/16x16/APPOSUCP_bitbucket.png") !important;
 }
 
-.resknd_custom_nsxtadapter_nsservice {
-   background-image:url("images/resknd/custom/16x16/NSXTAdapter_NSService.png") !important;
+.resknd_custom_sddchealthadapter_vrocluster {
+   background-image:url("images/resknd/custom/16x16/SDDCHealthAdapter_vRO Cluster.png") !important;
 }
 
-.resknd_custom_epopsadapter_remotechecksworld {
-   background-image:url("images/resknd/custom/16x16/EP Ops Adapter_Remote Checks World.png") !important;
-}
-
-.resknd_custom_apposucp_websphere {
-   background-image:url("images/resknd/custom/16x16/APPOSUCP_websphere.png") !important;
-}
-
-.resknd_custom_container_vmvra {
-   background-image:url("images/resknd/custom/16x16/Container_VM vRA.png") !important;
-}
-
-.resknd_custom_apposucp_jboss_jvm_memory {
-   background-image:url("images/resknd/custom/16x16/APPOSUCP_jboss_jvm_memory.png") !important;
+.resknd_default_sddchealthadapter_sddcvraworld {
+   background-image:url("images/resknd/default/16x16/SDDCHealthAdapter_SDDC VRA World.png") !important;
 }
 
 .resknd_custom_loginsight_loginsightlogserverhost {
@@ -817,32 +685,20 @@
    background-image:url("images/resknd/default/16x16/EP Ops Adapter_Linux_FileServer File.png") !important;
 }
 
-.trvspec_default_physicalsan-physicalsanadapter-physicalsanadapterinstance {
-   background-image:url("images/traversalspec/16x16/Physical SAN-PhysicalSANAdapter-PhysicalSANAdapter Instance.png") !important;
+.resknd_custom_sddchealthadapter_externalpsc {
+   background-image:url("images/resknd/custom/16x16/SDDCHealthAdapter_External PSC.png") !important;
 }
 
 .resknd_custom_apposucp_msexchange_database_instance {
    background-image:url("images/resknd/custom/16x16/APPOSUCP_msexchange_database_instance.png") !important;
 }
 
-.resknd_default_epopsadapter_aix_fileserverfile {
-   background-image:url("images/resknd/default/16x16/EP Ops Adapter_AIX_FileServer File.png") !important;
-}
-
 .resknd_default_vmware_datacenter {
    background-image:url("images/resknd/default/16x16/VMWARE_Datacenter.png") !important;
 }
 
-.resknd_default_epopsadapter_tcpcheck {
-   background-image:url("images/resknd/default/16x16/EP Ops Adapter_TCP Check.png") !important;
-}
-
-.resknd_custom_apposucp_zookeeper {
-   background-image:url("images/resknd/custom/16x16/APPOSUCP_zookeeper.png") !important;
-}
-
-.resknd_default_epopsadapter_linux_fileserverblockdevice {
-   background-image:url("images/resknd/default/16x16/EP Ops Adapter_Linux_FileServer Block Device.png") !important;
+.resknd_default_epopsadapter_mssqlreportingservices {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_MSSQL Reporting Services.png") !important;
 }
 
 .resknd_custom_apposucp_activedirectory_dfsn {
@@ -853,88 +709,96 @@
    background-image:url("images/resknd/custom/16x16/APPOSUCP_postgresql_database.png") !important;
 }
 
-.resknd_custom_apposucp_mongodb_databases {
-   background-image:url("images/resknd/custom/16x16/APPOSUCP_mongodb_databases.png") !important;
+.resknd_default_epopsadapter_vrealizeautomationmanagerloadbalancer {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_vRealize Automation Manager Load Balancer.png") !important;
 }
 
 .resknd_custom_container_location {
    background-image:url("images/resknd/custom/16x16/Container_Location.png") !important;
 }
 
-.resknd_default_apposucp_mssql {
-   background-image:url("images/resknd/default/16x16/APPOSUCP_mssql.png") !important;
+.resknd_default_epopsadapter_mssqldatabase {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_MSSQL Database.png") !important;
 }
 
 .resknd_custom_epopsadapter_epopsadapterinstance {
    background-image:url("images/resknd/custom/16x16/EP Ops Adapter_EP Ops Adapter Instance.png") !important;
 }
 
-.resknd_default_vcacadapter_fabricgroup {
-   background-image:url("images/resknd/default/16x16/VCACAdapter_FABRICGROUP.png") !important;
+.resknd_default_epopsadapter_iiswwwservice {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_IIS WWW Service.png") !important;
 }
 
-.resknd_default_fabricserver_san {
-   background-image:url("images/resknd/default/16x16/FabricServer_San.png") !important;
+.resknd_custom_sddchealthadapter_vcenterbackupjob {
+   background-image:url("images/resknd/custom/16x16/SDDCHealthAdapter_vCenterBackupJob.png") !important;
 }
 
-.resknd_default_epopsadapter_script {
-   background-image:url("images/resknd/default/16x16/EP Ops Adapter_Script.png") !important;
-}
-
-.resknd_default_vcenteroperationsadapter_vc-ops-collector {
-   background-image:url("images/resknd/default/16x16/vCenter Operations Adapter_vC-Ops-Collector.png") !important;
+.resknd_custom_sddchealthadapter_catalog-service {
+   background-image:url("images/resknd/custom/16x16/SDDCHealthAdapter_catalog-service.png") !important;
 }
 
 .resknd_default_vmware_datastore_power_standby {
    background-image:url("images/resknd/default/16x16/VMWARE_Datastore_power_standby.png") !important;
 }
 
-.adpknd_default_fabricserver {
-   background-image:url("images/adpknd/default/16x16/FabricServer.png") !important;
+.resknd_custom_sddchealthadapter_vrealizeautomationhealthbrokerservice {
+   background-image:url("images/resknd/custom/16x16/SDDCHealthAdapter_vRealize Automation Health Broker service.png") !important;
 }
 
 .resknd_custom_apposucp_weblogic_garbage_collector {
    background-image:url("images/resknd/custom/16x16/APPOSUCP_weblogic_garbage_collector.png") !important;
 }
 
-.trvspec_default_vcaccdcview-vmware-customdatacenter {
-   background-image:url("images/traversalspec/16x16/vCAC CDC View-VMWARE-CustomDatacenter.png") !important;
+.resknd_custom_virtualandphysicalsanadapter_virtualsancluster {
+   background-image:url("images/resknd/custom/16x16/VirtualAndPhysicalSANAdapter_VirtualSANCluster.png") !important;
 }
 
-.resknd_custom_vcenteroperationsadapter_vc-ops-managementpack {
-   background-image:url("images/resknd/custom/16x16/vCenter Operations Adapter_vC-Ops-ManagementPack.png") !important;
+.resknd_default_sddchealthadapter_vrealizeautomationserverloadbalancer {
+   background-image:url("images/resknd/default/16x16/SDDCHealthAdapter_vRealize Automation Server Load Balancer.png") !important;
 }
 
-.trvspec_default_edgenodes {
-   background-image:url("images/traversalspec/16x16/EdgeNodes.png") !important;
+.resknd_custom_srmadapter_protectiongroupfolders {
+   background-image:url("images/resknd/custom/16x16/SrmAdapter_Protection Group Folders.png") !important;
 }
 
-.adpknd_default_nsxtadapter {
-   background-image:url("images/adpknd/default/16x16/NSXTAdapter.png") !important;
+.adpknd_custom_apposucp {
+   background-image:url("images/adpknd/custom/16x16/APPOSUCP.png") !important;
 }
 
-.resknd_default_vcenteroperationsadapter_vc-ops-managementpackgroup {
-   background-image:url("images/resknd/default/16x16/vCenter Operations Adapter_vC-Ops-ManagementPackGroup.png") !important;
+.resknd_default_sddchealthadapter_sddcnsxworld {
+   background-image:url("images/resknd/default/16x16/SDDCHealthAdapter_SDDC NSX World.png") !important;
 }
 
-.resknd_default_nsxtadapter_firewallsectiongroup {
-   background-image:url("images/resknd/default/16x16/NSXTAdapter_FirewallSectionGroup.png") !important;
+.resknd_default_sddchealthadapter_vrealizeautomationdemworker {
+   background-image:url("images/resknd/default/16x16/SDDCHealthAdapter_vRealize Automation DEM Worker.png") !important;
 }
 
-.resknd_custom_apposucp_hyperv {
-   background-image:url("images/resknd/custom/16x16/APPOSUCP_hyperv.png") !important;
+.resknd_default_epopsadapter_vrealizeautomationiaaswebloadbalancergroup {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_vRealize Automation IaaS Web Load Balancer (Group).png") !important;
 }
 
-.resknd_custom_apposucp_cassandra {
-   background-image:url("images/resknd/custom/16x16/APPOSUCP_cassandra.png") !important;
+.resknd_custom_sddchealthadapter_approval-service {
+   background-image:url("images/resknd/custom/16x16/SDDCHealthAdapter_approval-service.png") !important;
+}
+
+.resknd_custom_vcenteroperationsadapter_vc-ops-managementpackgroup {
+   background-image:url("images/resknd/custom/16x16/vCenter Operations Adapter_vC-Ops-ManagementPackGroup.png") !important;
 }
 
 .resknd_custom_apposucp_memcached {
    background-image:url("images/resknd/custom/16x16/APPOSUCP_memcached.png") !important;
 }
 
-.resknd_default_vcenteroperationsadapter_vc-ops-cluster {
-   background-image:url("images/resknd/default/16x16/vCenter Operations Adapter_vC-Ops-Cluster.png") !important;
+.resknd_custom_apposucp_mysqldb {
+   background-image:url("images/resknd/custom/16x16/APPOSUCP_MySQL DB.png") !important;
+}
+
+.trvspec_default_nsx-tedgenodes-nsxtadapter-nsxtadapterinstance {
+   background-image:url("images/traversalspec/16x16/NSX-T Edge Nodes-NSXTAdapter-NSXTAdapterInstance.png") !important;
+}
+
+.resknd_custom_nsxtadapter_loadbalancervirtualserver {
+   background-image:url("images/resknd/custom/16x16/NSXTAdapter_LoadBalancerVirtualServer.png") !important;
 }
 
 .resknd_default_apposucp_activemq {
@@ -945,20 +809,16 @@
    background-image:url("images/resknd/default/16x16/APPOSUCP_pivotalserver.png") !important;
 }
 
-.resknd_custom_apposucp_jboss_datasource_pool {
-   background-image:url("images/resknd/custom/16x16/APPOSUCP_jboss_datasource_pool.png") !important;
+.resknd_default_epopsadapter_vspheressovmwaredirectoryservice {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_vSphere SSO VMware Directory Service.png") !important;
 }
 
-.resknd_default_apposucp_apposucpadapterinstance {
-   background-image:url("images/resknd/default/16x16/APPOSUCP_APPOSUCPAdapterInstance.png") !important;
+.resknd_default_epopsadapter_vrealizeautomationdemworker {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_vRealize Automation DEM Worker.png") !important;
 }
 
-.resknd_custom_apposucp_os {
-   background-image:url("images/resknd/custom/16x16/APPOSUCP_OS.png") !important;
-}
-
-.resknd_custom_apposucp_wildfly {
-   background-image:url("images/resknd/custom/16x16/APPOSUCP_wildfly.png") !important;
+.resknd_default_epopsadapter_iiswasservice {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_IIS WAS Service.png") !important;
 }
 
 .resknd_default_epopsadapter_solaris_fileservermount {
@@ -973,8 +833,8 @@
    background-image:url("images/resknd/default/16x16/VCACAdapter_ENTITYSTATUS.png") !important;
 }
 
-.adpknd_default_apposucp {
-   background-image:url("images/adpknd/default/16x16/APPOSUCP.png") !important;
+.resknd_custom_sddchealthadapter_externalpscservices {
+   background-image:url("images/resknd/custom/16x16/SDDCHealthAdapter_externalPSCServices.png") !important;
 }
 
 .trvspec_default_operatingsystemsts-epopsadapter-operatingsystemsworld {
@@ -989,92 +849,76 @@
    background-image:url("images/resknd/default/16x16/EP Ops Adapter_Linux_FileServer Physical Disk.png") !important;
 }
 
+.resknd_default_epopsadapter_vrealizebusinessstandardserver {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_vRealize Business Standard Server.png") !important;
+}
+
 .resknd_custom_nsxtadapter_edgenodegroup {
    background-image:url("images/resknd/custom/16x16/NSXTAdapter_EdgeNodeGroup.png") !important;
 }
 
-.resknd_default_vmware_vmfolder {
-   background-image:url("images/resknd/default/16x16/VMWARE_VMFolder.png") !important;
-}
-
-.resknd_default_fabricserver_switch {
-   background-image:url("images/resknd/default/16x16/FabricServer_Switch.png") !important;
-}
-
-.resknd_default_apposucp_rabbitmq {
-   background-image:url("images/resknd/default/16x16/APPOSUCP_rabbitmq.png") !important;
+.resknd_default_sddchealthadapter_nsxreplicatorservice {
+   background-image:url("images/resknd/default/16x16/SDDCHealthAdapter_NSXReplicatorService.png") !important;
 }
 
 .resknd_default_vcenteroperationsadapter_vc-ops-analytics {
    background-image:url("images/resknd/default/16x16/vCenter Operations Adapter_vC-Ops-Analytics.png") !important;
 }
 
-.resknd_custom_apposucp_mssql_database {
-   background-image:url("images/resknd/custom/16x16/APPOSUCP_mssql_database.png") !important;
+.resknd_custom_container_vc-ops-self-monitoring {
+   background-image:url("images/resknd/custom/16x16/Container_vC-Ops-Self-Monitoring.png") !important;
 }
 
 .resknd_custom_apposucp_sharepoint_win_service {
    background-image:url("images/resknd/custom/16x16/APPOSUCP_sharepoint_win_service.png") !important;
 }
 
-.resknd_default_physicalsanadapter_storagelun {
-   background-image:url("images/resknd/default/16x16/PhysicalSANAdapter_StorageLun.png") !important;
-}
-
 .resknd_custom_apposucp_mysql_database {
    background-image:url("images/resknd/custom/16x16/APPOSUCP_mysql_database.png") !important;
-}
-
-.resknd_custom_apposucp_tomcat_server_threadpool {
-   background-image:url("images/resknd/custom/16x16/APPOSUCP_tomcat_server_threadpool.png") !important;
-}
-
-.resknd_default_epopsadapter_linux {
-   background-image:url("images/resknd/default/16x16/EP Ops Adapter_Linux.png") !important;
 }
 
 .resknd_custom_container_enterprise {
    background-image:url("images/resknd/custom/16x16/Container_Enterprise.png") !important;
 }
 
-.resknd_custom_apposucp_netresponse_udp {
-   background-image:url("images/resknd/custom/16x16/APPOSUCP_netresponse_udp.png") !important;
+.resknd_default_epopsadapter_vspheressovmwarekdcservice {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_vSphere SSO VMware Kdc Service.png") !important;
 }
 
-.resknd_default_epopsadapter_linux_fileserverdirectorytree {
-   background-image:url("images/resknd/default/16x16/EP Ops Adapter_Linux_FileServer Directory Tree.png") !important;
+.resknd_default_sddchealthadapter_vsan {
+   background-image:url("images/resknd/default/16x16/SDDCHealthAdapter_VSAN.png") !important;
+}
+
+.resknd_custom_apposucp_netresponse_udp {
+   background-image:url("images/resknd/custom/16x16/APPOSUCP_netresponse_udp.png") !important;
 }
 
 .resknd_custom_apposucp_weblogic_jvm_memory_pool {
    background-image:url("images/resknd/custom/16x16/APPOSUCP_weblogic_jvm_memory_pool.png") !important;
 }
 
-.resknd_default_vcacadapter_vcacadapterinstance {
-   background-image:url("images/resknd/default/16x16/VCACAdapter_VCACAdapter Instance.png") !important;
+.resknd_default_sddchealthadapter_sddcvrniworld {
+   background-image:url("images/resknd/default/16x16/SDDCHealthAdapter_SDDC VRNI World.png") !important;
 }
 
-.resknd_default_fabricserver_fabric {
-   background-image:url("images/resknd/default/16x16/FabricServer_Fabric.png") !important;
+.resknd_default_epopsadapter_vrealizeautomationmanagerservergroup {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_vRealize Automation Manager Server (Group).png") !important;
+}
+
+.resknd_default_epopsadapter_vrealizeorchestratorloadbalancergroup {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_vRealize Orchestrator Load Balancer (Group).png") !important;
 }
 
 .trvspec_default_infrastructureview {
    background-image:url("images/traversalspec/16x16/InfrastructureView.png") !important;
 }
 
-.resknd_custom_vmware_computeresource {
-   background-image:url("images/resknd/custom/16x16/VMWARE_ComputeResource.png") !important;
-}
-
-.resknd_custom_apposucp_activedirectory_dfs_replication {
-   background-image:url("images/resknd/custom/16x16/APPOSUCP_activedirectory_dfs_replication.png") !important;
+.resknd_custom_epopsadapter_vrealizeautomationdatabasegroup {
+   background-image:url("images/resknd/custom/16x16/EP Ops Adapter_vRealize Automation Database (Group).png") !important;
 }
 
 .resknd_custom_apposucp_weblogic_jvm_runtime {
    background-image:url("images/resknd/custom/16x16/APPOSUCP_weblogic_jvm_runtime.png") !important;
-}
-
-.resknd_default_vcenteroperationsadapter_vcenteroperationsadapterinstance {
-   background-image:url("images/resknd/default/16x16/vCenter Operations Adapter_vCenter Operations Adapter Instance.png") !important;
 }
 
 .resknd_custom_container_servicelevelobjective {
@@ -1085,32 +929,28 @@
    background-image:url("images/resknd/default/16x16/NSXTAdapter_ControllerCluster.png") !important;
 }
 
-.resknd_default_vmware_folder {
-   background-image:url("images/resknd/default/16x16/VMWARE_Folder.png") !important;
-}
-
-.trvspec_default_1 {
-   background-image:url("images/traversalspec/16x16/1.png") !important;
-}
-
 .resknd_custom_apposucp_jboss_jvm_memory_pool {
    background-image:url("images/resknd/custom/16x16/APPOSUCP_jboss_jvm_memory_pool.png") !important;
 }
 
-.resknd_default_physicalsanadapter_storagearray {
-   background-image:url("images/resknd/default/16x16/PhysicalSANAdapter_StorageArray.png") !important;
+.resknd_default_sddchealthadapter_vsanvcentercluster {
+   background-image:url("images/resknd/default/16x16/SDDCHealthAdapter_vSANvCenterCluster.png") !important;
 }
 
-.resknd_default_nsxtadapter_edgecluster {
-   background-image:url("images/resknd/default/16x16/NSXTAdapter_EdgeCluster.png") !important;
+.resknd_default_sddchealthadapter_nsxmanagerservice {
+   background-image:url("images/resknd/default/16x16/SDDCHealthAdapter_NSXManagerService.png") !important;
 }
 
-.resknd_custom_container_vravms {
-   background-image:url("images/resknd/custom/16x16/Container_vRA VMs.png") !important;
+.resknd_custom_sddchealthadapter_activenode {
+   background-image:url("images/resknd/custom/16x16/SDDCHealthAdapter_Active Node.png") !important;
 }
 
 .resknd_default_apposucp_msexchange {
    background-image:url("images/resknd/default/16x16/APPOSUCP_msexchange.png") !important;
+}
+
+.resknd_default_epopsadapter_vrealizeautomationmanagerserverloadbalancer {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_vRealize Automation Manager Server Load Balancer.png") !important;
 }
 
 .resknd_default_apposucp_mysql {
@@ -1121,72 +961,52 @@
    background-image:url("images/resknd/custom/16x16/APPOSUCP_httpresponse.png") !important;
 }
 
-.resknd_default_nsxtadapter_managementappliances {
-   background-image:url("images/resknd/default/16x16/NSXTAdapter_ManagementAppliances.png") !important;
-}
-
 .resknd_default_epopsadapter_solaris {
    background-image:url("images/resknd/default/16x16/EP Ops Adapter_Solaris.png") !important;
-}
-
-.trvspec_default_vcacreservationpolicyview-vcacadapter-reservationpolicy {
-   background-image:url("images/traversalspec/16x16/vCAC Reservation policy View-VCACAdapter-RESERVATIONPOLICY.png") !important;
 }
 
 .resknd_custom_container_securityzone {
    background-image:url("images/resknd/custom/16x16/Container_Security Zone.png") !important;
 }
 
-.resknd_default_epopsadapter_httpcheck {
-   background-image:url("images/resknd/default/16x16/EP Ops Adapter_HTTP Check.png") !important;
+.resknd_custom_sddchealthadapter_component-registry {
+   background-image:url("images/resknd/custom/16x16/SDDCHealthAdapter_component-registry.png") !important;
+}
+
+.resknd_custom_sddchealthadapter_vcdserver {
+   background-image:url("images/resknd/custom/16x16/SDDCHealthAdapter_vCD Server.png") !important;
+}
+
+.resknd_default_sddchealthadapter_vrealizeautomationapplication {
+   background-image:url("images/resknd/default/16x16/SDDCHealthAdapter_vRealize Automation Application.png") !important;
 }
 
 .resknd_default_epopsadapter_windows_networkserverinterface {
    background-image:url("images/resknd/default/16x16/EP Ops Adapter_Windows_NetworkServer Interface.png") !important;
 }
 
-.resknd_custom_loginsight_loginsightlogserver {
-   background-image:url("images/resknd/custom/16x16/LogInsight_LogInsightLogServer.png") !important;
+.resknd_default_epopsadapter_vspheressovmwarecertificateservice {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_vSphere SSO VMware Certificate Service.png") !important;
 }
 
-.resknd_custom_vrbcadapter_vrbcadapterinstance {
-   background-image:url("images/resknd/custom/16x16/vRBCAdapter_vRBC Adapter Instance.png") !important;
+.resknd_default_sddchealthadapter_vrealizeautomationproxyagent {
+   background-image:url("images/resknd/default/16x16/SDDCHealthAdapter_vRealize Automation Proxy Agent.png") !important;
 }
 
-.resknd_custom_nsxtadapter_nsservicegroups {
-   background-image:url("images/resknd/custom/16x16/NSXTAdapter_NSServiceGroups.png") !important;
-}
-
-.resknd_default_vcacadapter_businessgroup {
-   background-image:url("images/resknd/default/16x16/VCACAdapter_BUSINESSGROUP.png") !important;
-}
-
-.resknd_custom_apposucp_apachesolr {
-   background-image:url("images/resknd/custom/16x16/APPOSUCP_apachesolr.png") !important;
-}
-
-.resknd_default_epopsadapter_linux_fileservermount {
-   background-image:url("images/resknd/default/16x16/EP Ops Adapter_Linux_FileServer Mount.png") !important;
-}
-
-.resknd_default_epopsadapter_aix_fileserverblockdevice {
-   background-image:url("images/resknd/default/16x16/EP Ops Adapter_AIX_FileServer Block Device.png") !important;
-}
-
-.trvspec_default_vspherestorage-vmware-vsphereworld {
-   background-image:url("images/traversalspec/16x16/vSphere Storage-VMWARE-vSphere World.png") !important;
+.resknd_custom_sddchealthadapter_vsandeployment {
+   background-image:url("images/resknd/custom/16x16/SDDCHealthAdapter_vSAN Deployment.png") !important;
 }
 
 .resknd_default_epopsadapter_windows_fileserverphysicaldisk {
    background-image:url("images/resknd/default/16x16/EP Ops Adapter_Windows_FileServer Physical Disk.png") !important;
 }
 
-.resknd_custom_nsxtadapter_nsservicegroup {
-   background-image:url("images/resknd/custom/16x16/NSXTAdapter_NSServiceGroup.png") !important;
+.resknd_custom_sddchealthadapter_vsanhealthservices {
+   background-image:url("images/resknd/custom/16x16/SDDCHealthAdapter_vSANHealthServices.png") !important;
 }
 
-.resknd_default_apposucp_win {
-   background-image:url("images/resknd/default/16x16/APPOSUCP_win.png") !important;
+.resknd_default_epopsadapter_vmwarecomponentmanagerserver {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_VMware Component Manager Server.png") !important;
 }
 
 .resknd_custom_voaadapter_voaadapterinstance {
@@ -1209,12 +1029,8 @@
    background-image:url("images/traversalspec/16x16/Service Type-APPOSUCP-ServiceType.png") !important;
 }
 
-.adpknd_default_physicalsanadapter {
-   background-image:url("images/adpknd/default/16x16/PhysicalSANAdapter.png") !important;
-}
-
-.resknd_custom_vmware_vmentitystatus {
-   background-image:url("images/resknd/custom/16x16/VMWARE_VM Entity Status.png") !important;
+.resknd_default_sddchealthadapter_sddcvropsworld {
+   background-image:url("images/resknd/default/16x16/SDDCHealthAdapter_SDDC VROPS World.png") !important;
 }
 
 .resknd_default_epopsadapter_aix_fileserverdirectory {
@@ -1225,8 +1041,8 @@
    background-image:url("images/resknd/custom/16x16/vRealizeOpsMgrAPI_vRealizeOpsMgrAPI Adapter Instance.png") !important;
 }
 
-.resknd_custom_apposucp_jboss_jvm_garbage_collector {
-   background-image:url("images/resknd/custom/16x16/APPOSUCP_jboss_jvm_garbage_collector.png") !important;
+.resknd_default_sddchealthadapter_vrealizeautomationiaasweb {
+   background-image:url("images/resknd/default/16x16/SDDCHealthAdapter_vRealize Automation IaaS Web.png") !important;
 }
 
 .resknd_custom_apposucp_varnish {
@@ -1237,16 +1053,32 @@
    background-image:url("images/resknd/custom/16x16/Container_Licensing.png") !important;
 }
 
+.resknd_default_srmadapter_protectiongroups {
+   background-image:url("images/resknd/default/16x16/SrmAdapter_Protection Groups.png") !important;
+}
+
 .resknd_custom_apposucp_ms_iis_websvc {
    background-image:url("images/resknd/custom/16x16/APPOSUCP_ms_iis_websvc.png") !important;
+}
+
+.resknd_default_sddchealthadapter_vrealizeautomationapplicationservices {
+   background-image:url("images/resknd/default/16x16/SDDCHealthAdapter_vRealize Automation Application Services.png") !important;
 }
 
 .resknd_default_epopsadapter_solaris_fileserverlogicaldisk {
    background-image:url("images/resknd/default/16x16/EP Ops Adapter_Solaris_FileServer Logical Disk.png") !important;
 }
 
+.resknd_default_sddchealthadapter_nsx {
+   background-image:url("images/resknd/default/16x16/SDDCHealthAdapter_NSX.png") !important;
+}
+
 .resknd_default_vmware_resourcepool {
    background-image:url("images/resknd/default/16x16/VMWARE_ResourcePool.png") !important;
+}
+
+.resknd_default_epopsadapter_vrealizeautomationserver {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_vRealize Automation Server.png") !important;
 }
 
 .resknd_default_vmware_distributedvirtualportgroup {
@@ -1257,12 +1089,976 @@
    background-image:url("images/resknd/custom/16x16/APPOSUCP_lighttpd.png") !important;
 }
 
-.resknd_custom_apposucp_nginxplus {
-   background-image:url("images/resknd/custom/16x16/APPOSUCP_nginxplus.png") !important;
+.resknd_default_apposucp_linux {
+   background-image:url("images/resknd/default/16x16/APPOSUCP_linux.png") !important;
 }
 
-.resknd_default_nsxtadapter_tier0logicalroutergroup {
-   background-image:url("images/resknd/default/16x16/NSXTAdapter_Tier0LogicalRouterGroup.png") !important;
+.resknd_default_vcacadapter_reservationpolicy {
+   background-image:url("images/resknd/default/16x16/VCACAdapter_RESERVATIONPOLICY.png") !important;
+}
+
+.resknd_default_vmware_vmwaredistributedvirtualswitch {
+   background-image:url("images/resknd/default/16x16/VMWARE_VmwareDistributedVirtualSwitch.png") !important;
+}
+
+.resknd_custom_sddchealthadapter_sddchealthinstance {
+   background-image:url("images/resknd/custom/16x16/SDDCHealthAdapter_SDDCHealth Instance.png") !important;
+}
+
+.resknd_default_epopsadapter_aix {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_AIX.png") !important;
+}
+
+.resknd_default_epopsadapter_mssqlcluster {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_MSSQL Cluster.png") !important;
+}
+
+.resknd_custom_container_department {
+   background-image:url("images/resknd/custom/16x16/Container_Department.png") !important;
+}
+
+.resknd_default_epopsadapter_windows_fileservermount {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_Windows_FileServer Mount.png") !important;
+}
+
+.resknd_default_sddchealthadapter_vrealizeautomationmanagerserver {
+   background-image:url("images/resknd/default/16x16/SDDCHealthAdapter_vRealize Automation Manager Server.png") !important;
+}
+
+.resknd_default_nsxtadapter_edgenode {
+   background-image:url("images/resknd/default/16x16/NSXTAdapter_EdgeNode.png") !important;
+}
+
+.resknd_default_epopsadapter_vrealizeautomationapplicationservices {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_vRealize Automation Application Services.png") !important;
+}
+
+.resknd_default_sddchealthadapter_vrealizeautomationiaaswebloadbalancer {
+   background-image:url("images/resknd/default/16x16/SDDCHealthAdapter_vRealize Automation IaaS Web Load Balancer.png") !important;
+}
+
+.resknd_custom_container_tier {
+   background-image:url("images/resknd/custom/16x16/Container_Tier.png") !important;
+}
+
+.resknd_default_apposucp_postgresql {
+   background-image:url("images/resknd/default/16x16/APPOSUCP_postgresql.png") !important;
+}
+
+.resknd_default_epopsadapter_mssql {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_MSSQL.png") !important;
+}
+
+.resknd_custom_epopsadapter_vspheressogroup {
+   background-image:url("images/resknd/custom/16x16/EP Ops Adapter_vSphere SSO (Group).png") !important;
+}
+
+.resknd_default_epopsadapter_mssqldatabases {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_MSSQL Databases.png") !important;
+}
+
+.resknd_custom_sddchealthadapter_branding-service {
+   background-image:url("images/resknd/custom/16x16/SDDCHealthAdapter_branding-service.png") !important;
+}
+
+.resknd_default_epopsadapter_vspheresso {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_vSphere SSO.png") !important;
+}
+
+.resknd_default_epopsadapter_vrealizeautomationdemorchestrator {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_vRealize Automation DEM Orchestrator.png") !important;
+}
+
+.trvspec_default_remotechecks-epopsadapter-remotechecksworld {
+   background-image:url("images/traversalspec/16x16/Remote Checks-EP Ops Adapter-Remote Checks World.png") !important;
+}
+
+.resknd_default_vcacadapter_networkprofile {
+   background-image:url("images/resknd/default/16x16/VCACAdapter_NETWORKPROFILE.png") !important;
+}
+
+.resknd_custom_sddchealthadapter_nsxcontrollers {
+   background-image:url("images/resknd/custom/16x16/SDDCHealthAdapter_NSXControllers.png") !important;
+}
+
+.resknd_custom_apposucp_kong {
+   background-image:url("images/resknd/custom/16x16/APPOSUCP_kong.png") !important;
+}
+
+.resknd_default_epopsadapter_solaris_fileserverphysicaldisk {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_Solaris_FileServer Physical Disk.png") !important;
+}
+
+.resknd_default_vcenteroperationsadapter_vc-ops-suite-api {
+   background-image:url("images/resknd/default/16x16/vCenter Operations Adapter_vC-Ops-Suite-API.png") !important;
+}
+
+.resknd_default_vmware_hostsystem_power_unknown {
+   background-image:url("images/resknd/default/16x16/VMWARE_HostSystem_power_unknown.png") !important;
+}
+
+.trvspec_default_nsx-vspherelogicalswitches-nsxtadapter-nsxtadapterinstance {
+   background-image:url("images/traversalspec/16x16/NSX-vSphere Logical Switches-NSXTAdapter-NSXTAdapterInstance.png") !important;
+}
+
+.resknd_default_apposucp_jboss {
+   background-image:url("images/resknd/default/16x16/APPOSUCP_jboss.png") !important;
+}
+
+.resknd_custom_loginsightadapter_loginsightadapterinstance {
+   background-image:url("images/resknd/custom/16x16/LogInsightAdapter_LoginSight Adapter Instance.png") !important;
+}
+
+.resknd_custom_container_geotag {
+   background-image:url("images/resknd/custom/16x16/Container_GeoTag.png") !important;
+}
+
+.resknd_default_epopsadapter_linux_fileserverdirectory {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_Linux_FileServer Directory.png") !important;
+}
+
+.resknd_custom_apposucp_activemq_jvm_memory_usage {
+   background-image:url("images/resknd/custom/16x16/APPOSUCP_activemq_jvm_memory_usage.png") !important;
+}
+
+.resknd_default_vmware_virtualmachine_power_standby {
+   background-image:url("images/resknd/default/16x16/VMWARE_VirtualMachine_power_standby.png") !important;
+}
+
+.resknd_custom_sddchealthadapter_advanced-designer-service {
+   background-image:url("images/resknd/custom/16x16/SDDCHealthAdapter_advanced-designer-service.png") !important;
+}
+
+.resknd_default_vcenteroperationsadapter_vc-ops-node {
+   background-image:url("images/resknd/default/16x16/vCenter Operations Adapter_vC-Ops-Node.png") !important;
+}
+
+.resknd_custom_apposucp_rabbitmq_queue {
+   background-image:url("images/resknd/custom/16x16/APPOSUCP_rabbitmq_queue.png") !important;
+}
+
+.resknd_default_vcacadapter_blueprint {
+   background-image:url("images/resknd/default/16x16/VCACAdapter_BLUEPRINT.png") !important;
+}
+
+.resknd_default_vcenteroperationsadapter_vc-ops-fsdb {
+   background-image:url("images/resknd/default/16x16/vCenter Operations Adapter_vC-Ops-Fsdb.png") !important;
+}
+
+.resknd_default_epopsadapter_aix_fileserverphysicaldisk {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_AIX_FileServer Physical Disk.png") !important;
+}
+
+.resknd_default_epopsadapter_icmpcheck {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_ICMP Check.png") !important;
+}
+
+.resknd_default_epopsadapter_aix_fileservermount {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_AIX_FileServer Mount.png") !important;
+}
+
+.resknd_default_epopsadapter_windowsservice {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_Windows Service.png") !important;
+}
+
+.adpknd_default_pythonremediationvcenteradapter {
+   background-image:url("images/adpknd/default/16x16/PythonRemediationVcenterAdapter.png") !important;
+}
+
+.resknd_default_vcenteroperationsadapter_vc-ops-persistence {
+   background-image:url("images/resknd/default/16x16/vCenter Operations Adapter_vC-Ops-Persistence.png") !important;
+}
+
+.resknd_default_vcenteroperationsadapter_vc-ops-remote-collector {
+   background-image:url("images/resknd/default/16x16/vCenter Operations Adapter_vC-Ops-Remote-Collector.png") !important;
+}
+
+.resknd_default_epopsadapter_vspheressolikewiseregistryservice {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_vSphere SSO Likewise Registry Service.png") !important;
+}
+
+.resknd_default_virtualandphysicalsanadapter_cachedisk {
+   background-image:url("images/resknd/default/16x16/VirtualAndPhysicalSANAdapter_CacheDisk.png") !important;
+}
+
+.resknd_custom_sddchealthadapter_nsxtserver {
+   background-image:url("images/resknd/custom/16x16/SDDCHealthAdapter_NSXT Server.png") !important;
+}
+
+.trvspec_default_transportzones {
+   background-image:url("images/traversalspec/16x16/TransportZones.png") !important;
+}
+
+.adpknd_default_srmadapter {
+   background-image:url("images/adpknd/default/16x16/SrmAdapter.png") !important;
+}
+
+.resknd_default_epopsadapter_vrealizeautomationiaaswebloadbalancerservice {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_vRealize Automation IaaS Web Load Balancer Service.png") !important;
+}
+
+.resknd_default_nsxtadapter_nsxtadapterinstance {
+   background-image:url("images/resknd/default/16x16/NSXTAdapter_NSXTAdapterInstance.png") !important;
+}
+
+.resknd_custom_apposucp_ceph {
+   background-image:url("images/resknd/custom/16x16/APPOSUCP_ceph.png") !important;
+}
+
+.resknd_custom_apposucp_redis {
+   background-image:url("images/resknd/custom/16x16/APPOSUCP_redis.png") !important;
+}
+
+.resknd_default_vcenteroperationsadapter_vc-ops-product-ui {
+   background-image:url("images/resknd/default/16x16/vCenter Operations Adapter_vC-Ops-Product-UI.png") !important;
+}
+
+.resknd_custom_apposucp_jenkins {
+   background-image:url("images/resknd/custom/16x16/APPOSUCP_jenkins.png") !important;
+}
+
+.resknd_default_epopsadapter_iisapphostsvc {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_IIS AppHostSvc.png") !important;
+}
+
+.resknd_default_epopsadapter_vrealizeautomationproxyagentgroup {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_vRealize Automation Proxy Agent (Group).png") !important;
+}
+
+.resknd_custom_apposucp_netresponse_tcp {
+   background-image:url("images/resknd/custom/16x16/APPOSUCP_netresponse_tcp.png") !important;
+}
+
+.resknd_default_sddchealthadapter_nsxcontroller {
+   background-image:url("images/resknd/default/16x16/SDDCHealthAdapter_NSXController.png") !important;
+}
+
+.trvspec_default_edgeservices {
+   background-image:url("images/traversalspec/16x16/EdgeServices.png") !important;
+}
+
+.resknd_custom_apposucp_postgresqldb {
+   background-image:url("images/resknd/custom/16x16/APPOSUCP_PostgreSQL DB.png") !important;
+}
+
+.resknd_default_epopsadapter_vrealizebusinessgroup {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_vRealize Business (Group).png") !important;
+}
+
+.resknd_custom_sddchealthadapter_vcenterntpserver {
+   background-image:url("images/resknd/custom/16x16/SDDCHealthAdapter_vCenterNtpServer.png") !important;
+}
+
+.resknd_custom_sddchealthadapter_nsxedgefeature {
+   background-image:url("images/resknd/custom/16x16/SDDCHealthAdapter_NSXEDGEFEATURE.png") !important;
+}
+
+.resknd_default_sddchealthadapter_vrealizeautomationserver {
+   background-image:url("images/resknd/default/16x16/SDDCHealthAdapter_vRealize Automation Server.png") !important;
+}
+
+.resknd_default_nsxtadapter_logicalrouter {
+   background-image:url("images/resknd/default/16x16/NSXTAdapter_LogicalRouter.png") !important;
+}
+
+.resknd_custom_sddchealthadapter_vrealizeautomationhealthconfiguration {
+   background-image:url("images/resknd/custom/16x16/SDDCHealthAdapter_vRealize Automation Health configuration.png") !important;
+}
+
+.resknd_custom_container_government {
+   background-image:url("images/resknd/custom/16x16/Container_Government.png") !important;
+}
+
+.resknd_custom_apposucp_marathon {
+   background-image:url("images/resknd/custom/16x16/APPOSUCP_marathon.png") !important;
+}
+
+.resknd_custom_apposucp_weblogic_jms_runtime {
+   background-image:url("images/resknd/custom/16x16/APPOSUCP_weblogic_jms_runtime.png") !important;
+}
+
+.resknd_default_vcacadapter_reservation {
+   background-image:url("images/resknd/default/16x16/VCACAdapter_RESERVATION.png") !important;
+}
+
+.resknd_default_vcacadapter_storagereservationpolicy {
+   background-image:url("images/resknd/default/16x16/VCACAdapter_STORAGERESERVATIONPOLICY.png") !important;
+}
+
+.resknd_default_epopsadapter_linux_networkserverinterface {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_Linux_NetworkServer Interface.png") !important;
+}
+
+.resknd_default_epopsadapter_vspheressovmwareafdservice {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_vSphere SSO VMware AFD Service.png") !important;
+}
+
+.resknd_default_sddchealthadapter_sddcloginsightworld {
+   background-image:url("images/resknd/default/16x16/SDDCHealthAdapter_SDDC LOGINSIGHT World.png") !important;
+}
+
+.resknd_custom_sddchealthadapter_notification-service {
+   background-image:url("images/resknd/custom/16x16/SDDCHealthAdapter_notification-service.png") !important;
+}
+
+.resknd_custom_sddchealthadapter_passivenode {
+   background-image:url("images/resknd/custom/16x16/SDDCHealthAdapter_Passive Node.png") !important;
+}
+
+.resknd_custom_apposucp_activemq_os {
+   background-image:url("images/resknd/custom/16x16/APPOSUCP_activemq_os.png") !important;
+}
+
+.resknd_custom_nsxtadapter_logicalroutergroup {
+   background-image:url("images/resknd/custom/16x16/NSXTAdapter_LogicalRouterGroup.png") !important;
+}
+
+.resknd_custom_container_universe {
+   background-image:url("images/resknd/custom/16x16/Container_Universe.png") !important;
+}
+
+.resknd_default_sddchealthadapter_loginsightserver {
+   background-image:url("images/resknd/default/16x16/SDDCHealthAdapter_LogInsight Server.png") !important;
+}
+
+.resknd_default_apposucp_nginx {
+   background-image:url("images/resknd/default/16x16/APPOSUCP_nginx.png") !important;
+}
+
+.adpknd_custom_epopsadapter {
+   background-image:url("images/adpknd/custom/16x16/EP Ops Adapter.png") !important;
+}
+
+.resknd_custom_sddchealthadapter_srm {
+   background-image:url("images/resknd/custom/16x16/SDDCHealthAdapter_SRM.png") !important;
+}
+
+.resknd_default_epopsadapter_iiswwwservicesite {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_IIS WWW Service Site.png") !important;
+}
+
+.resknd_custom_sddchealthadapter_srmhealthservices {
+   background-image:url("images/resknd/custom/16x16/SDDCHealthAdapter_SRMHealthServices.png") !important;
+}
+
+.resknd_default_epopsadapter_linux_fileserverlogicaldisk {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_Linux_FileServer Logical Disk.png") !important;
+}
+
+.resknd_custom_apposucp_elasticsearch {
+   background-image:url("images/resknd/custom/16x16/APPOSUCP_Elasticsearch.png") !important;
+}
+
+.resknd_custom_apposucp_fluentd {
+   background-image:url("images/resknd/custom/16x16/APPOSUCP_fluentd.png") !important;
+}
+
+.resknd_custom_sddchealthadapter_vcenterlicensing {
+   background-image:url("images/resknd/custom/16x16/SDDCHealthAdapter_vCenterLicensing.png") !important;
+}
+
+.resknd_default_epopsadapter_solaris_cpu {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_Solaris_CPU.png") !important;
+}
+
+.resknd_custom_sddchealthadapter_vrbserver {
+   background-image:url("images/resknd/custom/16x16/SDDCHealthAdapter_VRBSERVER.png") !important;
+}
+
+.resknd_custom_apposucp_hadoop-mapreduce {
+   background-image:url("images/resknd/custom/16x16/APPOSUCP_hadoop-mapreduce.png") !important;
+}
+
+.resknd_default_sddchealthadapter_vrniserver {
+   background-image:url("images/resknd/default/16x16/SDDCHealthAdapter_vRNI Server.png") !important;
+}
+
+.resknd_default_apposucp_msiis {
+   background-image:url("images/resknd/default/16x16/APPOSUCP_msiis.png") !important;
+}
+
+.resknd_custom_apposucp_rabbitmq_exchange {
+   background-image:url("images/resknd/custom/16x16/APPOSUCP_rabbitmq_exchange.png") !important;
+}
+
+.resknd_default_epopsadapter_solaris_fileserverdirectorytree {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_Solaris_FileServer Directory Tree.png") !important;
+}
+
+.resknd_custom_nsxtadapter_managementservice {
+   background-image:url("images/resknd/custom/16x16/NSXTAdapter_ManagementService.png") !important;
+}
+
+.resknd_default_epopsadapter_operatingsystemsworld {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_Operating Systems World.png") !important;
+}
+
+.trvspec_default_sddchealth-sddchealthadapter-sddcworld {
+   background-image:url("images/traversalspec/16x16/SDDC Health-SDDCHealthAdapter-SDDC World.png") !important;
+}
+
+.adpknd_custom_container {
+   background-image:url("images/adpknd/custom/16x16/Container.png") !important;
+}
+
+.resknd_custom_apposucp_ping {
+   background-image:url("images/resknd/custom/16x16/APPOSUCP_ping.png") !important;
+}
+
+.resknd_default_epopsadapter_vspheressovmwaresecuretokenservice {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_vSphere SSO VMware Secure Token Service.png") !important;
+}
+
+.resknd_default_epopsadapter_vrealizeautomationiaasweb {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_vRealize Automation IaaS Web.png") !important;
+}
+
+.trvspec_default_nsx-tcontrolplane-nsxtadapter-nsxtadapterinstance {
+   background-image:url("images/traversalspec/16x16/NSX-T Control Plane-NSXTAdapter-NSXTAdapterInstance.png") !important;
+}
+
+.resknd_custom_virtualandphysicalsanadapter_vsanworld {
+   background-image:url("images/resknd/custom/16x16/VirtualAndPhysicalSANAdapter_vSAN World.png") !important;
+}
+
+.resknd_default_epopsadapter_vrealizeautomationiaasmanagementagent {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_vRealize Automation IaaS Management Agent.png") !important;
+}
+
+.resknd_custom_apposucp_msexchange_win_service {
+   background-image:url("images/resknd/custom/16x16/APPOSUCP_msexchange_win_service.png") !important;
+}
+
+.resknd_default_vmware_hostsystem_power_off {
+   background-image:url("images/resknd/default/16x16/VMWARE_HostSystem_power_off.png") !important;
+}
+
+.adpknd_custom_vrealizeopsmgrapi {
+   background-image:url("images/adpknd/custom/16x16/vRealizeOpsMgrAPI.png") !important;
+}
+
+.resknd_default_sddchealthadapter_sddcvrbworld {
+   background-image:url("images/resknd/default/16x16/SDDCHealthAdapter_SDDC VRB World.png") !important;
+}
+
+.resknd_default_pythonremediationvcenteradapter_pythonremediationvcenteradapterinstance {
+   background-image:url("images/resknd/default/16x16/PythonRemediationVcenterAdapter_PythonRemediationVcenterAdapter Instance.png") !important;
+}
+
+.resknd_custom_apposucp_mongodb {
+   background-image:url("images/resknd/custom/16x16/APPOSUCP_Mongo DB.png") !important;
+}
+
+.trvspec_default_mssqlclustersinstancesandservices-epopsadapter-mssqlworld {
+   background-image:url("images/traversalspec/16x16/MSSQL Clusters Instances and Services-EP Ops Adapter-MSSQL World.png") !important;
+}
+
+.resknd_custom_apposucp_etcd {
+   background-image:url("images/resknd/custom/16x16/APPOSUCP_etcd.png") !important;
+}
+
+.resknd_custom_sddchealthadapter_witnesshost {
+   background-image:url("images/resknd/custom/16x16/SDDCHealthAdapter_Witness Host.png") !important;
+}
+
+.adpknd_default_vcacadapter {
+   background-image:url("images/adpknd/default/16x16/VCACAdapter.png") !important;
+}
+
+.resknd_default_sddchealthadapter_sddcworld {
+   background-image:url("images/resknd/default/16x16/SDDCHealthAdapter_SDDC World.png") !important;
+}
+
+.resknd_default_apposucp_mongodb {
+   background-image:url("images/resknd/default/16x16/APPOSUCP_mongodb.png") !important;
+}
+
+.resknd_custom_loginsight_loginsightadapterinstance {
+   background-image:url("images/resknd/custom/16x16/LogInsight_LogInsight Adapter Instance.png") !important;
+}
+
+.resknd_default_sddchealthadapter_vrealizeautomationmanagerserverloadbalancer {
+   background-image:url("images/resknd/default/16x16/SDDCHealthAdapter_vRealize Automation Manager Server Load Balancer.png") !important;
+}
+
+.resknd_default_epopsadapter_windows {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_Windows.png") !important;
+}
+
+.adpknd_default_vcenteroperationsadapter {
+   background-image:url("images/adpknd/default/16x16/vCenter Operations Adapter.png") !important;
+}
+
+.resknd_default_vmware_hostfolder {
+   background-image:url("images/resknd/default/16x16/VMWARE_HostFolder.png") !important;
+}
+
+.resknd_default_epopsadapter_vrealizeautomationmanagerloadbalancergroup {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_vRealize Automation Manager Load Balancer (Group).png") !important;
+}
+
+.resknd_default_epopsadapter_vrealizeautomationmanagerserverloadbalancergroup {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_vRealize Automation Manager Server Load Balancer (Group).png") !important;
+}
+
+.resknd_default_epopsadapter_aix_fileserverdirectorytree {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_AIX_FileServer Directory Tree.png") !important;
+}
+
+.resknd_custom_apposucp_telegrafservice {
+   background-image:url("images/resknd/custom/16x16/APPOSUCP_Telegraf Service.png") !important;
+}
+
+.resknd_custom_apposucp_pivotalserver_threadpool {
+   background-image:url("images/resknd/custom/16x16/APPOSUCP_pivotalserver_threadpool.png") !important;
+}
+
+.resknd_default_epopsadapter_windows_fileserverblockdevice {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_Windows_FileServer Block Device.png") !important;
+}
+
+.resknd_custom_virtualandphysicalsanadapter_nonvirtualsandatastore {
+   background-image:url("images/resknd/custom/16x16/VirtualAndPhysicalSANAdapter_NonVirtualSANDatastore.png") !important;
+}
+
+.resknd_default_epopsadapter_aix_cpu {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_AIX_CPU.png") !important;
+}
+
+.resknd_default_vcenteroperationsadapter_vc-ops-watchdog {
+   background-image:url("images/resknd/default/16x16/vCenter Operations Adapter_vC-Ops-Watchdog.png") !important;
+}
+
+.adpknd_default_loginsightadapter {
+   background-image:url("images/adpknd/default/16x16/LogInsightAdapter.png") !important;
+}
+
+.resknd_default_sddchealthadapter_vmwareidentitymanager {
+   background-image:url("images/resknd/default/16x16/SDDCHealthAdapter_VMware Identity Manager.png") !important;
+}
+
+.resknd_custom_apposucp_weblogic_jta_runtime {
+   background-image:url("images/resknd/custom/16x16/APPOSUCP_weblogic_jta_runtime.png") !important;
+}
+
+.trvspec_default_vcopsclusters-vcenteroperationsadapter-vc-ops-cluster {
+   background-image:url("images/traversalspec/16x16/vC Ops Clusters-vCenter Operations Adapter-vC-Ops-Cluster.png") !important;
+}
+
+.resknd_default_epopsadapter_vrealizeorchestratorloadbalancer {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_vRealize Orchestrator Load Balancer.png") !important;
+}
+
+.resknd_custom_epopsadapter_vrealizevpostgresloadbalancer {
+   background-image:url("images/resknd/custom/16x16/EP Ops Adapter_vRealize vPostgres Load Balancer.png") !important;
+}
+
+.resknd_custom_apposucp_apposucpadapterinstance {
+   background-image:url("images/resknd/custom/16x16/APPOSUCP_APPOSUCPAdapterInstance.png") !important;
+}
+
+.resknd_default_epopsadapter_solaris_fileserverdirectory {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_Solaris_FileServer Directory.png") !important;
+}
+
+.resknd_default_vcenteroperationsadapter_vc-ops-casa {
+   background-image:url("images/resknd/default/16x16/vCenter Operations Adapter_vC-Ops-CaSA.png") !important;
+}
+
+.resknd_default_epopsadapter_vspheressoloadbalancer {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_vSphere SSO Load Balancer.png") !important;
+}
+
+.resknd_custom_sddchealthadapter_nsxedge {
+   background-image:url("images/resknd/custom/16x16/SDDCHealthAdapter_NSXEDGE.png") !important;
+}
+
+.resknd_default_vmware_customdatacenter {
+   background-image:url("images/resknd/default/16x16/VMWARE_CustomDatacenter.png") !important;
+}
+
+.resknd_default_epopsadapter_windows_cpu {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_Windows_CPU.png") !important;
+}
+
+.resknd_custom_vcacadapter_user {
+   background-image:url("images/resknd/custom/16x16/VCACAdapter_USER.png") !important;
+}
+
+.resknd_custom_apposucp_activemq_topic {
+   background-image:url("images/resknd/custom/16x16/APPOSUCP_activemq_topic.png") !important;
+}
+
+.resknd_custom_apposucp_ms_iis_win_proc {
+   background-image:url("images/resknd/custom/16x16/APPOSUCP_ms_iis_win_proc.png") !important;
+}
+
+.resknd_custom_apposucp_msexchange_database {
+   background-image:url("images/resknd/custom/16x16/APPOSUCP_msexchange_database.png") !important;
+}
+
+.resknd_default_vcacadapter_tenant {
+   background-image:url("images/resknd/default/16x16/VCACAdapter_TENANT.png") !important;
+}
+
+.resknd_custom_epopsadapter_remotechecksworld {
+   background-image:url("images/resknd/custom/16x16/EP Ops Adapter_Remote Checks World.png") !important;
+}
+
+.resknd_custom_apposucp_websphere {
+   background-image:url("images/resknd/custom/16x16/APPOSUCP_websphere.png") !important;
+}
+
+.resknd_default_epopsadapter_vrealizeautomationiaaswebloadbalancer {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_vRealize Automation IaaS Web Load Balancer.png") !important;
+}
+
+.resknd_default_epopsadapter_vspheressolikewisedcerpcend-pointmapper {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_vSphere SSO Likewise DCE RPC End-Point Mapper.png") !important;
+}
+
+.resknd_custom_apposucp_jboss_jvm_memory {
+   background-image:url("images/resknd/custom/16x16/APPOSUCP_jboss_jvm_memory.png") !important;
+}
+
+.resknd_default_epopsadapter_aix_fileserverfile {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_AIX_FileServer File.png") !important;
+}
+
+.resknd_default_epopsadapter_tcpcheck {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_TCP Check.png") !important;
+}
+
+.resknd_custom_apposucp_zookeeper {
+   background-image:url("images/resknd/custom/16x16/APPOSUCP_zookeeper.png") !important;
+}
+
+.resknd_default_epopsadapter_linux_fileserverblockdevice {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_Linux_FileServer Block Device.png") !important;
+}
+
+.resknd_default_sddchealthadapter_sddcnsxtworld {
+   background-image:url("images/resknd/default/16x16/SDDCHealthAdapter_SDDC NSXT World.png") !important;
+}
+
+.resknd_default_epopsadapter_postgresql {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_PostgreSQL.png") !important;
+}
+
+.resknd_custom_apposucp_mongodb_databases {
+   background-image:url("images/resknd/custom/16x16/APPOSUCP_mongodb_databases.png") !important;
+}
+
+.resknd_default_apposucp_mssql {
+   background-image:url("images/resknd/default/16x16/APPOSUCP_mssql.png") !important;
+}
+
+.resknd_default_vcacadapter_fabricgroup {
+   background-image:url("images/resknd/default/16x16/VCACAdapter_FABRICGROUP.png") !important;
+}
+
+.resknd_custom_sddchealthadapter_sddchealthworld {
+   background-image:url("images/resknd/custom/16x16/SDDCHealthAdapter_SDDC Health World.png") !important;
+}
+
+.resknd_default_sddchealthadapter_vrealizeautomationiaasrepository {
+   background-image:url("images/resknd/default/16x16/SDDCHealthAdapter_vRealize Automation IaaS Repository.png") !important;
+}
+
+.resknd_default_sddchealthadapter_sddcsrmworld {
+   background-image:url("images/resknd/default/16x16/SDDCHealthAdapter_SDDC SRM World.png") !important;
+}
+
+.resknd_default_epopsadapter_script {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_Script.png") !important;
+}
+
+.resknd_default_epopsadapter_vmwarelicenseservice {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_VMware License Service.png") !important;
+}
+
+.resknd_default_vcenteroperationsadapter_vc-ops-collector {
+   background-image:url("images/resknd/default/16x16/vCenter Operations Adapter_vC-Ops-Collector.png") !important;
+}
+
+.trvspec_default_vsanandstoragedevices-virtualandphysicalsanadapter-virtualsandccluster {
+   background-image:url("images/traversalspec/16x16/vSAN and Storage Devices-VirtualAndPhysicalSANAdapter-VirtualSANDCCluster.png") !important;
+}
+
+.trvspec_default_vcaccdcview-vmware-customdatacenter {
+   background-image:url("images/traversalspec/16x16/vCAC CDC View-VMWARE-CustomDatacenter.png") !important;
+}
+
+.resknd_custom_vcenteroperationsadapter_vc-ops-managementpack {
+   background-image:url("images/resknd/custom/16x16/vCenter Operations Adapter_vC-Ops-ManagementPack.png") !important;
+}
+
+.resknd_default_epopsadapter_vspheressolikewiseeventlog {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_vSphere SSO Likewise Eventlog.png") !important;
+}
+
+.resknd_default_vcenteroperationsadapter_vc-ops-managementpackgroup {
+   background-image:url("images/resknd/default/16x16/vCenter Operations Adapter_vC-Ops-ManagementPackGroup.png") !important;
+}
+
+.adpknd_default_nsxtadapter {
+   background-image:url("images/adpknd/default/16x16/NSXTAdapter.png") !important;
+}
+
+.resknd_custom_sddchealthadapter_sshservice {
+   background-image:url("images/resknd/custom/16x16/SDDCHealthAdapter_SSHService.png") !important;
+}
+
+.resknd_custom_apposucp_hyperv {
+   background-image:url("images/resknd/custom/16x16/APPOSUCP_hyperv.png") !important;
+}
+
+.resknd_custom_apposucp_cassandra {
+   background-image:url("images/resknd/custom/16x16/APPOSUCP_cassandra.png") !important;
+}
+
+.resknd_default_sddchealthadapter_vcenterhealthservices {
+   background-image:url("images/resknd/default/16x16/SDDCHealthAdapter_vCenterHealthServices.png") !important;
+}
+
+.resknd_default_sddchealthadapter_sddcvcdworld {
+   background-image:url("images/resknd/default/16x16/SDDCHealthAdapter_SDDC VCD World.png") !important;
+}
+
+.resknd_default_vcenteroperationsadapter_vc-ops-cluster {
+   background-image:url("images/resknd/default/16x16/vCenter Operations Adapter_vC-Ops-Cluster.png") !important;
+}
+
+.resknd_default_epopsadapter_vmwareservicecontrolagentserver {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_VMware Service Control Agent Server.png") !important;
+}
+
+.resknd_default_epopsadapter_vrealizeautomationservergroup {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_vRealize Automation Server (Group).png") !important;
+}
+
+.resknd_custom_apposucp_jboss_datasource_pool {
+   background-image:url("images/resknd/custom/16x16/APPOSUCP_jboss_datasource_pool.png") !important;
+}
+
+.resknd_default_apposucp_apposucpadapterinstance {
+   background-image:url("images/resknd/default/16x16/APPOSUCP_APPOSUCPAdapterInstance.png") !important;
+}
+
+.resknd_custom_apposucp_os {
+   background-image:url("images/resknd/custom/16x16/APPOSUCP_OS.png") !important;
+}
+
+.resknd_custom_srmadapter_srmworld {
+   background-image:url("images/resknd/custom/16x16/SrmAdapter_SRM World.png") !important;
+}
+
+.resknd_custom_apposucp_wildfly {
+   background-image:url("images/resknd/custom/16x16/APPOSUCP_wildfly.png") !important;
+}
+
+.trvspec_default_vsantopology-virtualandphysicalsanadapter-virtualandphysicalsanadapterinstance {
+   background-image:url("images/traversalspec/16x16/vSAN Topology-VirtualAndPhysicalSANAdapter-VirtualAndPhysicalSANAdapter Instance.png") !important;
+}
+
+.adpknd_default_apposucp {
+   background-image:url("images/adpknd/default/16x16/APPOSUCP.png") !important;
+}
+
+.resknd_default_sddchealthadapter_sddcvsanworld {
+   background-image:url("images/resknd/default/16x16/SDDCHealthAdapter_SDDC VSAN World.png") !important;
+}
+
+.resknd_custom_sddchealthadapter_nsxvpostgresservice {
+   background-image:url("images/resknd/custom/16x16/SDDCHealthAdapter_NSXVPostgresService.png") !important;
+}
+
+.resknd_default_sddchealthadapter_vrealizeorchestratorappserver {
+   background-image:url("images/resknd/default/16x16/SDDCHealthAdapter_vRealize Orchestrator App Server.png") !important;
+}
+
+.resknd_default_vmware_vmfolder {
+   background-image:url("images/resknd/default/16x16/VMWARE_VMFolder.png") !important;
+}
+
+.resknd_custom_sddchealthadapter_vrbvcdmodule {
+   background-image:url("images/resknd/custom/16x16/SDDCHealthAdapter_vRBVcdModule.png") !important;
+}
+
+.resknd_default_apposucp_rabbitmq {
+   background-image:url("images/resknd/default/16x16/APPOSUCP_rabbitmq.png") !important;
+}
+
+.resknd_custom_sddchealthadapter_vcenterbackupjobs {
+   background-image:url("images/resknd/custom/16x16/SDDCHealthAdapter_vCenterBackupJobs.png") !important;
+}
+
+.resknd_custom_apposucp_mssql_database {
+   background-image:url("images/resknd/custom/16x16/APPOSUCP_mssql_database.png") !important;
+}
+
+.resknd_custom_apposucp_tomcat_server_threadpool {
+   background-image:url("images/resknd/custom/16x16/APPOSUCP_tomcat_server_threadpool.png") !important;
+}
+
+.resknd_default_epopsadapter_linux {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_Linux.png") !important;
+}
+
+.resknd_custom_sddchealthadapter_vrb {
+   background-image:url("images/resknd/custom/16x16/SDDCHealthAdapter_VRB.png") !important;
+}
+
+.resknd_default_epopsadapter_linux_fileserverdirectorytree {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_Linux_FileServer Directory Tree.png") !important;
+}
+
+.resknd_default_vcacadapter_vcacadapterinstance {
+   background-image:url("images/resknd/default/16x16/VCACAdapter_VCACAdapter Instance.png") !important;
+}
+
+.resknd_default_sddchealthadapter_vrealizeautomationiaasmanagementagent {
+   background-image:url("images/resknd/default/16x16/SDDCHealthAdapter_vRealize Automation IaaS Management Agent.png") !important;
+}
+
+.resknd_custom_vmware_computeresource {
+   background-image:url("images/resknd/custom/16x16/VMWARE_ComputeResource.png") !important;
+}
+
+.resknd_custom_apposucp_activedirectory_dfs_replication {
+   background-image:url("images/resknd/custom/16x16/APPOSUCP_activedirectory_dfs_replication.png") !important;
+}
+
+.resknd_default_vcenteroperationsadapter_vcenteroperationsadapterinstance {
+   background-image:url("images/resknd/default/16x16/vCenter Operations Adapter_vCenter Operations Adapter Instance.png") !important;
+}
+
+.resknd_custom_apposucp_apachecassandra {
+   background-image:url("images/resknd/custom/16x16/APPOSUCP_Apache Cassandra.png") !important;
+}
+
+.resknd_custom_sddchealthadapter_vrbstoragemodule {
+   background-image:url("images/resknd/custom/16x16/SDDCHealthAdapter_vRBStorageModule.png") !important;
+}
+
+.resknd_default_vmware_folder {
+   background-image:url("images/resknd/default/16x16/VMWARE_Folder.png") !important;
+}
+
+.trvspec_default_1 {
+   background-image:url("images/traversalspec/16x16/1.png") !important;
+}
+
+.resknd_default_epopsadapter_vspheressolikewisesecurityandauthenticationsubsystem {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_vSphere SSO Likewise Security and Authentication Subsystem.png") !important;
+}
+
+.trvspec_default_vcacreservationpolicyview-vcacadapter-reservationpolicy {
+   background-image:url("images/traversalspec/16x16/vCAC Reservation policy View-VCACAdapter-RESERVATIONPOLICY.png") !important;
+}
+
+.resknd_custom_sddchealthadapter_management-service {
+   background-image:url("images/resknd/custom/16x16/SDDCHealthAdapter_management-service.png") !important;
+}
+
+.resknd_default_epopsadapter_httpcheck {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_HTTP Check.png") !important;
+}
+
+.resknd_default_srmadapter_srmadapterinstance {
+   background-image:url("images/resknd/default/16x16/SrmAdapter_SrmAdapter Instance.png") !important;
+}
+
+.resknd_custom_apposucp_ms-sqldb {
+   background-image:url("images/resknd/custom/16x16/APPOSUCP_MS-SQL DB.png") !important;
+}
+
+.resknd_custom_loginsight_loginsightlogserver {
+   background-image:url("images/resknd/custom/16x16/LogInsight_LogInsightLogServer.png") !important;
+}
+
+.resknd_custom_vrbcadapter_vrbcadapterinstance {
+   background-image:url("images/resknd/custom/16x16/vRBCAdapter_vRBC Adapter Instance.png") !important;
+}
+
+.resknd_default_epopsadapter_vrealizeautomationmanagerserver {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_vRealize Automation Manager Server.png") !important;
+}
+
+.resknd_default_vcacadapter_businessgroup {
+   background-image:url("images/resknd/default/16x16/VCACAdapter_BUSINESSGROUP.png") !important;
+}
+
+.resknd_custom_sddchealthadapter_postgresql {
+   background-image:url("images/resknd/custom/16x16/SDDCHealthAdapter_PostgreSQL.png") !important;
+}
+
+.resknd_custom_apposucp_apachesolr {
+   background-image:url("images/resknd/custom/16x16/APPOSUCP_apachesolr.png") !important;
+}
+
+.resknd_default_epopsadapter_linux_fileservermount {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_Linux_FileServer Mount.png") !important;
+}
+
+.resknd_default_epopsadapter_aix_fileserverblockdevice {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_AIX_FileServer Block Device.png") !important;
+}
+
+.resknd_default_epopsadapter_vrealizeautomationdatabasesgroup {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_vRealize Automation Databases (Group).png") !important;
+}
+
+.adpknd_default_virtualandphysicalsanadapter {
+   background-image:url("images/adpknd/default/16x16/VirtualAndPhysicalSANAdapter.png") !important;
+}
+
+.resknd_default_sddchealthadapter_vro {
+   background-image:url("images/resknd/default/16x16/SDDCHealthAdapter_VRO.png") !important;
+}
+
+.trvspec_default_vspherestorage-vmware-vsphereworld {
+   background-image:url("images/traversalspec/16x16/vSphere Storage-VMWARE-vSphere World.png") !important;
+}
+
+.resknd_default_epopsadapter_vrealizeorchestratorconfigurator {
+   background-image:url("images/resknd/default/16x16/EP Ops Adapter_vRealize Orchestrator Configurator.png") !important;
+}
+
+.resknd_default_sddchealthadapter_vrealizeorchestratorloadbalancer {
+   background-image:url("images/resknd/default/16x16/SDDCHealthAdapter_vRealize Orchestrator Load Balancer.png") !important;
+}
+
+.resknd_default_apposucp_win {
+   background-image:url("images/resknd/default/16x16/APPOSUCP_win.png") !important;
+}
+
+.resknd_custom_nsxtadapter_transportzonegroup {
+   background-image:url("images/resknd/custom/16x16/NSXTAdapter_TransportZoneGroup.png") !important;
+}
+
+.resknd_default_sddchealthadapter_vra {
+   background-image:url("images/resknd/default/16x16/SDDCHealthAdapter_VRA.png") !important;
+}
+
+.resknd_custom_vmware_vmentitystatus {
+   background-image:url("images/resknd/custom/16x16/VMWARE_VM Entity Status.png") !important;
+}
+
+.resknd_custom_sddchealthadapter_vrbawsmodule {
+   background-image:url("images/resknd/custom/16x16/SDDCHealthAdapter_vRBAwsModule.png") !important;
+}
+
+.resknd_custom_apposucp_jboss_jvm_garbage_collector {
+   background-image:url("images/resknd/custom/16x16/APPOSUCP_jboss_jvm_garbage_collector.png") !important;
+}
+
+.trvspec_default_diskgroup {
+   background-image:url("images/traversalspec/16x16/DiskGroup.png") !important;
+}
+
+.resknd_custom_apposucp_nginxplus {
+   background-image:url("images/resknd/custom/16x16/APPOSUCP_nginxplus.png") !important;
 }
 
 .resknd_default_epopsadapter_process {
@@ -1273,36 +2069,16 @@
    background-image:url("images/resknd/default/16x16/NSXTAdapter_ControllerNode.png") !important;
 }
 
-.resknd_default_nsxtadapter_managementservice {
-   background-image:url("images/resknd/default/16x16/NSXTAdapter_ManagementService.png") !important;
-}
-
 .resknd_default_vmware_datastore_power_on {
    background-image:url("images/resknd/default/16x16/VMWARE_Datastore_power_on.png") !important;
 }
 
-.resknd_default_physicalsanadapter_storageprocessor {
-   background-image:url("images/resknd/default/16x16/PhysicalSANAdapter_StorageProcessor.png") !important;
-}
-
-.resknd_default_apposucp_linux {
-   background-image:url("images/resknd/default/16x16/APPOSUCP_linux.png") !important;
-}
-
-.resknd_default_vcacadapter_reservationpolicy {
-   background-image:url("images/resknd/default/16x16/VCACAdapter_RESERVATIONPOLICY.png") !important;
-}
-
-.resknd_default_nsxtadapter_loadbalancerservice {
-   background-image:url("images/resknd/default/16x16/NSXTAdapter_LoadBalancerService.png") !important;
+.resknd_custom_virtualandphysicalsanadapter_virtualsanhost {
+   background-image:url("images/resknd/custom/16x16/VirtualAndPhysicalSANAdapter_VirtualSANHost.png") !important;
 }
 
 .resknd_default_vmware_virtualmachine_power_off {
    background-image:url("images/resknd/default/16x16/VMWARE_VirtualMachine_power_off.png") !important;
-}
-
-.resknd_default_vmware_vmwaredistributedvirtualswitch {
-   background-image:url("images/resknd/default/16x16/VMWARE_VmwareDistributedVirtualSwitch.png") !important;
 }
 
 .resknd_default_epopsadapter_windows_fileserverlogicaldisk {
