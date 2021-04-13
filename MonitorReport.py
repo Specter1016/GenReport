@@ -284,10 +284,10 @@ def setSendReport():
 
         #setDate
 
-        setd = str(time.strftime("%m/%d/%Y"));
+        setd = str(time.strftime("%d/%m/%Y"));
         print(setd);
         time.sleep(5)
-        setdate = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div/div[2]/div/div/div/input[1]');
+        setdate = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div/div/input[1]');
         setdate.click();
         setdate.click();
         time.sleep(2);
@@ -302,9 +302,9 @@ def setSendReport():
             pass
 
         print(f'\n\nH : {n-1}\n\n');
-        setdate = driver.find_element_by_xpath('//*[@id="Select_0_placeholder"]');
+        setdate = driver.find_element_by_xpath('//*[@id="SelectId_0_placeholder"]');
         setdate.click();
-        setdate = driver.find_element_by_xpath('//*[@id="Select_0"]/ul/li[{}]'.format(n).strip());
+        setdate = driver.find_element_by_xpath('//*[@id="SelectId_0"]/div[2]/div[{}]'.format(n).strip());
         setdate.click();
         setdate = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[3]/div[1]/button');
         setdate.click();
@@ -313,7 +313,7 @@ def setSendReport():
         i = 2;
         while(i<=13):
 
-            setstatus = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div/div[2]/div/div[{}]'.format(i).strip()+'/div[2]');
+            setstatus = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[{}]'.format(i).strip()+'/div[2]/input');
             setstatus.click();
     
             i = i+1;
@@ -324,9 +324,9 @@ def setSendReport():
 
             np = 3;
             ng = 0;
-            while(np < 36):
+            while(np < 35):
 
-                setinput = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[{}]'.format(np).strip()+'/div/div[2]/div/div/input');
+                setinput = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[{}]'.format(np).strip()+'/div/div[2]/div/div/input');
                 setinput.click();
                 setinput.send_keys(getreport[ng]);
 
@@ -574,14 +574,14 @@ def newReadVersion():
                                                         break;
 
 
-#readHTML();
-#readset();
+readHTML();
+readset();
 
 #setCPUFuntion();
 #setRAMFuntion();
 #setNETFuntion();
 
-newReadVersion();
+#newReadVersion();
 setShowReport();
 setReportFile();
 setSendReport();
