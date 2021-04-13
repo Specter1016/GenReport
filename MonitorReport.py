@@ -310,7 +310,7 @@ def setSendReport():
         setdate.click();
 
         #setStatus
-        i = 1;
+        i = 2;
         while(i<=13):
 
             setstatus = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[{}]'.format(i).strip()+'/div[2]/input');
@@ -322,7 +322,7 @@ def setSendReport():
         with open('ValueReport.text','r',encoding="utf-8") as setreport:
             getreport = setreport.readlines();
 
-            np = 3;
+            np = 2;
             ng = 0;
             while(np < 35):
 
