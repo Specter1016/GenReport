@@ -284,7 +284,7 @@ def setSendReport():
 
         #setDate
 
-        setd = str(time.strftime("%m/%d/%Y"));
+        setd = str(time.strftime("%d/%m/%Y"));
         print(setd);
         time.sleep(5)
         setdate = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div/div/input[1]');
@@ -478,7 +478,7 @@ def readset():
 def notifyLine():
 	
 	url = 'https://notify-api.line.me/api/notify'
-	token = 'XXDGYijBwUe9OAWfnu7AshNWGbQUawhuK79dCanPnv3';
+	token = 'klz61mgZmeHezHKLjBDD73HuJrbXkDZIugkYaBQfs5p';
 	headers = {'content-type':'application/x-www-form-urlencoded','Authorization':'Bearer '+token}
 
 	with open('Royal.text','r') as target:
