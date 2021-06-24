@@ -163,6 +163,7 @@ def setNETFuntion():
 
 def setShowReport():
 
+    setplayload = list();
 
     try:
 
@@ -177,10 +178,24 @@ def setShowReport():
             getram = gram.readlines();
 
             gnet = open('Royalnet.text','r',encoding="utf-8");
-            getnet = gnet.readlines();
+            #getnet = gnet.readlines();
 
             gip = open('IP.text','r',encoding="utf-8");
             getip = gip.readlines();
+
+            p = '';
+            for x in gnet:
+
+                if 'span' in x:
+                    for y in x:
+                        if '/' in y:
+                            setplayload.append(p.strip())
+                            p = '';
+                            break;
+                        else:
+                            p = p + y;
+                else:
+                    setplayload.append(x.strip());
 
 
             count = 0;
@@ -191,7 +206,7 @@ def setShowReport():
                 setreport.writelines("IP : : {}".format(getip[count]).strip()+"\n");
                 setreport.writelines("CPU : : {}".format(getcpu[count]).strip()+"\n");
                 setreport.writelines("RAM : : {}".format(getram[count]).strip()+"\n");
-                setreport.writelines("NET : :{}".format(getnet[count]).strip()+"\n");
+                setreport.writelines("NET : :{}".format(setplayload[count]).strip()+"\n");
                 setreport.writelines("\n");
 
 
@@ -208,6 +223,7 @@ def setShowReport():
         print('\n');
 
 def setReportFile():
+
 
 
     try:
@@ -229,9 +245,12 @@ def setReportFile():
             getip = gip.readlines();
 
 
+
+
+
             count = 0;
             p=1;
-            while (count < 11):
+            while (count < 15):
 
         
                 setreport.writelines(format(getcpu[count]).strip()+"\n");
@@ -257,7 +276,7 @@ def setReportFile():
 
 def setSendReport():
 
-
+    setplayload = list();
 
     try:
 
@@ -284,7 +303,7 @@ def setSendReport():
 
         #setDate
 
-        setd = str(time.strftime("%d/%m/%Y"));
+        setd = str(time.strftime("%m/%d/%Y"));
         print(setd);
         time.sleep(5)
         setdate = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div/div/input[1]');
@@ -311,24 +330,38 @@ def setSendReport():
 
         #setStatus
         i = 2;
-        while(i<=13):
+        while(i<=18):
 
             setstatus = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[{}]'.format(i).strip()+'/div[2]/input');
             setstatus.click();
-    
+
+
             i = i+1;
             pass
 
         with open('ValueReport.text','r',encoding="utf-8") as setreport:
-            getreport = setreport.readlines();
+
+            p = '';
+            for x in setreport:
+
+                if 'span' in x:
+                    for y in x:
+                        if '/' in y:
+                            setplayload.append(p.strip())
+                            p = '';
+                            break;
+                        else:
+                            p = p + y;
+                else:
+                    setplayload.append(x.strip());
 
             np = 2;
             ng = 0;
-            while(np < 35):
+            while(np < 47):
 
                 setinput = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[{}]'.format(np).strip()+'/div/div[2]/div/div/input');
                 setinput.click();
-                setinput.send_keys(getreport[ng]);
+                setinput.send_keys(setplayload[ng]);
 
                 ng = ng+1;
                 np = np+1;
@@ -442,7 +475,7 @@ def readset():
                                             else:
                                                 
 
-                                                if (isetcount <= 11 ):
+                                                if (isetcount <= 15 ):
                                                     
                                                     cpuset.writelines(format(list_of_output).strip()+"\n");
                                                     setreport.writelines(format(list_of_output).strip()+"\n");
@@ -450,7 +483,7 @@ def readset():
                                                     list_of_output = '';
                                                     break;
 
-                                                if isetcount <= 22 :
+                                                if isetcount <= 30 :
                                                     
                                                     ramset.writelines(format(list_of_output).strip()+"\n");
                                                     setreport.writelines(format(list_of_output).strip()+"\n");
@@ -458,7 +491,7 @@ def readset():
                                                     list_of_output = '';
                                                     break;
 
-                                                if isetcount >= 22 :
+                                                if isetcount >= 45 :
                                                 
                                                     netset.writelines(format(list_of_output).strip()+"\n");
                                                     setreport.writelines(format(list_of_output).strip()+"\n");

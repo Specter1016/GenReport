@@ -1,0 +1,24 @@
+/* Copyright (c) 2017 VMware, Inc. All rights reserved. */
+
+/*
+ * EXTERNAL ICONS SUPPORT: plugin-icons.css contain "external" icons, i.e. the ones
+ * displayed outside plugin's views, in the main app menus, shortcuts or object lists.
+ * Do not include other CSS rules here!
+ */
+.VumUi-updateManager16 {
+    background: url("../images/update_manager_16x.png");
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    vertical-align: text-bottom;
+    margin: 1px 4px 0;
+}
+
+.VumUi-updateManager32 {
+    background: url("../images/update_manager_32x.png");
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    vertical-align: text-bottom;
+    margin: 1px 4px 0;
+}

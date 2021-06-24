@@ -1,0 +1,317 @@
+/* Copyright 2016 VMware, Inc. All rights reserved. -- VMware Confidential */
+
+// vaivanov - this script applies kendo ui patches which are tested against specific
+// kendo version. Please, re-test that patches work properly after bumping to newer kendo
+if (kendo.version !== '2015.3.1214') {
+   throw new Error('Cannot apply kendo patch to kendo version ' + kendo.version +
+   '. Please, check that patches work correctly against current version.');
+}
+(function() {
+   'use strict';
+
+   // Register resizable kendo widget. The widget allows
+   // an html element to subscribe for kendo resize events.
+   // Story URL: https://www.pivotaltracker.com/story/show/130848807
+
+   var ResizableWidget = kendo.ui.Widget.extend({
+      init: function(element, options) {
+         element = $(element);
+         kendo.ui.Widget.fn.init.call(this, element, options);
+         element.attr('role', 'resizablewidget');
+      },
+      events: ['resize'],
+      options: {
+         name: "ResizableWidget"
+      }
+   });
+
+   kendo.ui.plugin(ResizableWidget);
+})();
+
+(function() {
+   'use strict';
+
+   var SHOW_COLUMNS_GROUPING_LABEL;
+
+   kendo.ui.Popup.fn.open = _.wrap(kendo.ui.Popup.fn.open, function(originalFunction) {
+      var args = Array.prototype.slice.call(arguments, 1);
+      originalFunction.apply(this, args);
+
+      var menuItem = this.element.parent().parent();
+      if (menuItem && menuItem.hasClass('k-columns-item')) {
+         // Add grouping to kendo grid column menu that shows grid columns as checkboxes.
+         // The patch is in Popup.open function because this is the function where
+         // kendo Popup widget adds div.k-animation-container wrapper around the
+         // menu that represents the column items. We need this div created first
+         // in order to add the required aria attributes to it.
+
+         var wrappingDiv = menuItem.find('div.k-animation-container');
+         var GROUPING_ELEM_ID = 'cols_menu';
+         if (wrappingDiv.length && !wrappingDiv.has('#' + GROUPING_ELEM_ID).length) {
+            if (!SHOW_COLUMNS_GROUPING_LABEL) {
+               SHOW_COLUMNS_GROUPING_LABEL = h5.i18n.getString('Common', 'showColumnsGroupingLabel');
+            }
+            wrappingDiv
+               .prepend('<span id="' + GROUPING_ELEM_ID + '">' + SHOW_COLUMNS_GROUPING_LABEL + '</span>');
+            wrappingDiv.attr('role', 'group');
+            wrappingDiv.attr('aria-labelledby', GROUPING_ELEM_ID);
+         }
+      }
+   });
+})();
+
+(function() {
+   'use strict';
+
+   kendo.ui.FilterMenu.fn._open = _.wrap(kendo.ui.FilterMenu.fn._open, function(originalFunction) {
+      var args = Array.prototype.slice.call(arguments, 1);
+      originalFunction.apply(this, args);
+
+      // Add aria-label to filter input when the column header is only
+      // filterable and does not have a Show/Hide columns menu.
+      var filterInput = this.form
+         .find('input[type="text"]');
+      if (filterInput.length && !filterInput.hasClass('aria-label')) {
+         var filterText = h5.i18n.getString(
+            'Common', 'columnFilterTextFormat', this.title);
+         filterInput.attr('aria-label', filterText);
+      }
+   });
+})();
+
+(function() {
+   'use strict';
+
+   // Patches kendo column menu to display filter icon when column is filtered.
+   // Review URL: https://reviewboard.eng.vmware.com/r/1037194/
+   // Story URL: https://www.pivotaltracker.com/story/show/131609721
+   kendo.ui.ColumnMenu.fn.refresh = _.wrap(kendo.ui.ColumnMenu.fn.refresh, function(originalRefresh) {
+      var args = Array.prototype.slice.call(arguments, 1);
+      originalRefresh.apply(this, args);
+
+      var filterExists = this._filterExist(this.dataSource.filter());
+      var icon = this.link.find('.k-icon');
+      if (filterExists) {
+         this.link.addClass('k-grid-filter');
+         icon.addClass('k-filter');
+
+         this.link.removeClass('k-header-column-menu');
+         icon.removeClass('k-i-arrowhead-s');
+
+      } else {
+         this.link.addClass('k-header-column-menu');
+         icon.addClass('k-i-arrowhead-s');
+
+         this.link.removeClass('k-grid-filter');
+         icon.removeClass('k-filter');
+      }
+
+      if (!icon.text().includes(this.title)) {
+         var iconText = h5.i18n.getString(
+            'Common', 'columnHeaderSettingsFormat', this.title);
+         icon.text(iconText);
+      }
+   });
+
+   kendo.ui.ColumnMenu.fn._createMenu = _.wrap(kendo.ui.ColumnMenu.fn._createMenu, function(originalFunction) {
+      var args = Array.prototype.slice.call(arguments, 1);
+      originalFunction.apply(this, args);
+
+      // Add aria-label to all the column checkboxes
+      this.menu.element
+         .find('li.k-columns-item li.k-item span.k-link')
+         .each(function() {
+            var colName = this.innerText;
+            $(this)
+               .find('input[type="checkbox"]')
+               .attr('aria-label', colName);
+         });
+   });
+
+   kendo.ui.ColumnMenu.fn._open = _.wrap(kendo.ui.ColumnMenu.fn._open, function(originalFunction) {
+      var args = Array.prototype.slice.call(arguments, 1);
+      originalFunction.apply(this, args);
+
+      // Add aria-label to filter input, patching it in ColumnMenu._open
+      // because in ColumnMenu._createMenu the form.k-filter-menu is not
+      // created yet
+      var filterInput = this.menu.element
+            .find('li.k-filter-item form.k-filter-menu input[type="text"]');
+      if (filterInput.length && !filterInput.hasClass('aria-label')) {
+         var filterText = h5.i18n.getString(
+            'Common', 'columnFilterTextFormat', this.title);
+         filterInput.attr('aria-label', filterText);
+      }
+   });
+})();
+
+(function() {
+   'use strict';
+   // Patch kendo filter to fix the issue with not disappearing empty icon
+   kendo.ui.FilterMenu.fn.filter = _.wrap(kendo.ui.FilterMenu.fn.filter, function() {
+      var args = Array.prototype.slice.call(arguments, 1);
+      var expression = args[0];
+
+      var currentFilter = this.dataSource.filter() || { filters:[], logic: "and" };
+      var isDatasourceFiltered = currentFilter.filters.length > 0;
+      expression = this._merge(expression);
+
+      if (expression.filters.length || isDatasourceFiltered) {
+         this.dataSource.filter(expression);
+      }
+   });
+})();
+
+(function() {
+   'use strict';
+   function onScrollableContentClicked(e) {
+         // It's possible to capture a 'press' event on a grid row, but we only need to handle it on empty grid area.
+         if ($(e.target).is(".k-grid-content, .k-virtual-scrollable-wrap")) {
+            var scrollHeight = e.target.scrollHeight;
+            var clickY = e.clientY - e.target.getBoundingClientRect().top;
+            if (clickY < scrollHeight && this.selectable) {
+               this.clearSelection();
+            }
+         }
+   }
+   // Patch kendo to deselect rows when clicking in scrollable area
+   kendo.ui.Grid.fn._scrollable = _.wrap(kendo.ui.Grid.fn._scrollable, function(originalFunction) {
+      var args = Array.prototype.slice.call(arguments, 1);
+      originalFunction.apply(this, args);
+      if (this.options.scrollable) {
+         if (!this.h5GridUnselectPatch) {
+               this.h5GridUnselectPatch = $.proxy(onScrollableContentClicked, this);
+               this.content.on("mousedown", ".k-grid-content, .k-virtual-scrollable-wrap", this.h5GridUnselectPatch);
+         }
+      }
+   });
+})();
+
+
+(function() {
+   'use strict';
+
+   // Patch kendo grid to resize on column resize.
+   // Otherwise when horizontal scroller appers, it hides the content of the last row
+   kendo.ui.Grid.fn._element = _.wrap(kendo.ui.Grid.fn._element, function(originalFunction) {
+      var args = Array.prototype.slice.call(arguments, 1);
+      originalFunction.apply(this, args);
+
+      this.bind('columnResize',this.resize.bind(this));
+
+      // Patch kendo grid to trigger click event on links in grid cells when Enter key is pressed
+      var _this = this;
+      var ENTER_KEY_CODE = 13;
+      var SPACE_KEY_CODE = 32;
+      this.handleCellEnterKeyDown = function(e) {
+         if (e.keyCode !== ENTER_KEY_CODE && e.keyCode !== SPACE_KEY_CODE) {
+            return;
+         }
+
+         var cell = _this.current();
+         if (!cell) {
+            return;
+         }
+
+         var link = $(cell).find('.object.object-link a')
+            .not(':disabled')
+            .not('.non-navigatable-link');
+         if (link.length > 0) {
+            link.click();
+         }
+      };
+
+      $(this.element).on('keydown', this.handleCellEnterKeyDown);
+   });
+
+   // Progress Bar accessibility patch
+   kendo.ui.Grid.fn._progress = _.wrap(kendo.ui.Grid.fn._progress, function(originalFunction) {
+      var args = Array.prototype.slice.call(arguments, 1);
+      originalFunction.apply(this, args);
+
+      var mask = this.element.find('.k-loading-mask');
+      if (mask.length && !mask.attr('aria-label')) {
+         mask.attr('role', 'alert');
+         mask.attr('aria-live', 'assertive');
+         var loadingAriaLabel = h5.i18n.getString('Common', 'kendoGridLoadingAriaLabel');
+         mask.attr('aria-label', loadingAriaLabel);
+
+         // hide from screen reader Loading... text coming from kendo
+         var loadintText = mask.find('.k-loading-text');
+         if (loadintText.length) {
+            loadintText.attr('aria-hidden', 'true');
+         }
+      }
+   });
+
+   // Drag kend grid column patch
+   // https://bugzilla.eng.vmware.com/show_bug.cgi?id=2362805
+   //
+   // The function is exact copy of the existing draggable hint function in the kendo grid
+   // the only difference is that the title is escaped before to be added
+   // in the html
+   function dragColumnHint(target) {
+      var title = _.escape(target.attr(kendo.attr("title")));
+      return $('<div class="k-header k-drag-clue" />')
+         .css({
+            width: target.width(),
+            paddingLeft: target.css("paddingLeft"),
+            paddingRight: target.css("paddingRight"),
+            lineHeight: target.height() + "px",
+            paddingTop: target.css("paddingTop"),
+            paddingBottom: target.css("paddingBottom")
+         })
+         .html(title || target.attr(kendo.attr("field")) || target.text())
+         .prepend('<span class="k-icon k-drag-status k-denied" />');
+   }
+   kendo.ui.Grid.fn._draggable = _.wrap(kendo.ui.Grid.fn._draggable, function(originalFunction) {
+      var args = Array.prototype.slice.call(arguments, 1);
+      originalFunction.apply(this, args);
+      if (this._draggableInstance && this._draggableInstance.options && this._draggableInstance.options.hint) {
+         this._draggableInstance.options.hint = dragColumnHint;
+      }
+   });
+
+   // Patch kendo grid destroy function to release objects created by patch implementations
+   kendo.ui.Grid.fn.destroy = _.wrap(kendo.ui.Grid.fn.destroy, function(originalFunction) {
+      if (this.h5GridUnselectPatch) {
+            this.content.off("mousedown", ".k-grid-content, .k-virtual-scrollable-wrap", this.h5GridUnselectPatch);
+            delete this.h5GridUnselectPatch;
+      }
+      var args = Array.prototype.slice.call(arguments, 1);
+      originalFunction.apply(this, args);
+
+      if (this.handleCellEnterKeyDown) {
+         $(this.element).off('keydown', this.handleCellEnterKeyDown);
+      }
+   });
+})();
+
+(function() {
+   'use strict';
+
+   kendo.ui.Widget.fn.init = _.wrap(kendo.ui.Widget.fn.init, function(originalFunction) {
+
+      var isRemovingWidgetElement = false;
+      var args = Array.prototype.slice.call(arguments, 1);
+      originalFunction.apply(this, args);
+
+      this.element.on("remove", function () {
+         if (isRemovingWidgetElement) {
+            return;
+         }
+
+         isRemovingWidgetElement = true;
+
+         // Fix for kendo memory leaks.
+         this.destroy();
+
+         // Create a new element to avoid `unbind of null` error in case of double destroy.
+         // This can happen when we destroy here and vui attempts to destroy again.
+         // See https://bugzilla.eng.vmware.com/show_bug.cgi?id=1858191
+         this.link = this.link || $();
+
+         isRemovingWidgetElement = false;
+      }.bind(this));
+   });
+})();

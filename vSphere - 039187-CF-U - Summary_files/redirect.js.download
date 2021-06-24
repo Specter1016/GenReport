@@ -1,0 +1,72 @@
+/* Copyright 2016 VMware, Inc. All rights reserved. -- VMware Confidential */
+
+(function(){
+   h5 = h5 || {};
+   /*
+    * Saves query parameters and hash in the session storage under "h5_redirect_url"
+    * key
+    *
+    * @param redirectUrl
+    *       The URL to which the user should be redirected after a successful login.
+    */
+   h5.saveRedirectUrl = function(redirectUrl) {
+      if (redirectUrl) {
+         // Store redirect URL under "h5_redirect_url"
+         // key the same key is also persisted in case of alert when the user session
+         // has timed out, see responseErrorInterceptor
+
+         // Safari, in Private Browsing Mode, looks like it supports localStorage but all calls to setItem
+         // throw QuotaExceededError. We're going to detect this and just silently drop any calls to setItem
+         // to avoid the entire page breaking, without having to do a check at each usage of Storage.
+         if (typeof localStorage === 'object') {
+            try {
+               localStorage.setItem('localStorage', 1);
+               localStorage.removeItem('localStorage');
+            } catch (e) {
+               Storage.prototype._setItem = Storage.prototype.setItem;
+               Storage.prototype.setItem = function() {};
+               alert(h5.i18n.languageResource.Common["localStorage.notAvailableWarning"]);
+            }
+         }
+
+         sessionStorage.setItem("h5_redirect_url", redirectUrl);
+      }
+   };
+
+   /*
+    * Reads the redirect URL from the session storage and redirects to it.
+    */
+   h5.redirectToSavedUrl = function() {
+      var redirectUrl = sessionStorage.getItem("h5_redirect_url");
+      if (redirectUrl) {
+         sessionStorage.removeItem("h5_redirect_url");
+         if (redirectUrl !== window.location.href) {
+            window.location.href = redirectUrl;
+         }
+      }
+   };
+
+   if (!window.location.search && !window.location.hash) {
+      // Query string and hash are missing. Try to restore it.
+      h5.redirectToSavedUrl();
+   }
+}());
+
+/*
+ * Redirects the UI to the login page when the user is not authenticated and stores
+ * the URL pathname, query parameters and hash in a session storage. The stored pathname, query
+ * parameters and hash are used to be restored the original URL.
+ *
+ * @param isAuthenticated
+ *       True if the user is authenticated otherwise false.
+ */
+function redirectIfNeeded(isAuthenticated) {
+   if (isAuthenticated) {
+      h5.isLoggedIn = true;
+   } else {
+      sessionStorage.removeItem("h5_redirect_url");
+      h5.saveRedirectUrl(window.location.href);
+      window.location.href = "login";
+      h5.bootstrapAngular = false;
+   }
+}

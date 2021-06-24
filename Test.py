@@ -83,7 +83,21 @@ def newReadVersion():
 
 
 
+setplayload = list();
 
+with open('ValueReport.text','r',encoding='utf-8') as getreporttext:
+    p = '';
+    for x in getreporttext:
 
+        if 'span' in x:
+            for y in x:
+                if '/' in y:
+                    setplayload.append(p.strip())
+                    p = '';
+                    break;
+                else:
+                    p = p + y;
+        else:
+            setplayload.append(x.strip());
 
-newReadVersion();
+    print(len(setplayload))

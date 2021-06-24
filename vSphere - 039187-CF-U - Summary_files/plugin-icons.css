@@ -1,0 +1,24 @@
+/*
+ * EXTERNAL ICONS SUPPORT: plugin-icons.css contain "external" icons, i.e. the ones
+ * displayed outside plugin's views, in the main app menus, shortcuts or object lists.
+ * Do not include other CSS rules here!
+ *
+ * Css names can directly be used in plugin.xml:
+ */
+.VsanUi-restoreIcon {
+    background: url("svg/restore.svg");
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    vertical-align: text-bottom;
+    margin: 1px 4px 0;
+}
+
+.VsanUi-promoteIcon {
+    background: url("svg/promote.svg");
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    vertical-align: text-bottom;
+    margin: 1px 4px 0;
+}

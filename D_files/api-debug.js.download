@@ -83,14 +83,14 @@ Ext.app.REMOTING_API = {
       "name" : "getMetricDetails",
       "len" : 2
     }, {
-      "name" : "getLivePreview",
-      "params" : [ "resourceRef", "creationData", "controls", "isAsc", "columnIndex" ]
-    }, {
       "name" : "validateTransformationExpression",
       "params" : [ "expression" ]
     }, {
       "name" : "getUnits",
       "len" : 1
+    }, {
+      "name" : "getLivePreview",
+      "params" : [ "resourceRef", "creationData", "controls", "isAsc", "columnIndex" ]
     }, {
       "name" : "renderChart",
       "params" : [ "chartData", "width", "height", "currentDate", "colorScheme" ]

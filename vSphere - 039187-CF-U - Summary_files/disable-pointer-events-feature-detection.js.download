@@ -1,0 +1,47 @@
+/* Copyright 2016 VMware, Inc. All rights reserved. -- VMware Confidential */
+
+//https://developers.google.com/web/updates/2016/10/pointer-events
+(function disablePointerEventsFeatureDetection() {
+
+   var targetObjects = [
+      Element.prototype,
+      HTMLElement.prototype,
+      Document.prototype,
+      window
+   ];
+
+   var propertiesToRemove = [
+      'PointerEvent',
+      'MSPointerEvent',
+      'pointerover',
+      'pointerenter',
+      'pointerdown',
+      'pointermove',
+      'pointerup',
+      'pointercancel',
+      'pointerout',
+      'pointerleave',
+      'gotpointercapture',
+      'lostpointercapture'
+   ];
+
+   for (var i = 0; i < targetObjects.length; i++) {
+      var targetObject = targetObjects[i];
+
+      for (var j = 0; j < propertiesToRemove.length; j++) {
+         var propertyName = propertiesToRemove[j];
+
+         try {
+            targetObject[propertyName] = undefined;
+            delete targetObject[propertyName];
+         } catch (e) {
+            console.warn(
+               'Failed to remove "' +
+               propertyName +
+               '" PointerEvent related property from ' +
+               targetObject.toString()
+            );
+         }
+      }
+   }
+})();
