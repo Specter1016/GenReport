@@ -330,7 +330,7 @@ def setSendReport():
 
         #setStatus
         i = 2;
-        while(i<=18):
+        while(i<=17):
 
             setstatus = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div[{}]'.format(i).strip()+'/div[2]/input');
             setstatus.click();
