@@ -200,7 +200,7 @@ def setShowReport():
 
             count = 0;
             p=1;
-            while (count < 11):
+            while (count < 15):
 
                 setreport.writelines("No.{}".format(p).strip()+"\n");
                 setreport.writelines("IP : : {}".format(getip[count]).strip()+"\n");
@@ -303,7 +303,7 @@ def setSendReport():
 
         #setDate
 
-        setd = str(time.strftime("%m/%d/%Y"));
+        setd = str(time.strftime("%d/%m/%Y"));
         print(setd);
         time.sleep(5)
         setdate = driver.find_element_by_xpath('//*[@id="form-container"]/div/div/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/div[2]/div/div/div/input[1]');
