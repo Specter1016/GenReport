@@ -609,11 +609,9 @@ def newReadVersion():
 
 readHTML();
 readset();
-
 #setCPUFuntion();
 #setRAMFuntion();
 #setNETFuntion();
-
 #newReadVersion();
 setShowReport();
 setReportFile();
